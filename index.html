@@ -145,7 +145,7 @@ body{margin:0;background:#FFFFFF}
 .ga-x{flex:none;width:48px;height:48px;border-radius:50%;border:0;background:var(--soft);cursor:pointer;display:grid;place-items:center;transition:background .25s,transform .35s var(--e)}
 .ga-x:hover{background:var(--line);transform:rotate(90deg)}
 .ga-x svg{width:18px;height:18px;stroke:var(--ink);stroke-width:2;stroke-linecap:round}
-.ga-dr .db{flex:1;overflow-y:auto;padding:20px clamp(20px,4vw,44px) 28px;overscroll-behavior:contain}
+.ga-dr .db{position:relative;flex:1;overflow-y:auto;padding:20px clamp(20px,4vw,44px) 28px;overscroll-behavior:contain}
 .ga-dr .intro{color:var(--sub);font-size:16px;line-height:1.6}
 .ga-dr .intro ul{margin-top:10px;display:flex;flex-direction:column;gap:6px}
 .ga-dr .intro li{position:relative;padding-left:18px}.ga-dr .intro li::before{content:"";position:absolute;left:0;top:.7em;width:6px;height:6px;border-radius:50%;background:var(--acc)}
@@ -438,7 +438,7 @@ function valid(fs){var ok=true,first=null;$$('.ga-f[data-req]',fs).forEach(funct
   else if(f.hasAttribute('data-agree'))good=$('input',f).checked;
   else{var v=($('input,textarea',f).value||'').trim();good=!!v;if(good&&f.hasAttribute('data-phone'))good=v.replace(/\D/g,'').length>=10}
   f.classList.toggle('bad',!good);if(!good){ok=false;first=first||f}});
-  if(first){first.scrollIntoView({block:'center',behavior:RM?'auto':'smooth'});var inp=$('input,textarea',first);inp&&inp.focus({preventScroll:true})}return ok}
+  if(first){var db=first.closest('.db');db.scrollTo({top:Math.max(0,first.offsetTop-24),behavior:RM?'auto':'smooth'});var inp=$('input,textarea',first);inp&&inp.focus({preventScroll:true})}return ok}
 root.addEventListener('input',function(e){var f=e.target.closest('.ga-f.bad');if(f)f.classList.remove('bad')});
 root.addEventListener('change',function(e){var f=e.target.closest('.ga-f.bad');if(f)f.classList.remove('bad')});
 
