@@ -93,7 +93,7 @@ body{margin:0;background:#FFFFFF}
 .ga-stat b{display:block;font:700 clamp(40px,4.4vw,64px)/1 var(--f-mark);letter-spacing:-.03em;color:var(--acc)}
 .ga-stat span{display:block;margin-top:8px;font-size:15px;line-height:1.4;color:rgba(255,255,255,.78);max-width:16ch}
 .ga-dot{border-radius:50%}
-.ga-float .l1{left:6%;top:4%}.ga-float .l2{right:0;top:30%}.ga-float .l3{left:0;bottom:18%}.ga-float .l4{right:10%;bottom:0}
+.ga-float .l1{left:0;top:2%}.ga-float .l2{right:0;top:22%}.ga-float .l3{left:6%;top:50%}.ga-float .l4{right:4%;bottom:0}
 .ga-float .l5{width:120px;height:120px;left:44%;top:14%;background:var(--tint)}
 .ga-float .l6{width:18px;height:18px;left:28%;top:52%;background:var(--acc)}
 .ga-float .l7{width:56px;height:56px;right:34%;bottom:26%;border:1.5px solid var(--line2)}
@@ -113,9 +113,9 @@ body{margin:0;background:#FFFFFF}
 
 /* ---------- экран 2 ---------- */
 .ga-pain{padding-block:clamp(88px,12vw,160px) clamp(72px,10vw,140px)}
-.ga-pain .top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.62fr);gap:clamp(24px,5vw,80px);align-items:end}
+.ga-pain .top{display:flex;flex-direction:column;gap:clamp(20px,2.4vw,32px);max-width:24ch;max-width:min(100%,980px)}
 .ga-h2{font:400 clamp(32px,4.2vw,62px)/1.1 var(--f-head);letter-spacing:-.01em;text-wrap:balance}
-.ga-pain .note{color:var(--sub);font-size:clamp(17px,1.3vw,20px);padding-bottom:8px;border-left:2px solid var(--acc);padding-left:20px}
+.ga-pain .note{color:var(--ink);font:500 clamp(18px,1.5vw,22px)/1.45 var(--f-body);border-left:2px solid var(--acc);padding-left:20px}
 .ga-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,1.6vw,20px);margin-top:clamp(40px,5vw,64px)}
 .ga-card{position:relative;background:var(--soft);border:1px solid transparent;border-radius:28px;padding:clamp(24px,2.4vw,34px);min-height:clamp(220px,20vw,270px);display:flex;flex-direction:column;justify-content:space-between;gap:28px;transition:transform .45s var(--e),background .35s,border-color .35s,box-shadow .45s var(--e)}
 .ga-card:hover{transform:translateY(-8px);background:#fff;border-color:var(--acc);box-shadow:0 28px 50px -30px rgba(232,89,12,.55)}
@@ -196,7 +196,6 @@ body{margin:0;background:#FFFFFF}
   .ga-hero .w{grid-template-columns:1fr}
   .ga-float{height:300px;margin-top:-8px}
   .ga-float .l1{left:0;top:6%}.ga-float .l2{right:0;top:2%}.ga-float .l3{left:8%;bottom:4%}.ga-float .l4{right:2%;bottom:10%}
-  .ga-pain .top{grid-template-columns:1fr}
   .ga-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:640px){
