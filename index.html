@@ -71,11 +71,11 @@ body{margin:0;background:#FAF7F2}
 .ga-btn.dark:hover{color:var(--on-acc)}
 
 /* ---------- ЭКРАН 1: одна мысль ---------- */
-.ga-hero{position:relative;padding-top:clamp(150px,20vh,220px);text-align:center}
+.ga-hero{position:relative;padding-top:clamp(124px,16vh,180px);text-align:center}
 .ga-chip{display:inline-flex;align-items:center;gap:12px;padding:10px 18px 10px 12px;border-radius:999px;background:var(--card);box-shadow:0 1px 0 var(--line),0 10px 30px -18px rgba(31,31,35,.25);font:500 15px/1.35 var(--f-body);color:var(--sub);text-align:left}
 .ga-chip b{font:600 16px/1 var(--f-head);color:var(--ink);white-space:nowrap}
 .ga-chip i{width:8px;height:8px;border-radius:50%;background:var(--acc);flex:none;box-shadow:0 0 0 5px rgba(242,106,27,.16)}
-.ga-h1{margin:clamp(28px,3.4vw,44px) auto 0!important;max-width:15.5ch;font:500 clamp(44px,6.3vw,100px)/1.03 var(--f-head);letter-spacing:-.028em;text-wrap:balance}
+.ga-h1{margin:clamp(28px,3.4vw,44px) auto 0!important;max-width:16.5ch;font:500 clamp(44px,5.5vw,90px)/1.04 var(--f-head);letter-spacing:-.028em;text-wrap:balance}
 .ga-h1 .wd{display:inline-block;white-space:nowrap}
 .ga-h1 b{display:inline-block;font-weight:inherit;opacity:0;transform:translateY(.32em);filter:blur(6px)}
 .ga.go .ga-h1 b{animation:ga-let .55s var(--e) forwards;animation-delay:calc(var(--i)*16ms + .05s)}
@@ -88,7 +88,7 @@ body{margin:0;background:#FAF7F2}
 @keyframes ga-fup{to{opacity:1;transform:none}}
 
 /* «шоурил»: живая сцена намывания золота, раскрывается при прокрутке */
-.ga-reel{margin-top:clamp(64px,8vw,104px);padding-inline:var(--gut)}
+.ga-reel{margin-top:clamp(56px,6vw,88px);padding-inline:var(--gut)}
 .ga-reel .box{position:relative;max-width:calc(var(--max) - 2 * var(--gut) + 200px);margin:0 auto;aspect-ratio:16/8.2;min-height:420px;border-radius:32px;overflow:hidden;background:radial-gradient(120% 120% at 70% 40%,#FFF4EA 0%,#F9E5D2 42%,#F1D2B8 100%);transform-origin:50% 0;will-change:transform}
 .ga-reel canvas{position:absolute;inset:0;width:100%;height:100%}
 .ga-reel .cap{position:absolute;left:clamp(20px,3vw,40px);bottom:clamp(20px,3vw,36px);display:inline-flex;align-items:center;gap:12px;padding:12px 20px 12px 14px;border-radius:999px;background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font:500 clamp(15px,1.2vw,17px)/1.3 var(--f-body)}
@@ -411,7 +411,6 @@ $$('[data-split]').forEach(function(el){var i=0;
       node.replaceChild(frag,n)}
     else if(n.nodeType===1&&!n.classList.contains('dot'))walk(n)})})(el);
   el.setAttribute('aria-label',el.textContent.replace(/\s+/g,' ').trim())});
-var h1=$('#gaH1');h1.insertAdjacentHTML('beforeend','<i class="dot" aria-hidden="true"></i>');
 
 /* бегущая строка (T8) — текст из ТЗ */
 var TAPE=['6+ лет опыта в маркетинге, PR и продвижении','Россия, Европа, Латинская Америка','1000+ глубинных интервью'];
@@ -449,16 +448,16 @@ onScroll();
   var cv=$('#gaFlow'),g=cv.getContext('2d'),W=0,H=0,dpr=Math.min(devicePixelRatio||1,2),P=[],vis=true,cx=0,cy=0,tx=0,ty=0,mouse=null;
   var BG='rgba(250,232,214,';
   function size(){var r=reel.getBoundingClientRect();W=reel.clientWidth;H=reel.clientHeight;cv.width=W*dpr;cv.height=H*dpr;g.setTransform(dpr,0,0,dpr,0,0);
-    var n=Math.round(Math.min(FINE?1500:520,W*H/(FINE?520:900)));P.length=0;for(var i=0;i<n;i++)P.push(spawn(true));cx=tx=W*.66;cy=ty=H*.46;
+    var n=Math.round(Math.min(FINE?1500:520,W*H/(FINE?520:900)));P.length=0;for(var i=0;i<n;i++)P.push(spawn(true));cx=tx=W*.62;cy=ty=H*.42;
     g.fillStyle='#F6E3CF';g.fillRect(0,0,W,H)}
   function spawn(any){var e=Math.random()*4|0,x,y;if(any){x=Math.random()*W;y=Math.random()*H}else if(e===0){x=-5;y=Math.random()*H}else if(e===1){x=W+5;y=Math.random()*H}else if(e===2){x=Math.random()*W;y=-5}else{x=Math.random()*W;y=H+5}
-    return {x:x,y:y,s:.6+Math.random()*1.2,a:.25+Math.random()*.55,r:Math.random()<.08?2.2:1.1}}
+    return {x:x,y:y,s:.6+Math.random()*1.2,a:.35+Math.random()*.55,r:Math.random()<.1?2.4:1.4}}
   reel.addEventListener('pointermove',function(e){var r=reel.getBoundingClientRect();mouse={x:(e.clientX-r.left)*W/r.width,y:(e.clientY-r.top)*H/r.height}});
   reel.addEventListener('pointerleave',function(){mouse=null});
   if('IntersectionObserver' in window)new IntersectionObserver(function(es){vis=es[0].isIntersecting}).observe(reel);
   function frame(t){
     if(vis){
-      if(mouse){tx=mouse.x;ty=mouse.y}else{tx=W*(.66+Math.cos(t/5200)*.08);ty=H*(.46+Math.sin(t/4100)*.1)}
+      if(mouse){tx=mouse.x;ty=mouse.y}else{tx=W*(.62+Math.cos(t/5200)*.08);ty=H*(.42+Math.sin(t/4100)*.08)}
       cx+=(tx-cx)*.04;cy+=(ty-cy)*.04;
       g.fillStyle=BG+'0.14)';g.fillRect(0,0,W,H);
       var gr=g.createRadialGradient(cx,cy,0,cx,cy,Math.max(W,H)*.22);gr.addColorStop(0,'rgba(255,170,90,.28)');gr.addColorStop(1,'rgba(255,170,90,0)');g.fillStyle=gr;g.fillRect(0,0,W,H);
