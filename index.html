@@ -5,130 +5,147 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Gold Analytics — исследование и анализ целевой аудитории для бизнеса</title>
 <meta name="description" content="Находим ценную информацию о ваших клиентах, анализируем её и превращаем в решения, которые помогут увеличить продажи и прибыль.">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#FAF7F2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&family=Prata&family=Golos+Text:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Golos+Text:wght@400;500;600&display=swap">
 <style>
 /* ===== Gold Analytics · экраны 1–2 =====
-   Всё оформление внутри .ga — блок можно вставить в Tilda (T123) целиком.
-   Цвет: белый фон, тёплый оранжевый и графит. Шрифты: Unbounded (знак, цифры), Prata (заголовки), Golos Text (текст). */
-html{background:#FFFFFF;color-scheme:light}
-body{margin:0;background:#FFFFFF}
+   Концепция «светлый деловой журнал, который движется».
+   Палитра A «Тёплый свет»: фон #FAF7F2, текст #1F1F23, один акцент #F26A1B.
+   Шрифты: Playfair Display (заголовки) + Golos Text (текст). Всё внутри .ga — блок вставляется в Tilda (T123). */
+html{background:#FAF7F2;color-scheme:light}
+body{margin:0;background:#FAF7F2}
 .ga{
-  --bg:#FFFFFF;--tint:#FFF4EC;--soft:#F7F5F2;--ink:#1F1B18;--sub:#5B534C;--line:#ECE6DF;--line2:#D9D1C8;
-  --acc:#E8590C;--acc-dk:#C2410C;--acc-ink:#FFFFFF;
-  --f-mark:"Unbounded","Arial Black",Arial,sans-serif;--f-head:"Prata",Georgia,"Times New Roman",serif;--f-body:"Golos Text","Segoe UI",Arial,sans-serif;
-  --e:cubic-bezier(.2,.8,.2,1);--gut:clamp(16px,4vw,56px);--max:1280px;
-  color:var(--ink);background:var(--bg);font:400 18px/1.65 var(--f-body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip
+  --bg:#FAF7F2;--tint:#F4EDE3;--card:#FFFFFF;--ink:#1F1F23;--sub:#5F5C55;--line:#E7E0D6;
+  --acc:#F26A1B;--acc-tx:#C4500C;--on-acc:#1F1F23;
+  --f-head:"Playfair Display",Georgia,"Times New Roman",serif;--f-body:"Golos Text","Segoe UI",Arial,sans-serif;--f-mark:var(--f-body);
+  --soft:#F4EDE3;--acc-dk:#C4500C;--line2:#D8CFC3;
+  --e:cubic-bezier(.2,.8,.2,1);--gut:clamp(20px,4.4vw,64px);--max:1320px;--sec:clamp(72px,11vw,160px);
+  position:relative;color:var(--ink);background:var(--bg);font:400 18px/1.6 var(--f-body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip
 }
+/* едва заметное зерно — ощущение плотной бумаги */
+.ga::before{content:"";position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.05;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .ga *,.ga *::before,.ga *::after{box-sizing:border-box}
-.ga h1,.ga h2,.ga h3,.ga p,.ga ul{margin:0;padding:0}
+.ga h1,.ga h2,.ga h3,.ga p,.ga ul,.ga figure{margin:0;padding:0}
 .ga ul{list-style:none}
-.ga em{font-style:normal;color:var(--acc-dk)}
+.ga em{font-style:italic;color:var(--acc-tx)}
 .ga button{font:inherit;color:inherit}
-.ga :focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:6px}
+.ga :focus-visible{outline:3px solid var(--acc);outline-offset:3px;border-radius:8px}
 .ga .w{max-width:var(--max);margin:0 auto;padding-inline:var(--gut)}
 .ga .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.ga .dot{display:inline-block;width:.2em;height:.2em;border-radius:50%;background:var(--acc);margin-left:.06em;vertical-align:.05em}
 
-/* ---------- заставка (O21) ---------- */
-.ga-pre{position:fixed;inset:0;z-index:100;background:var(--acc);color:#fff;display:grid;place-items:center;pointer-events:none}
-.ga-pre .mk{font:600 clamp(22px,4.4vw,48px)/1 var(--f-mark);letter-spacing:.04em;white-space:nowrap}
-.ga-pre .mk b{display:inline-block;font-weight:inherit;opacity:0;transform:translateY(24px) rotate(10deg);animation:ga-let .6s var(--e) forwards;animation-delay:calc(var(--i)*45ms + .1s)}
-.ga-pre.out{animation:ga-lift .75s var(--e) forwards}
+/* ---------- заставка: монограмма GA, до 1,5 с (O21) ---------- */
+.ga-pre{position:fixed;inset:0;z-index:100;background:var(--bg);display:grid;place-items:center;pointer-events:none}
+.ga-pre .mk{font:600 clamp(72px,12vw,140px)/1 var(--f-head);color:var(--ink);letter-spacing:-.02em}
+.ga-pre .mk b{display:inline-block;font-weight:inherit;opacity:0;transform:translateY(.3em);animation:ga-let .45s var(--e) forwards;animation-delay:calc(var(--i)*90ms + 80ms)}
+.ga-pre .mk .dot{opacity:0;transform:scale(0);animation:ga-pop .35s var(--e) .38s forwards}
+.ga-pre::after{content:"";position:absolute;inset:0;background:var(--acc);transform:translateY(101%)}
+.ga-pre.out{animation:ga-lift .5s var(--e) forwards}
 @keyframes ga-let{to{opacity:1;transform:none}}
+@keyframes ga-pop{to{opacity:1;transform:none}}
 @keyframes ga-lift{to{transform:translateY(-101%)}}
 
-/* ---------- шапка (O16) ---------- */
-.ga-hd{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .35s,box-shadow .35s}
-.ga-hd .w{display:flex;align-items:center;justify-content:space-between;gap:16px;height:96px;transition:height .35s var(--e)}
-.ga-hd.sm{background:rgba(255,255,255,.88);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);box-shadow:0 1px 0 var(--line)}
+/* ---------- шапка (O16): сжимается, «Разбор проекта» всегда под рукой ---------- */
+.ga-hd{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s,box-shadow .3s}
+.ga-hd .w{display:flex;align-items:center;justify-content:space-between;gap:20px;height:96px;transition:height .35s var(--e)}
+.ga-hd.sm{background:rgba(250,247,242,.9);-webkit-backdrop-filter:saturate(1.3) blur(14px);backdrop-filter:saturate(1.3) blur(14px);box-shadow:0 1px 0 var(--line)}
 .ga-hd.sm .w{height:72px}
-.ga-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font:600 15px/1 var(--f-mark);letter-spacing:.06em;white-space:nowrap}
-.ga-logo i{width:28px;height:28px;border-radius:50%;background:var(--acc);display:grid;place-items:center;flex:none}
-.ga-logo i::after{content:"";width:10px;height:10px;border-radius:50%;background:#fff}
+.ga-logo{display:inline-flex;align-items:baseline;text-decoration:none;color:var(--ink);font:600 24px/1 var(--f-head);letter-spacing:-.01em;white-space:nowrap;min-height:44px;align-items:center}
+.ga-hd nav{display:flex;align-items:center;gap:8px}
+.ga-link{background:none;border:0;cursor:pointer;color:var(--ink);font:500 16px/1 var(--f-body);padding:14px 16px;border-radius:999px;min-height:44px;transition:background .25s}
+.ga-link:hover{background:rgba(31,31,35,.05)}
 .ga-hd .bar{position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--acc)}
 
 /* ---------- кнопки (O17: цвет поднимается снизу) ---------- */
-.ga-btn{position:relative;z-index:0;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:12px;border:0;cursor:pointer;text-decoration:none;white-space:nowrap;transition:color .35s,box-shadow .35s,transform .2s}
-.ga-btn::before{content:"";position:absolute;inset:0;z-index:-1;transform:translateY(101%);transition:transform .45s var(--e)}
+.ga-btn{position:relative;z-index:0;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:12px;border:0;cursor:pointer;text-decoration:none;white-space:nowrap;min-height:44px;transition:color .3s,box-shadow .3s,transform .2s}
+.ga-btn::before{content:"";position:absolute;inset:0;z-index:-1;transform:translateY(101%);transition:transform .4s var(--e)}
 .ga-btn:hover::before,.ga-btn:focus-visible::before{transform:none}
 .ga-btn:active{transform:scale(.98)}
-.ga-btn svg{width:20px;height:20px;flex:none;transition:transform .35s var(--e)}
+.ga-btn svg{width:20px;height:20px;flex:none;transition:transform .3s var(--e)}
 .ga-btn:hover svg{transform:translateX(4px)}
-.ga-btn.pri{background:var(--acc);color:var(--acc-ink);font:600 18px/1 var(--f-body);padding:24px 30px;border-radius:999px;box-shadow:0 14px 30px -14px rgba(232,89,12,.65)}
+.ga-btn.pri{background:var(--acc);color:var(--on-acc);font:600 17px/1 var(--f-body);padding:0 34px;height:64px;border-radius:999px}
 .ga-btn.pri::before{background:var(--ink)}
-.ga-btn.sec{background:transparent;color:var(--ink);font:500 17px/1 var(--f-body);padding:22px 28px;border-radius:999px;box-shadow:inset 0 0 0 1.5px var(--line2)}
-.ga-btn.sec::before{background:var(--soft)}
+.ga-btn.pri:hover,.ga-btn.pri:focus-visible{color:#fff}
+.ga-btn.sec{background:transparent;color:var(--ink);font:500 17px/1 var(--f-body);padding:0 30px;height:64px;border-radius:999px;box-shadow:inset 0 0 0 1.5px var(--line2)}
+.ga-btn.sec::before{background:var(--card)}
 .ga-btn.sec:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
-.ga-btn.sm{font:500 15px/1 var(--f-body);padding:13px 20px}
+.ga-btn.sm{height:48px;padding:0 22px;font-size:15px}
 
 /* ---------- экран 1 ---------- */
-.ga-hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;isolation:isolate;overflow:hidden}
-.ga-hero canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
-.ga-hero::before{content:"";position:absolute;z-index:-2;width:70vmax;height:70vmax;right:-22vmax;top:-26vmax;border-radius:50%;background:radial-gradient(closest-side,rgba(232,89,12,.13),rgba(232,89,12,0))}
-.ga-hero .w{flex:1;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(40px,5vw,88px);align-items:center;padding-top:clamp(140px,18vh,200px);padding-bottom:clamp(64px,9vh,112px);width:100%}
-.ga-hero .w>div:first-child{container-type:inline-size;min-width:0}
-.ga-h1{display:flex;flex-direction:column;gap:clamp(20px,2.2vw,28px)}
-.ga-word{font:700 clamp(34px,6.4vw,104px)/.94 var(--f-mark);font-size:min(13.6cqw,104px);letter-spacing:-.035em;text-transform:uppercase;color:var(--ink)}
-.ga-word span{display:block;white-space:nowrap}
-.ga-word b{display:inline-block;font-weight:inherit;opacity:0;transform:translateY(.45em) rotate(8deg)}
-.ga.go .ga-word b{animation:ga-let .7s var(--e) forwards;animation-delay:calc(var(--i)*40ms)}
-.ga-word span+span b{color:var(--acc)}
-.ga-desc{display:flex;align-items:center;gap:12px;font:500 clamp(15px,1.3vw,18px)/1.4 var(--f-body);color:var(--sub);letter-spacing:.01em}
-.ga-desc::before{content:"";width:36px;height:1.5px;background:var(--acc);flex:none}
-.ga-prom{font:400 clamp(26px,2.7vw,40px)/1.22 var(--f-head);letter-spacing:-.005em;margin-top:clamp(40px,4.6vw,64px);max-width:20ch;text-wrap:balance}
-.ga-lead{margin-top:clamp(24px,2.4vw,32px);max-width:50ch;color:var(--sub);font-size:clamp(17px,1.25vw,19px);line-height:1.75}
-.ga-cta{display:flex;flex-wrap:wrap;gap:16px;margin-top:clamp(44px,5vw,64px)}
-.ga-up{opacity:0;transform:translateY(26px)}
-.ga.go .ga-up{animation:ga-fup .9s var(--e) forwards;animation-delay:var(--d,0s)}
+.ga-hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column}
+.ga-hero::before{content:"";position:absolute;z-index:0;width:60vmax;height:60vmax;right:-18vmax;top:-22vmax;border-radius:50%;background:radial-gradient(closest-side,rgba(242,106,27,.12),rgba(242,106,27,0));pointer-events:none}
+.ga-hero .w{position:relative;z-index:1;flex:1;width:100%;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(16px,2vw,28px);align-items:center;padding-top:clamp(148px,19vh,210px);padding-bottom:clamp(72px,10vh,120px)}
+.ga-txt{grid-column:1 / span 7;container-type:inline-size;min-width:0}
+.ga-eyebrow{display:flex;align-items:center;gap:14px;font:500 16px/1.45 var(--f-body);color:var(--sub);max-width:34ch}
+.ga-eyebrow::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--acc);flex:none}
+.ga-h1{margin-top:clamp(28px,3vw,40px)!important;font:600 min(17.5cqw,132px)/.96 var(--f-head);letter-spacing:-.025em}
+.ga-h1 span{display:block;white-space:nowrap}
+.ga-h1 b{display:inline-block;font-weight:inherit;opacity:0;transform:translateY(.35em)}
+.ga.go .ga-h1 b{animation:ga-let .5s var(--e) forwards;animation-delay:calc(var(--i)*35ms)}
+.ga-h1 .dot{opacity:0;transform:scale(0)}
+.ga.go .ga-h1 .dot{animation:ga-pop .4s var(--e) .55s forwards}
+.ga-prom{margin-top:clamp(40px,4.4vw,60px)!important;font:500 clamp(26px,2.5vw,36px)/1.28 var(--f-head);max-width:24ch;text-wrap:balance}
+.ga-lead{margin-top:clamp(20px,2vw,28px)!important;max-width:52ch;color:var(--sub);font-size:clamp(17px,1.2vw,18px);line-height:1.7}
+.ga-cta{display:flex;flex-wrap:wrap;gap:16px;margin-top:clamp(40px,4.4vw,56px)}
+.ga-up{opacity:0;transform:translateY(18px)}
+.ga.go .ga-up{animation:ga-fup .55s var(--e) forwards;animation-delay:var(--d,0s)}
 @keyframes ga-fup{to{opacity:1;transform:none}}
 
-/* фото справа (с лёгким параллаксом — O7) */
-.ga-pic{position:relative;margin:0;align-self:stretch;display:flex;align-items:center}
-.ga-pic .fr{position:relative;width:100%;aspect-ratio:4/5;max-height:calc(100svh - 260px);min-height:440px;border-radius:36px;overflow:hidden;background:var(--soft);box-shadow:0 40px 80px -40px rgba(31,27,24,.35)}
-.ga-pic img{position:absolute;inset:-6% 0;width:100%;height:112%;object-fit:cover;object-position:50% 30%;will-change:transform}
-.ga-pic::before{content:"";position:absolute;z-index:-1;width:46%;aspect-ratio:1;border-radius:50%;left:-12%;bottom:-6%;background:var(--tint)}
+/* фото + поле частиц вокруг него (O6 + O7). Текст на частицах не лежит. */
+.ga-pic{grid-column:8 / span 5;position:relative;align-self:stretch;display:flex;align-items:center}
+.ga-pic canvas{position:absolute;z-index:0;top:-8%;bottom:-8%;left:-18%;right:calc(-1 * var(--gut));width:auto;height:auto;pointer-events:none}
+.ga-pic .fr{position:relative;z-index:1;width:100%;aspect-ratio:4/5;max-height:calc(100svh - 300px);min-height:420px;border-radius:24px;overflow:hidden;background:var(--tint);box-shadow:0 40px 80px -48px rgba(31,31,35,.4)}
+.ga-pic img{position:absolute;left:0;top:-5%;width:100%;height:110%;object-fit:cover;object-position:50% 25%;will-change:transform}
 
-/* бегущие ленты (T8 + T9) */
-.ga-tape{position:relative;padding-bottom:10px}
-.ga-mq{overflow:hidden;white-space:nowrap;user-select:none}
-.ga-mq div{display:inline-flex;align-items:center;animation:ga-mq 38s linear infinite}
-.ga-mq.rev div{animation-direction:reverse;animation-duration:44s}
+/* бегущая строка (T8) */
+.ga-mq{position:relative;z-index:1;overflow:hidden;white-space:nowrap;user-select:none;border-block:1px solid var(--line);padding:22px 0}
+.ga-mq div{display:inline-flex;align-items:center;animation:ga-mq 46s linear infinite}
 .ga-mq:hover div{animation-play-state:paused}
-.ga-mq span{display:inline-flex;align-items:center;gap:28px;padding-right:28px;font:600 clamp(14px,1.25vw,17px)/1 var(--f-mark);letter-spacing:.02em;text-transform:uppercase}
-.ga-mq span::after{content:"";width:9px;height:9px;border-radius:50%;background:currentColor;opacity:.55}
-.ga-mq.one{background:var(--ink);color:#fff;padding:20px 0;transform:rotate(-1.2deg);margin-inline:-2vw}
-.ga-mq.one span::after{background:var(--acc);opacity:1}
-.ga-mq.two{background:var(--acc);color:#fff;padding:14px 0;transform:rotate(1.2deg);margin:-6px -2vw 0}
+.ga-mq span{display:inline-flex;align-items:center;gap:32px;padding-right:32px;font:500 clamp(16px,1.3vw,19px)/1 var(--f-body);color:var(--ink)}
+.ga-mq span::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--acc)}
 @keyframes ga-mq{to{transform:translateX(-50%)}}
 
 /* ---------- экран 2 ---------- */
-.ga-pain{padding-block:clamp(112px,14vw,200px) clamp(96px,12vw,180px)}
-.ga-pain .top{display:flex;flex-direction:column;gap:clamp(32px,3.6vw,48px);max-width:min(100%,940px)}
-.ga-h2{font:400 clamp(32px,4vw,58px)/1.14 var(--f-head);letter-spacing:-.01em;text-wrap:balance}
-.ga-pain .note{color:var(--ink);font:500 clamp(18px,1.5vw,22px)/1.45 var(--f-body);border-left:2px solid var(--acc);padding-left:20px}
-.ga-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,28px);margin-top:clamp(56px,7vw,96px)}
-.ga-card{position:relative;background:var(--soft);border:1px solid transparent;border-radius:28px;padding:clamp(28px,3vw,44px);min-height:clamp(240px,22vw,300px);display:flex;flex-direction:column;justify-content:space-between;gap:40px;transition:transform .45s var(--e),background .35s,border-color .35s,box-shadow .45s var(--e)}
-.ga-card:hover{transform:translateY(-8px);background:#fff;border-color:var(--acc);box-shadow:0 28px 50px -30px rgba(232,89,12,.55)}
-.ga-card .hd{display:flex;justify-content:space-between;align-items:flex-start}
-.ga-card .n{font:600 15px/1 var(--f-mark);color:var(--acc-dk);letter-spacing:.02em}
-.ga-card svg{width:40px;height:40px;fill:none;stroke:var(--ink);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:stroke .35s,transform .45s var(--e)}
-.ga-card:hover svg{stroke:var(--acc);transform:rotate(-6deg) scale(1.06)}
-.ga-card p{font:500 clamp(19px,1.5vw,22px)/1.45 var(--f-body);letter-spacing:-.005em;text-wrap:pretty}
-.ga-rv{opacity:0;transform:translateY(40px)}
-.ga-rv.in{opacity:1;transform:none;transition:opacity .8s var(--e),transform .8s var(--e);transition-delay:calc(var(--i,0)*110ms)}
-.ga-card.ga-rv.in{transition:opacity .8s var(--e) calc(var(--i)*110ms),transform .8s var(--e) calc(var(--i)*110ms),background .35s,border-color .35s,box-shadow .45s var(--e)}
-.ga-card.ga-rv.in:hover{transform:translateY(-8px);transition-delay:0s}
-.ga-win{position:relative;overflow:hidden;margin-top:clamp(40px,5vw,72px);background:var(--tint);border-radius:36px;padding:clamp(40px,6vw,96px) clamp(32px,6vw,96px);display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(32px,5vw,80px);align-items:center}
-.ga-win .ic{width:clamp(56px,6vw,84px);height:clamp(56px,6vw,84px);border-radius:50%;background:var(--acc);display:grid;place-items:center}
-.ga-win .ic svg{width:44%;height:44%;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.ga-win .tx{display:flex;flex-direction:column;gap:clamp(24px,3vw,40px);position:relative;z-index:1}
-.ga-win p{font:400 clamp(24px,2.6vw,38px)/1.32 var(--f-head);text-wrap:balance;max-width:24ch}
-.ga-win figure{margin:0;position:relative;z-index:1;border-radius:26px;overflow:hidden;aspect-ratio:498/383;box-shadow:0 30px 60px -34px rgba(31,27,24,.4)}
-.ga-win figure img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s var(--e)}
-.ga-win:hover figure img{transform:scale(1.04)}
-.ga-win::after{content:"";position:absolute;right:-8%;bottom:-60%;width:46%;aspect-ratio:1;border-radius:50%;border:1.5px solid rgba(232,89,12,.25);pointer-events:none}
+.ga-pain{position:relative;background:var(--tint);padding-block:var(--sec)}
+.ga-num{display:flex;align-items:center;gap:16px;font:500 15px/1 var(--f-body);color:var(--sub)}
+.ga-num::after{content:"";height:1px;flex:0 1 120px;background:var(--line2)}
+.ga-pain .head{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(16px,2vw,28px);row-gap:clamp(28px,3vw,40px);margin-top:clamp(28px,3vw,40px)}
+.ga-h2{grid-column:1 / span 9;font:500 clamp(34px,4vw,56px)/1.14 var(--f-head);letter-spacing:-.012em;text-wrap:balance}
+.ga-pain .note{grid-column:7 / span 6;font:500 clamp(19px,1.5vw,22px)/1.5 var(--f-body);color:var(--ink);padding-left:22px;border-left:2px solid var(--acc)}
+.ga-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,1.8vw,24px);margin-top:clamp(56px,6vw,88px)}
+.ga-card{background:var(--card);border-radius:24px;padding:clamp(28px,2.8vw,40px);min-height:clamp(220px,19vw,260px);display:flex;flex-direction:column;justify-content:space-between;gap:36px;transition:transform .4s var(--e),box-shadow .4s var(--e)}
+.ga-card:hover{transform:translateY(-6px);box-shadow:0 26px 50px -30px rgba(31,31,35,.28)}
+.ga-card .n{font:500 clamp(40px,3.6vw,52px)/1 var(--f-head);color:var(--ink);letter-spacing:-.02em}
+.ga-card .n .dot{width:9px;height:9px;margin-left:4px;vertical-align:.1em;transition:transform .4s var(--e)}
+.ga-card:hover .n .dot{transform:scale(1.6)}
+.ga-card p{font:500 clamp(18px,1.4vw,21px)/1.5 var(--f-body);text-wrap:pretty}
+
+/* две встречные ленты (T9): что думает бизнес и что говорят клиенты */
+.ga-voices{margin-top:clamp(72px,8vw,120px);display:flex;flex-direction:column;gap:12px}
+.ga-voices .cap{display:flex;justify-content:space-between;gap:16px;font:500 15px/1.4 var(--f-body);color:var(--sub);margin-bottom:8px}
+.ga-lane{overflow:hidden;white-space:nowrap;border-radius:999px;padding:20px 0;user-select:none}
+.ga-lane div{display:inline-flex;align-items:center;animation:ga-mq 52s linear infinite}
+.ga-lane.r div{animation-direction:reverse;animation-duration:58s}
+.ga-lane:hover div{animation-play-state:paused}
+.ga-lane span{display:inline-flex;align-items:center;gap:28px;padding-right:28px;font:500 clamp(18px,1.5vw,22px)/1 var(--f-head);font-style:italic}
+.ga-lane b{font:600 13px/1 var(--f-body);font-style:normal;letter-spacing:.02em;padding:9px 14px;border-radius:999px}
+.ga-lane.biz{background:var(--card);color:var(--sub)}
+.ga-lane.biz b{background:var(--tint);color:var(--ink)}
+.ga-lane.cli{background:var(--acc);color:var(--on-acc)}
+.ga-lane.cli b{background:var(--ink);color:#fff}
+.ga-lane span::after{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.4}
+
+/* вывод */
+.ga-win{margin-top:clamp(72px,8vw,120px);background:var(--card);border-radius:24px;padding:clamp(40px,6vw,96px);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(16px,2vw,28px)}
+.ga-win p{grid-column:1 / span 10;font:500 clamp(28px,3.2vw,46px)/1.28 var(--f-head);letter-spacing:-.01em;text-wrap:balance}
+
+/* появление при прокрутке (O1): короче 0,6 с, по очереди */
+.ga-rv{opacity:0;transform:translateY(24px)}
+.ga-rv.in{opacity:1;transform:none;transition:opacity .55s var(--e) calc(var(--i,0)*80ms),transform .55s var(--e) calc(var(--i,0)*80ms)}
+.ga-card.ga-rv.in{transition:opacity .55s var(--e) calc(var(--i)*80ms),transform .55s var(--e) calc(var(--i)*80ms),box-shadow .4s var(--e)}
+.ga-card.ga-rv.in:hover{transform:translateY(-6px);transition-delay:0s}
 
 /* ---------- панель с формой (вместо всплывающего окна) ---------- */
 .ga-veil{position:fixed;inset:0;z-index:80;background:rgba(31,27,24,.18);opacity:0;pointer-events:none;transition:opacity .4s}
@@ -186,99 +203,120 @@ body{margin:0;background:#FFFFFF}
 .ga-done h3{font:400 30px/1.2 var(--f-head)}
 .ga-done p{color:var(--sub)}
 .ga.lock{overflow:hidden}
+.ga-dr .df .ga-btn.pri{height:58px;padding:0 28px;font-size:16px}
+.ga-dr .kick{font:600 13px/1 var(--f-body);letter-spacing:.04em;text-transform:none;color:var(--acc-tx)}
+.ga-dr{background:var(--bg)}
+.ga-dr .df{background:var(--bg)}
+.ga-f input[type=text],.ga-f input[type=tel],.ga-f textarea{background:var(--card);border-color:var(--line)}
+.ga-opt span{background:var(--card);border-color:var(--line)}
+.ga-opt input:checked+span{background:#FFF1E6}
+.ga-x{background:var(--card)}
 
 /* ---------- адаптив ---------- */
 @media (max-width:1024px){
-  .ga-hero .w{grid-template-columns:1fr}
+  .ga-hero .w{grid-template-columns:1fr;row-gap:56px}
+  .ga-txt,.ga-pic{grid-column:1 / -1}
   .ga-pic .fr{aspect-ratio:16/11;max-height:none;min-height:0}
+  .ga-pain .head{grid-template-columns:1fr}
+  .ga-h2,.ga-pain .note{grid-column:1 / -1}
   .ga-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ga-win p{grid-column:1 / -1}
+}
+@media (max-width:768px){
+  .ga-pic canvas{display:none}
+  .ga-hd .ga-link{display:none}
 }
 @media (max-width:640px){
-  .ga{font-size:17px}
-  .ga-hd .w{height:76px}.ga-hd.sm .w{height:62px}
-  .ga-hd .ga-btn.sm{padding:11px 16px;font-size:14px}
-  .ga-hd .ga-btn.sm .lg{display:none}
-  .ga-logo{font-size:13px}
-  .ga-hero .w{padding-top:120px;gap:48px;padding-bottom:56px}
-  .ga-cta{flex-direction:column;align-items:stretch}
-  .ga-btn.pri{padding:22px 24px}
-  .ga-pic .fr{aspect-ratio:4/5;border-radius:28px}
-  .ga-prom{margin-top:40px;font-size:25px}
-  .ga-desc{font-size:15px}
-  .ga-cta{margin-top:40px}
+  .ga{font-size:16px;--sec:72px}
+  .ga-hd .w{height:76px}.ga-hd.sm .w{height:64px}
+  .ga-logo{font-size:21px}
+  .ga-btn.sm{height:44px;padding:0 18px;font-size:15px}
+  .ga-hero .w{padding-top:124px;padding-bottom:64px}
+  .ga-eyebrow{font-size:15px}
+  .ga-h1{font-size:min(22cqw,88px)}
+  .ga-prom{font-size:25px;margin-top:36px!important}
+  .ga-cta{flex-direction:column;align-items:stretch;gap:12px}
+  .ga-btn.pri,.ga-btn.sec{height:60px}
+  .ga-pic .fr{aspect-ratio:4/5}
   .ga-cards{grid-template-columns:1fr}
   .ga-card{min-height:0}
-  .ga-win{grid-template-columns:1fr;border-radius:26px}
+  .ga-voices .cap{flex-direction:column;gap:4px}
+  .ga-win{padding:32px 24px}
   .ga-dr .df .ga-btn.pri{flex:1}
 }
 @media (prefers-reduced-motion:reduce){
   .ga-pre{display:none}
-  .ga-word b,.ga-up,.ga-rv{opacity:1!important;transform:none!important;animation:none!important}
-  .ga-mq div{animation-duration:160s}
+  .ga-h1 b,.ga-h1 .dot,.ga-up,.ga-rv{opacity:1!important;transform:none!important;animation:none!important}
+  .ga-mq div,.ga-lane div{animation-duration:200s}
 }
 </style>
 </head>
 <body>
 <div class="ga" id="ga">
 
-  <div class="ga-pre" id="gaPre" aria-hidden="true"><div class="mk" data-split>GOLD ANALYTICS</div></div>
+  <div class="ga-pre" id="gaPre" aria-hidden="true"><div class="mk"><b style="--i:0">G</b><b style="--i:1">A</b><i class="dot"></i></div></div>
 
   <header class="ga-hd" id="gaHd">
     <div class="w">
-      <a class="ga-logo" href="#top" aria-label="Gold Analytics — на главную"><i aria-hidden="true"></i>GOLD ANALYTICS</a>
-      <button class="ga-btn sec sm" type="button" data-open="talk">Обсудить <span class="lg">исследование</span></button>
+      <a class="ga-logo" href="#top" aria-label="Gold Analytics — в начало">Gold Analytics<i class="dot" aria-hidden="true"></i></a>
+      <nav aria-label="Заявки">
+        <button class="ga-link" type="button" data-open="talk">Обсудить исследование</button>
+        <button class="ga-btn pri sm" type="button" data-open="audit">Разбор проекта</button>
+      </nav>
     </div>
     <span class="bar" id="gaBar"></span>
   </header>
 
   <main id="top">
     <!-- ЭКРАН 1 -->
-    <section class="ga-hero" id="gaHero" aria-labelledby="gaH1">
-      <canvas id="gaDust" aria-hidden="true"></canvas>
+    <section class="ga-hero" aria-labelledby="gaH1">
       <div class="w">
-        <div>
-          <h1 class="ga-h1" id="gaH1">
-            <span class="ga-word" aria-label="Gold Analytics"><span aria-hidden="true" data-split>GOLD</span><span aria-hidden="true" data-split data-off="4">ANALYTICS</span></span>
-            <span class="ga-desc ga-up" style="--d:.45s">Агентство исследования и анализа целевой аудитории для бизнеса</span>
-          </h1>
-          <p class="ga-prom ga-up" style="--d:.6s">Узнаем, что <em>на&nbsp;самом деле</em> думают ваши клиенты и&nbsp;что влияет на&nbsp;их&nbsp;выбор!</p>
-          <p class="ga-lead ga-up" style="--d:.72s">Находим ценную информацию о&nbsp;ваших клиентах, анализируем её и&nbsp;превращаем в&nbsp;решения, которые помогут увеличить продажи и&nbsp;прибыль.</p>
-          <div class="ga-cta ga-up" style="--d:.85s">
+        <div class="ga-txt">
+          <p class="ga-eyebrow ga-up" style="--d:.1s">Агентство исследования и анализа целевой аудитории для бизнеса</p>
+          <h1 class="ga-h1" id="gaH1" aria-label="Gold Analytics"><span aria-hidden="true" data-split>Gold</span><span aria-hidden="true"><span data-split data-off="4" style="display:inline">Analytics</span><i class="dot"></i></span></h1>
+          <p class="ga-prom ga-up" style="--d:.45s">Узнаем, что <em>на&nbsp;самом деле</em> думают ваши клиенты и&nbsp;что влияет на&nbsp;их&nbsp;выбор!</p>
+          <p class="ga-lead ga-up" style="--d:.55s">Находим ценную информацию о&nbsp;ваших клиентах, анализируем её и&nbsp;превращаем в&nbsp;решения, которые помогут увеличить продажи и&nbsp;прибыль.</p>
+          <div class="ga-cta ga-up" style="--d:.65s">
             <button class="ga-btn pri" type="button" data-open="audit">Получить разбор проекта<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
             <button class="ga-btn sec" type="button" data-open="talk">Обсудить исследование</button>
           </div>
         </div>
-        <figure class="ga-pic ga-up" style="--d:.5s">
+        <figure class="ga-pic ga-up" style="--d:.3s">
+          <canvas id="gaDust" aria-hidden="true"></canvas>
           <div class="fr"><img id="gaPicImg" src="img/thinker.jpg" width="495" height="704" alt="Руководитель с планшетом размышляет о своих клиентах" fetchpriority="high" decoding="async"></div>
         </figure>
       </div>
-
-      <div class="ga-tape">
+      <div class="ga-mq">
         <p class="sr">6+ лет опыта в маркетинге, PR и продвижении · Россия, Европа, Латинская Америка · 1000+ глубинных интервью</p>
-        <div class="ga-mq one" aria-hidden="true"><div data-tape></div></div>
-        <div class="ga-mq two rev" aria-hidden="true"><div data-tape></div></div>
+        <div aria-hidden="true" data-tape></div>
       </div>
     </section>
 
     <!-- ЭКРАН 2 -->
     <section class="ga-pain" aria-labelledby="gaH2">
       <div class="w">
-        <div class="top">
+        <p class="ga-num ga-rv">01</p>
+        <div class="head">
           <h2 class="ga-h2 ga-rv" id="gaH2">Современный покупатель стал <em>требовательнее, осторожнее и&nbsp;внимательнее.</em></h2>
           <p class="note ga-rv" style="--i:1">Многие компании столкнулись с&nbsp;тем, что:</p>
         </div>
         <ul class="ga-cards">
-          <li class="ga-card ga-rv" style="--i:0"><div class="hd"><span class="n">01</span><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="14" cy="14" r="5"/><circle cx="27" cy="14" r="5"/><path d="M5 32c1.5-5 5-8 9-8s7.5 3 9 8M19 26c1.4-1.3 3.4-2 5-2 4 0 7.5 3 9 8"/></svg></div><p>Конкуренция за клиента растет</p></li>
-          <li class="ga-card ga-rv" style="--i:1"><div class="hd"><span class="n">02</span><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="21" r="13"/><path d="M20 13v8l5 4M16 4h8"/></svg></div><p>Клиенты дольше принимают решения</p></li>
-          <li class="ga-card ga-rv" style="--i:2"><div class="hd"><span class="n">03</span><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 8h28l-10 12v10l-8 4V20z"/><path d="M30 26l4 4m0-4l-4 4"/></svg></div><p>Качество заявок ухудшается</p></li>
-          <li class="ga-card ga-rv" style="--i:3"><div class="hd"><span class="n">04</span><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 31l9-9 6 6 12-14"/><path d="M25 14h8v8"/></svg></div><p>Реклама дорожает</p></li>
-          <li class="ga-card ga-rv" style="--i:4"><div class="hd"><span class="n">05</span><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 10l9 9 6-6 13 14"/><path d="M26 27h8v-8"/></svg></div><p>Привычные каналы и&nbsp;подходы работают хуже</p></li>
-          <li class="ga-card ga-rv" style="--i:5"><div class="hd"><span class="n">06</span><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 14h22l-5-5M32 26H10l5 5"/></svg></div><p>Маркетинг и&nbsp;продажи перекладывают ответственность друг на&nbsp;друга</p></li>
+          <li class="ga-card ga-rv" style="--i:0"><span class="n">01<i class="dot" aria-hidden="true"></i></span><p>Конкуренция за клиента растет</p></li>
+          <li class="ga-card ga-rv" style="--i:1"><span class="n">02<i class="dot" aria-hidden="true"></i></span><p>Клиенты дольше принимают решения</p></li>
+          <li class="ga-card ga-rv" style="--i:2"><span class="n">03<i class="dot" aria-hidden="true"></i></span><p>Качество заявок ухудшается</p></li>
+          <li class="ga-card ga-rv" style="--i:3"><span class="n">04<i class="dot" aria-hidden="true"></i></span><p>Реклама дорожает</p></li>
+          <li class="ga-card ga-rv" style="--i:4"><span class="n">05<i class="dot" aria-hidden="true"></i></span><p>Привычные каналы и&nbsp;подходы работают хуже</p></li>
+          <li class="ga-card ga-rv" style="--i:5"><span class="n">06<i class="dot" aria-hidden="true"></i></span><p>Маркетинг и&nbsp;продажи перекладывают ответственность друг на&nbsp;друга</p></li>
         </ul>
-        <div class="ga-win ga-rv" style="--i:2">
-          <div class="tx"><div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></div>
-          <p>Выигрывают компании, которые лучше понимают своих клиентов, их&nbsp;<em>мотивы, барьеры и&nbsp;критерии выбора.</em></p></div>
-          <figure><img src="img/presentation.jpg" width="498" height="383" alt="Презентация результатов исследования клиентов команде" loading="lazy" decoding="async"></figure>
+
+        <!-- ЧЕРНОВИК: формулировки в лентах — примеры; заменить реальными гипотезами и цитатами клиентов -->
+        <div class="ga-voices ga-rv" aria-label="Что думает бизнес и что говорят клиенты">
+          <div class="ga-lane biz"><div data-lane="biz"></div></div>
+          <div class="ga-lane cli r"><div data-lane="cli"></div></div>
+        </div>
+
+        <div class="ga-win ga-rv">
+          <p>Выигрывают компании, которые лучше понимают своих клиентов, их&nbsp;<em>мотивы, барьеры и&nbsp;критерии выбора</em><i class="dot" aria-hidden="true"></i></p>
         </div>
       </div>
     </section>
@@ -357,21 +395,28 @@ body{margin:0;background:#FFFFFF}
 var FORM_ENDPOINT='https://texspeckps-form.texspeckps.workers.dev';
 
 var root=document.getElementById('ga'),$=function(s,r){return (r||root).querySelector(s)},$$=function(s,r){return [].slice.call((r||root).querySelectorAll(s))};
-var RM=matchMedia('(prefers-reduced-motion: reduce)').matches,FINE=matchMedia('(pointer:fine)').matches;
+var RM=matchMedia('(prefers-reduced-motion: reduce)').matches,FINE=matchMedia('(pointer:fine) and (min-width:769px)').matches;
 
-/* разбиение на буквы (T4) */
+/* буквы по одной (T4) */
 $$('[data-split]').forEach(function(el){var off=+(el.dataset.off||0);el.innerHTML=[].map.call(el.textContent,function(ch,i){return '<b style="--i:'+(i+off)+'">'+(ch===' '?'&nbsp;':ch)+'</b>'}).join('')});
 
-/* бегущие ленты */
+/* бегущая строка (T8) — текст из ТЗ */
 var TAPE=['6+ лет опыта в маркетинге, PR и продвижении','Россия, Европа, Латинская Америка','1000+ глубинных интервью'];
-$$('[data-tape]').forEach(function(el){var one=TAPE.map(function(t){return '<span>'+t+'</span>'}).join('');el.innerHTML=one+one+one+one});
+var t1=TAPE.map(function(t){return '<span>'+t+'</span>'}).join('');$('[data-tape]').innerHTML=t1+t1+t1+t1;
 
-/* заставка (O21) — один раз за сессию */
+/* две встречные ленты (T9) — ЧЕРНОВИК, заменить реальными формулировками */
+var LANES={
+  biz:['Компания думает','«Клиентам важна только цена»','«Нужно больше рекламы»','«Продажи не дожимают»','«Мы и так знаем свою аудиторию»'],
+  cli:['Клиенты говорят','«Не понял, чем вы лучше других»','«Долго ждал ответа на заявку»','«Не был уверен в результате»','«Выбрал тех, кто объяснил понятнее»']
+};
+$$('[data-lane]').forEach(function(el){var a=LANES[el.dataset.lane],h='<span><b>'+a[0]+'</b></span>'+a.slice(1).map(function(q){return '<span>'+q+'</span>'}).join('');el.innerHTML=h+h+h+h});
+
+/* заставка (O21) — один раз за сессию, до 1,5 с */
 var pre=$('#gaPre'),seen=false;try{seen=sessionStorage.getItem('ga-pre')==='1'}catch(e){}
 function start(){root.classList.add('go')}
 if(RM||seen){pre.remove();start()}
 else{try{sessionStorage.setItem('ga-pre','1')}catch(e){}
-  setTimeout(function(){pre.classList.add('out');setTimeout(start,250)},1500);
+  setTimeout(function(){pre.classList.add('out');setTimeout(start,180)},900);
   pre.addEventListener('animationend',function(e){if(e.animationName==='ga-lift')pre.remove()})}
 
 /* шапка (O16) */
@@ -380,30 +425,30 @@ function onScroll(){var y=scrollY,h=document.documentElement.scrollHeight-innerH
 addEventListener('scroll',onScroll,{passive:true});onScroll();
 
 /* появление при прокрутке (O1) */
-if('IntersectionObserver' in window&&!RM){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.18,rootMargin:'0px 0px -6% 0px'});$$('.ga-rv').forEach(function(el){io.observe(el)})}
+if('IntersectionObserver' in window&&!RM){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.2,rootMargin:'0px 0px -8% 0px'});$$('.ga-rv').forEach(function(el){io.observe(el)})}
 else $$('.ga-rv').forEach(function(el){el.classList.add('in')});
 
-/* частицы, которые расступаются от курсора (O6) + параллакс слоёв (O7) */
-var hero=$('#gaHero'),cv=$('#gaDust'),g=cv.getContext('2d'),P=[],mouse=null,vis=true,W=0,H=0,dpr=Math.min(devicePixelRatio||1,2);
-function size(){W=hero.clientWidth;H=hero.clientHeight;cv.width=W*dpr;cv.height=H*dpr;g.setTransform(dpr,0,0,dpr,0,0);var n=Math.min(70,Math.round(W*H/20000));while(P.length<n)P.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,r:.8+Math.random()*2.2,a:.18+Math.random()*.4});P.length=n}
-size();addEventListener('resize',size);
-hero.addEventListener('pointermove',function(e){var r=hero.getBoundingClientRect();mouse={x:e.clientX-r.left,y:e.clientY-r.top,nx:(e.clientX-r.left)/r.width-.5,ny:(e.clientY-r.top)/r.height-.5}});
-hero.addEventListener('pointerleave',function(){mouse=null});
-if('IntersectionObserver' in window)new IntersectionObserver(function(es){vis=es[0].isIntersecting}).observe(hero);
-var pic=$('#gaPicImg'),px=0,py=0;
-function tick(t){
-  if(vis){
-    g.clearRect(0,0,W,H);
-    for(var i=0;i<P.length;i++){var p=P[i];
-      if(mouse){var dx=p.x-mouse.x,dy=p.y-mouse.y,d=dx*dx+dy*dy;if(d<16000){var f=(1-d/16000)*2.2,l=Math.sqrt(d)||1;p.x+=dx/l*f;p.y+=dy/l*f}}
-      p.x+=p.vx;p.y+=p.vy;if(p.x<-5)p.x=W+5;if(p.x>W+5)p.x=-5;if(p.y<-5)p.y=H+5;if(p.y>H+5)p.y=-5;
-      g.globalAlpha=p.a;g.fillStyle='#E8590C';g.beginPath();g.arc(p.x,p.y,p.r,0,6.283);g.fill()}
-    var tx=mouse?mouse.nx:Math.cos(t/2600)*.25,ty=mouse?mouse.ny:Math.sin(t/2100)*.25;px+=(tx-px)*.06;py+=(ty-py)*.06;
-    var sy=scrollY;
-    if(pic)pic.style.transform='translate3d('+(px*-14).toFixed(1)+'px,'+(py*-14+Math.min(sy,900)*.06).toFixed(1)+'px,0) scale(1.02)';
-  }
-  requestAnimationFrame(tick)}
-if(!RM)requestAnimationFrame(tick);else{P.forEach(function(p){g.globalAlpha=p.a;g.fillStyle='#E8590C';g.beginPath();g.arc(p.x,p.y,p.r,0,6.283);g.fill()})}
+/* частицы вокруг фото — «россыпь, из которой намывают золото» (O6) + параллакс фото (O7).
+   Только на десктопе: на телефоне отключены. */
+var pic=$('#gaPicImg');
+if(FINE&&!RM){
+  var cv=$('#gaDust'),g=cv.getContext('2d'),box=cv.parentNode,P=[],mouse=null,vis=true,W=0,H=0,dpr=Math.min(devicePixelRatio||1,2),px=0,py=0;
+  var size=function(){var r=cv.getBoundingClientRect();W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;g.setTransform(dpr,0,0,dpr,0,0);var n=Math.min(90,Math.round(W*H/7000));while(P.length<n)P.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.22,vy:(Math.random()-.5)*.22,r:.8+Math.random()*2,a:.25+Math.random()*.45});P.length=n};
+  size();addEventListener('resize',size);
+  var hero=root.querySelector('.ga-hero');
+  hero.addEventListener('pointermove',function(e){var r=cv.getBoundingClientRect(),hr=hero.getBoundingClientRect();mouse={x:e.clientX-r.left,y:e.clientY-r.top,nx:(e.clientX-hr.left)/hr.width-.5,ny:(e.clientY-hr.top)/hr.height-.5}});
+  hero.addEventListener('pointerleave',function(){mouse=null});
+  if('IntersectionObserver' in window)new IntersectionObserver(function(es){vis=es[0].isIntersecting}).observe(hero);
+  (function tick(t){
+    if(vis){g.clearRect(0,0,W,H);g.fillStyle='#F26A1B';
+      for(var i=0;i<P.length;i++){var p=P[i];
+        if(mouse){var dx=p.x-mouse.x,dy=p.y-mouse.y,d=dx*dx+dy*dy;if(d<14000){var f=(1-d/14000)*2.4,l=Math.sqrt(d)||1;p.x+=dx/l*f;p.y+=dy/l*f}}
+        p.x+=p.vx;p.y+=p.vy;if(p.x<-4)p.x=W+4;if(p.x>W+4)p.x=-4;if(p.y<-4)p.y=H+4;if(p.y>H+4)p.y=-4;
+        g.globalAlpha=p.a;g.beginPath();g.arc(p.x,p.y,p.r,0,6.283);g.fill()}
+      var tx=mouse?mouse.nx:0,ty=mouse?mouse.ny:0;px+=(tx-px)*.06;py+=(ty-py)*.06;
+      pic.style.transform='translate3d('+(px*-16).toFixed(1)+'px,'+(py*-16+Math.min(scrollY,900)*.05).toFixed(1)+'px,0) scale(1.03)'}
+    requestAnimationFrame(tick)})(0);
+}
 
 /* ---------- формы ---------- */
 $$('[data-opts]').forEach(function(box){var type=box.dataset.opts,name=box.dataset.name;box.innerHTML=box.textContent.split('|').map(function(o){return '<label class="ga-opt"><input type="'+type+'" name="'+name+'" value="'+o+'"><span>'+o+'</span></label>'}).join('')});
