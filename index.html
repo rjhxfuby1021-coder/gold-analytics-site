@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Gold Analytics — исследование и анализ целевой аудитории для бизнеса</title>
+<meta name="description" content="Находим ценную информацию о ваших клиентах, анализируем её и превращаем в решения, которые помогут увеличить продажи и прибыль.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&family=Prata&family=Golos+Text:wght@400;500;600&display=swap">
+<style>
+/* ===== Gold Analytics · экраны 1–2 =====
+   Всё оформление внутри .ga — блок можно вставить в Tilda (T123) целиком.
+   Цвет: белый фон, тёплый оранжевый и графит. Шрифты: Unbounded (знак, цифры), Prata (заголовки), Golos Text (текст). */
+html{background:#FFFFFF;color-scheme:light}
+body{margin:0;background:#FFFFFF}
+.ga{
+  --bg:#FFFFFF;--tint:#FFF4EC;--soft:#F7F5F2;--ink:#1F1B18;--sub:#5B534C;--line:#ECE6DF;--line2:#D9D1C8;
+  --acc:#E8590C;--acc-dk:#C2410C;--acc-ink:#FFFFFF;
+  --f-mark:"Unbounded","Arial Black",Arial,sans-serif;--f-head:"Prata",Georgia,"Times New Roman",serif;--f-body:"Golos Text","Segoe UI",Arial,sans-serif;
+  --e:cubic-bezier(.2,.8,.2,1);--gut:clamp(16px,4vw,56px);--max:1280px;
+  color:var(--ink);background:var(--bg);font:400 18px/1.65 var(--f-body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip
+}
+.ga *,.ga *::before,.ga *::after{box-sizing:border-box}
+.ga h1,.ga h2,.ga h3,.ga p,.ga ul{margin:0;padding:0}
+.ga ul{list-style:none}
+.ga em{font-style:normal;color:var(--acc-dk)}
+.ga button{font:inherit;color:inherit}
+.ga :focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:6px}
+.ga .w{max-width:var(--max);margin:0 auto;padding-inline:var(--gut)}
+.ga .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- заставка (O21) ---------- */
+.ga-pre{position:fixed;inset:0;z-index:100;background:var(--acc);color:#fff;display:grid;place-items:center;pointer-events:none}
+.ga-pre .mk{font:600 clamp(22px,4.4vw,48px)/1 var(--f-mark);letter-spacing:.04em;white-space:nowrap}
+.ga-pre .mk b{display:inline-block;font-weight:inherit;opacity:0;transform:translateY(24px) rotate(10deg);animation:ga-let .6s var(--e) forwards;animation-delay:calc(var(--i)*45ms + .1s)}
+.ga-pre.out{animation:ga-lift .75s var(--e) forwards}
+@keyframes ga-let{to{opacity:1;transform:none}}
+@keyframes ga-lift{to{transform:translateY(-101%)}}
+
+/* ---------- шапка (O16) ---------- */
+.ga-hd{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .35s,box-shadow .35s}
+.ga-hd .w{display:flex;align-items:center;justify-content:space-between;gap:16px;height:84px;transition:height .35s var(--e)}
+.ga-hd.sm{background:rgba(255,255,255,.88);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);box-shadow:0 1px 0 var(--line)}
+.ga-hd.sm .w{height:64px}
+.ga-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font:600 15px/1 var(--f-mark);letter-spacing:.06em;white-space:nowrap}
+.ga-logo i{width:28px;height:28px;border-radius:50%;background:var(--acc);display:grid;place-items:center;flex:none}
+.ga-logo i::after{content:"";width:10px;height:10px;border-radius:50%;background:#fff}
+.ga-hd .bar{position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--acc)}
+
+/* ---------- кнопки (O17: цвет поднимается снизу) ---------- */
+.ga-btn{position:relative;z-index:0;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:12px;border:0;cursor:pointer;text-decoration:none;white-space:nowrap;transition:color .35s,box-shadow .35s,transform .2s}
+.ga-btn::before{content:"";position:absolute;inset:0;z-index:-1;transform:translateY(101%);transition:transform .45s var(--e)}
+.ga-btn:hover::before,.ga-btn:focus-visible::before{transform:none}
+.ga-btn:active{transform:scale(.98)}
+.ga-btn svg{width:20px;height:20px;flex:none;transition:transform .35s var(--e)}
+.ga-btn:hover svg{transform:translateX(4px)}
+.ga-btn.pri{background:var(--acc);color:var(--acc-ink);font:600 18px/1 var(--f-body);padding:24px 34px;border-radius:999px;box-shadow:0 14px 30px -14px rgba(232,89,12,.65)}
+.ga-btn.pri::before{background:var(--ink)}
+.ga-btn.sec{background:transparent;color:var(--ink);font:500 17px/1 var(--f-body);padding:22px 28px;border-radius:999px;box-shadow:inset 0 0 0 1.5px var(--line2)}
+.ga-btn.sec::before{background:var(--soft)}
+.ga-btn.sec:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
+.ga-btn.sm{font:500 15px/1 var(--f-body);padding:13px 20px}
+
+/* ---------- экран 1 ---------- */
+.ga-hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;isolation:isolate;overflow:hidden}
+.ga-hero canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+.ga-hero::before{content:"";position:absolute;z-index:-2;width:70vmax;height:70vmax;right:-22vmax;top:-26vmax;border-radius:50%;background:radial-gradient(closest-side,rgba(232,89,12,.13),rgba(232,89,12,0))}
+.ga-hero .w{flex:1;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(24px,4vw,64px);align-items:center;padding-top:clamp(116px,15vh,160px);padding-bottom:clamp(40px,6vh,72px);width:100%}
+.ga-h1{display:flex;flex-direction:column;gap:18px}
+.ga-word{font:700 clamp(40px,8.4vw,128px)/.92 var(--f-mark);letter-spacing:-.035em;text-transform:uppercase;color:var(--ink)}
+.ga-word span{display:block;white-space:nowrap}
+.ga-word b{display:inline-block;font-weight:inherit;opacity:0;transform:translateY(.45em) rotate(8deg)}
+.ga.go .ga-word b{animation:ga-let .7s var(--e) forwards;animation-delay:calc(var(--i)*40ms)}
+.ga-word span+span b{color:var(--acc)}
+.ga-desc{display:flex;align-items:center;gap:12px;font:500 clamp(15px,1.3vw,18px)/1.4 var(--f-body);color:var(--sub);letter-spacing:.01em}
+.ga-desc::before{content:"";width:36px;height:1.5px;background:var(--acc);flex:none}
+.ga-prom{font:400 clamp(26px,3.1vw,44px)/1.18 var(--f-head);letter-spacing:-.005em;margin-top:clamp(22px,3vw,36px);max-width:21ch;text-wrap:balance}
+.ga-lead{margin-top:20px;max-width:56ch;color:var(--sub);font-size:clamp(17px,1.25vw,19px)}
+.ga-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:clamp(28px,3.4vw,40px)}
+.ga-up{opacity:0;transform:translateY(26px)}
+.ga.go .ga-up{animation:ga-fup .9s var(--e) forwards;animation-delay:var(--d,0s)}
+@keyframes ga-fup{to{opacity:1;transform:none}}
+
+/* парящие карточки справа (O7 — параллакс слоёв) */
+.ga-float{position:relative;height:clamp(360px,44vw,560px)}
+.ga-float>div{position:absolute;will-change:transform}
+.ga-q{background:#fff;border:1px solid var(--line);border-radius:22px 22px 22px 6px;padding:16px 22px;font:400 clamp(20px,1.9vw,26px)/1.2 var(--f-head);box-shadow:0 18px 40px -22px rgba(31,27,24,.25)}
+.ga-q small{display:block;font:500 12px/1 var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--sub);margin-bottom:8px}
+.ga-q.a{background:var(--acc);border-color:var(--acc);color:#fff}.ga-q.a small{color:rgba(255,255,255,.8)}
+.ga-stat{background:var(--ink);color:#fff;border-radius:28px;padding:26px 28px;box-shadow:0 26px 50px -24px rgba(31,27,24,.45)}
+.ga-stat b{display:block;font:700 clamp(40px,4.4vw,64px)/1 var(--f-mark);letter-spacing:-.03em;color:var(--acc)}
+.ga-stat span{display:block;margin-top:8px;font-size:15px;line-height:1.4;color:rgba(255,255,255,.78);max-width:16ch}
+.ga-dot{border-radius:50%}
+.ga-float .l1{left:6%;top:4%}.ga-float .l2{right:0;top:30%}.ga-float .l3{left:0;bottom:18%}.ga-float .l4{right:10%;bottom:0}
+.ga-float .l5{width:120px;height:120px;left:44%;top:14%;background:var(--tint)}
+.ga-float .l6{width:18px;height:18px;left:28%;top:52%;background:var(--acc)}
+.ga-float .l7{width:56px;height:56px;right:34%;bottom:26%;border:1.5px solid var(--line2)}
+
+/* бегущие ленты (T8 + T9) */
+.ga-tape{position:relative;padding-bottom:6px}
+.ga-mq{overflow:hidden;white-space:nowrap;user-select:none}
+.ga-mq div{display:inline-flex;align-items:center;animation:ga-mq 38s linear infinite}
+.ga-mq.rev div{animation-direction:reverse;animation-duration:44s}
+.ga-mq:hover div{animation-play-state:paused}
+.ga-mq span{display:inline-flex;align-items:center;gap:28px;padding-right:28px;font:600 clamp(14px,1.25vw,17px)/1 var(--f-mark);letter-spacing:.02em;text-transform:uppercase}
+.ga-mq span::after{content:"";width:9px;height:9px;border-radius:50%;background:currentColor;opacity:.55}
+.ga-mq.one{background:var(--ink);color:#fff;padding:20px 0;transform:rotate(-1.2deg);margin-inline:-2vw}
+.ga-mq.one span::after{background:var(--acc);opacity:1}
+.ga-mq.two{background:var(--acc);color:#fff;padding:14px 0;transform:rotate(1.2deg);margin:-6px -2vw 0}
+@keyframes ga-mq{to{transform:translateX(-50%)}}
+
+/* ---------- экран 2 ---------- */
+.ga-pain{padding-block:clamp(88px,12vw,160px) clamp(72px,10vw,140px)}
+.ga-pain .top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.62fr);gap:clamp(24px,5vw,80px);align-items:end}
+.ga-h2{font:400 clamp(32px,4.2vw,62px)/1.1 var(--f-head);letter-spacing:-.01em;text-wrap:balance}
+.ga-pain .note{color:var(--sub);font-size:clamp(17px,1.3vw,20px);padding-bottom:8px;border-left:2px solid var(--acc);padding-left:20px}
+.ga-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,1.6vw,20px);margin-top:clamp(40px,5vw,64px)}
+.ga-card{position:relative;background:var(--soft);border:1px solid transparent;border-radius:28px;padding:clamp(24px,2.4vw,34px);min-height:clamp(220px,20vw,270px);display:flex;flex-direction:column;justify-content:space-between;gap:28px;transition:transform .45s var(--e),background .35s,border-color .35s,box-shadow .45s var(--e)}
+.ga-card:hover{transform:translateY(-8px);background:#fff;border-color:var(--acc);box-shadow:0 28px 50px -30px rgba(232,89,12,.55)}
+.ga-card .hd{display:flex;justify-content:space-between;align-items:flex-start}
+.ga-card .n{font:600 15px/1 var(--f-mark);color:var(--acc-dk);letter-spacing:.02em}
+.ga-card svg{width:40px;height:40px;fill:none;stroke:var(--ink);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:stroke .35s,transform .45s var(--e)}
+.ga-card:hover svg{stroke:var(--acc);transform:rotate(-6deg) scale(1.06)}
+.ga-card p{font:500 clamp(19px,1.55vw,23px)/1.35 var(--f-body);letter-spacing:-.005em;text-wrap:pretty}
+.ga-rv{opacity:0;transform:translateY(40px)}
+.ga-rv.in{opacity:1;transform:none;transition:opacity .8s var(--e),transform .8s var(--e);transition-delay:calc(var(--i,0)*110ms)}
+.ga-card.ga-rv.in{transition:opacity .8s var(--e) calc(var(--i)*110ms),transform .8s var(--e) calc(var(--i)*110ms),background .35s,border-color .35s,box-shadow .45s var(--e)}
+.ga-card.ga-rv.in:hover{transform:translateY(-8px);transition-delay:0s}
+.ga-win{position:relative;overflow:hidden;margin-top:clamp(16px,2vw,24px);background:var(--tint);border-radius:32px;padding:clamp(32px,5vw,72px);display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(20px,3vw,48px);align-items:center}
+.ga-win .ic{width:clamp(56px,6vw,84px);height:clamp(56px,6vw,84px);border-radius:50%;background:var(--acc);display:grid;place-items:center}
+.ga-win .ic svg{width:44%;height:44%;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ga-win p{font:400 clamp(24px,2.7vw,40px)/1.25 var(--f-head);text-wrap:balance;max-width:30ch}
+.ga-win::after{content:"";position:absolute;right:-8%;bottom:-60%;width:46%;aspect-ratio:1;border-radius:50%;border:1.5px solid rgba(232,89,12,.25);pointer-events:none}
+
+/* ---------- панель с формой (вместо всплывающего окна) ---------- */
+.ga-veil{position:fixed;inset:0;z-index:80;background:rgba(31,27,24,.18);opacity:0;pointer-events:none;transition:opacity .4s}
+.ga-veil.on{opacity:1;pointer-events:auto}
+.ga-dr{position:fixed;z-index:90;top:0;right:0;bottom:0;width:min(620px,100%);background:#fff;box-shadow:-30px 0 60px -30px rgba(31,27,24,.3);transform:translateX(102%);transition:transform .55s var(--e);display:flex;flex-direction:column;visibility:hidden}
+.ga-dr.on{transform:none;visibility:visible}
+.ga-dr .dh{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:28px clamp(20px,4vw,44px) 0}
+.ga-dr .kick{font:600 12px/1 var(--f-mark);letter-spacing:.1em;text-transform:uppercase;color:var(--acc-dk)}
+.ga-dr h2{font:400 clamp(26px,3vw,34px)/1.15 var(--f-head);margin-top:12px}
+.ga-x{flex:none;width:48px;height:48px;border-radius:50%;border:0;background:var(--soft);cursor:pointer;display:grid;place-items:center;transition:background .25s,transform .35s var(--e)}
+.ga-x:hover{background:var(--line);transform:rotate(90deg)}
+.ga-x svg{width:18px;height:18px;stroke:var(--ink);stroke-width:2;stroke-linecap:round}
+.ga-dr .db{flex:1;overflow-y:auto;padding:20px clamp(20px,4vw,44px) 28px;overscroll-behavior:contain}
+.ga-dr .intro{color:var(--sub);font-size:16px;line-height:1.6}
+.ga-dr .intro ul{margin-top:10px;display:flex;flex-direction:column;gap:6px}
+.ga-dr .intro li{position:relative;padding-left:18px}.ga-dr .intro li::before{content:"";position:absolute;left:0;top:.7em;width:6px;height:6px;border-radius:50%;background:var(--acc)}
+.ga-steps{display:flex;gap:6px;margin:22px 0 4px}
+.ga-steps i{flex:1;height:4px;border-radius:2px;background:var(--line);transition:background .4s}
+.ga-steps i.on{background:var(--acc)}
+.ga-stepn{font-size:14px;color:var(--sub)}
+.ga-fs{display:none;flex-direction:column;gap:24px;margin-top:22px;border:0;padding:0;min-width:0}
+.ga-fs.on{display:flex;animation:ga-fup .5s var(--e)}
+.ga-f{display:flex;flex-direction:column;gap:8px}
+.ga-f>.lb{font:600 16px/1.4 var(--f-body)}
+.ga-f>.lb .rq{color:var(--acc-dk)}
+.ga-f .hint{font-size:14px;line-height:1.5;color:var(--sub);margin-top:-4px}
+.ga-f input[type=text],.ga-f input[type=tel],.ga-f input[type=url],.ga-f textarea{width:100%;font:400 17px/1.5 var(--f-body);color:var(--ink);background:var(--soft);border:1.5px solid transparent;border-radius:16px;padding:14px 18px;transition:border-color .25s,background .25s}
+.ga-f textarea{min-height:104px;resize:vertical}
+.ga-f input:focus,.ga-f textarea:focus{outline:none;border-color:var(--acc);background:#fff}
+.ga-f ::placeholder{color:#9A9189}
+.ga-opts{display:flex;flex-wrap:wrap;gap:8px}
+.ga-opt{position:relative}
+.ga-opt input{position:absolute;opacity:0;width:1px;height:1px}
+.ga-opt span{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border-radius:999px;background:var(--soft);border:1.5px solid transparent;font-size:15px;line-height:1.3;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.ga-opt span:hover{border-color:var(--line2)}
+.ga-opt input:checked+span{background:var(--tint);border-color:var(--acc);color:var(--ink)}
+.ga-opt input:checked+span::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--acc)}
+.ga-opt input:focus-visible+span{outline:2px solid var(--acc);outline-offset:2px}
+.ga-f.bad input[type=text],.ga-f.bad input[type=tel],.ga-f.bad textarea{border-color:#C4372B;background:#FFF6F5}
+.ga-f .err{display:none;font-size:14px;color:#B3261E}
+.ga-f.bad .err{display:block}
+.ga-agree{display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:1.5;color:var(--sub);cursor:pointer}
+.ga-agree input{width:20px;height:20px;margin:1px 0 0;accent-color:var(--acc);flex:none}
+.ga-agree a{color:var(--ink)}
+.ga-dr .df{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:18px clamp(20px,4vw,44px) 24px;border-top:1px solid var(--line);background:#fff}
+.ga-dr .df .ga-btn.pri{padding:20px 28px;font-size:17px}
+.ga-back{background:none;border:0;cursor:pointer;color:var(--sub);font-size:16px;padding:12px 4px}
+.ga-back:hover{color:var(--ink)}
+.ga-back[hidden]{display:none}
+.ga-msg{font-size:15px;color:#B3261E;margin-top:14px;min-height:1px}
+.ga-done{display:none;flex-direction:column;align-items:flex-start;gap:16px;padding-top:28px}
+.ga-done.on{display:flex;animation:ga-fup .6s var(--e)}
+.ga-done .ic{width:72px;height:72px;border-radius:50%;background:var(--acc);display:grid;place-items:center}
+.ga-done .ic svg{width:32px;height:32px;fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.ga-done h3{font:400 30px/1.2 var(--f-head)}
+.ga-done p{color:var(--sub)}
+.ga.lock{overflow:hidden}
+
+/* ---------- адаптив ---------- */
+@media (max-width:1024px){
+  .ga-hero .w{grid-template-columns:1fr}
+  .ga-float{height:300px;margin-top:-8px}
+  .ga-float .l1{left:0;top:6%}.ga-float .l2{right:0;top:2%}.ga-float .l3{left:8%;bottom:4%}.ga-float .l4{right:2%;bottom:10%}
+  .ga-pain .top{grid-template-columns:1fr}
+  .ga-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:640px){
+  .ga{font-size:17px}
+  .ga-hd .w{height:68px}.ga-hd.sm .w{height:58px}
+  .ga-hd .ga-btn.sm{padding:11px 16px;font-size:14px}
+  .ga-hd .ga-btn.sm .lg{display:none}
+  .ga-logo{font-size:13px}
+  .ga-hero .w{padding-top:104px;gap:8px}
+  .ga-word{font-size:clamp(34px,11.4vw,64px)}
+  .ga-cta{flex-direction:column;align-items:stretch}
+  .ga-btn.pri{padding:22px 24px}
+  .ga-float{height:250px}
+  .ga-float .l3,.ga-float .l7{display:none}
+  .ga-q{padding:12px 16px}
+  .ga-stat{padding:20px 22px}
+  .ga-cards{grid-template-columns:1fr}
+  .ga-card{min-height:0}
+  .ga-win{grid-template-columns:1fr;border-radius:26px}
+  .ga-dr .df .ga-btn.pri{flex:1}
+}
+@media (prefers-reduced-motion:reduce){
+  .ga-pre{display:none}
+  .ga-word b,.ga-up,.ga-rv{opacity:1!important;transform:none!important;animation:none!important}
+  .ga-mq div{animation-duration:160s}
+}
+</style>
+</head>
+<body>
+<div class="ga" id="ga">
+
+  <div class="ga-pre" id="gaPre" aria-hidden="true"><div class="mk" data-split>GOLD ANALYTICS</div></div>
+
+  <header class="ga-hd" id="gaHd">
+    <div class="w">
+      <a class="ga-logo" href="#top" aria-label="Gold Analytics — на главную"><i aria-hidden="true"></i>GOLD ANALYTICS</a>
+      <button class="ga-btn sec sm" type="button" data-open="talk">Обсудить <span class="lg">исследование</span></button>
+    </div>
+    <span class="bar" id="gaBar"></span>
+  </header>
+
+  <main id="top">
+    <!-- ЭКРАН 1 -->
+    <section class="ga-hero" id="gaHero" aria-labelledby="gaH1">
+      <canvas id="gaDust" aria-hidden="true"></canvas>
+      <div class="w">
+        <div>
+          <h1 class="ga-h1" id="gaH1">
+            <span class="ga-word" aria-label="Gold Analytics"><span aria-hidden="true" data-split>GOLD</span><span aria-hidden="true" data-split data-off="4">ANALYTICS</span></span>
+            <span class="ga-desc ga-up" style="--d:.45s">Агентство исследования и анализа целевой аудитории для бизнеса</span>
+          </h1>
+          <p class="ga-prom ga-up" style="--d:.6s">Узнаем, что <em>на&nbsp;самом деле</em> думают ваши клиенты и&nbsp;что влияет на&nbsp;их&nbsp;выбор!</p>
+          <p class="ga-lead ga-up" style="--d:.72s">Находим ценную информацию о&nbsp;ваших клиентах, анализируем её и&nbsp;превращаем в&nbsp;решения, которые помогут увеличить продажи и&nbsp;прибыль.</p>
+          <div class="ga-cta ga-up" style="--d:.85s">
+            <button class="ga-btn pri" type="button" data-open="audit">Получить разбор проекта<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            <button class="ga-btn sec" type="button" data-open="talk">Обсудить исследование</button>
+          </div>
+        </div>
+        <div class="ga-float ga-up" style="--d:.9s" id="gaFloat" aria-hidden="true">
+          <div class="l5 ga-dot" data-k="10"></div>
+          <div class="l7 ga-dot" data-k="44"></div>
+          <div class="l6 ga-dot" data-k="70"></div>
+          <div class="l1" data-k="22"><div class="ga-q"><small>Клиент говорит</small>«Дорого»</div></div>
+          <div class="l2" data-k="38"><div class="ga-q a"><small>Клиент говорит</small>«Подумаю»</div></div>
+          <div class="l3" data-k="30"><div class="ga-q"><small>Клиент говорит</small>«Не сейчас»</div></div>
+          <div class="l4" data-k="16"><div class="ga-stat"><b>1000+</b><span>глубинных интервью</span></div></div>
+        </div>
+      </div>
+
+      <div class="ga-tape">
+        <p class="sr">6+ лет опыта в маркетинге, PR и продвижении · Россия, Европа, Латинская Америка · 1000+ глубинных интервью</p>
+        <div class="ga-mq one" aria-hidden="true"><div data-tape></div></div>
+        <div class="ga-mq two rev" aria-hidden="true"><div data-tape></div></div>
+      </div>
+    </section>
+
+    <!-- ЭКРАН 2 -->
+    <section class="ga-pain" aria-labelledby="gaH2">
+      <div class="w">
+        <div class="top">
+          <h2 class="ga-h2 ga-rv" id="gaH2">Современный покупатель стал <em>требовательнее, осторожнее и&nbsp;внимательнее.</em></h2>
+          <p class="note ga-rv" style="--i:1">Многие компании столкнулись с&nbsp;тем, что:</p>
+        </div>
+        <ul class="ga-cards">
+          <li class="ga-card ga-rv" style="--i:0"><div class="hd"><span class="n">01</span><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="14" cy="14" r="5"/><circle cx="27" cy="14" r="5"/><path d="M5 32c1.5-5 5-8 9-8s7.5 3 9 8M19 26c1.4-1.3 3.4-2 5-2 4 0 7.5 3 9 8"/></svg></div><p>Конкуренция за клиента растет</p></li>
+          <li class="ga-card ga-rv" style="--i:1"><div class="hd"><span class="n">02</span><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="21" r="13"/><path d="M20 13v8l5 4M16 4h8"/></svg></div><p>Клиенты дольше принимают решения</p></li>
+          <li class="ga-card ga-rv" style="--i:2"><div class="hd"><span class="n">03</span><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 8h28l-10 12v10l-8 4V20z"/><path d="M30 26l4 4m0-4l-4 4"/></svg></div><p>Качество заявок ухудшается</p></li>
+          <li class="ga-card ga-rv" style="--i:3"><div class="hd"><span class="n">04</span><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 31l9-9 6 6 12-14"/><path d="M25 14h8v8"/></svg></div><p>Реклама дорожает</p></li>
+          <li class="ga-card ga-rv" style="--i:4"><div class="hd"><span class="n">05</span><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 10l9 9 6-6 13 14"/><path d="M26 27h8v-8"/></svg></div><p>Привычные каналы и&nbsp;подходы работают хуже</p></li>
+          <li class="ga-card ga-rv" style="--i:5"><div class="hd"><span class="n">06</span><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 14h22l-5-5M32 26H10l5 5"/></svg></div><p>Маркетинг и&nbsp;продажи перекладывают ответственность друг на&nbsp;друга</p></li>
+        </ul>
+        <div class="ga-win ga-rv" style="--i:2">
+          <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></div>
+          <p>Выигрывают компании, которые лучше понимают своих клиентов, их&nbsp;<em>мотивы, барьеры и&nbsp;критерии выбора.</em></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ФОРМЫ: боковая панель -->
+  <div class="ga-veil" id="gaVeil"></div>
+
+  <aside class="ga-dr" id="dr-audit" role="dialog" aria-modal="true" aria-labelledby="dr-audit-t" data-steps="4">
+    <div class="dh"><div><span class="kick">Заявка на разбор</span><h2 id="dr-audit-t">Разбор вашей целевой аудитории</h2></div><button class="ga-x" type="button" data-close aria-label="Закрыть"><svg viewBox="0 0 20 20"><path d="M4 4l12 12M16 4L4 16"/></svg></button></div>
+    <form class="db" novalidate data-form="Заявка на разбор проекта">
+      <div class="intro" data-hide-done>
+        <p>Заполните короткую форму, чтобы получить персональный разбор вашего проекта с&nbsp;Алексеем Нелединским, основателем Gold&nbsp;Analytics. На&nbsp;разборе мы:</p>
+        <ul><li>изучим ваш сайт, продукт и&nbsp;текущую ситуацию;</li><li>разберём ваш основной запрос;</li><li>определим, что важно узнать у&nbsp;вашей целевой аудитории;</li><li>покажем возможные точки роста в&nbsp;маркетинге, продажах и&nbsp;продукте;</li><li>предложим подходящий формат исследования под ваши задачи.</li></ul>
+        <p style="margin-top:10px">После разбора у&nbsp;вас будет понимание, какие вопросы стоит задать клиентам и&nbsp;какие данные помогут принимать более точные решения в&nbsp;бизнесе.</p>
+      </div>
+      <div class="ga-steps" aria-hidden="true" data-hide-done><i></i><i></i><i></i><i></i></div>
+      <p class="ga-stepn" data-stepn data-hide-done></p>
+
+      <fieldset class="ga-fs" data-step="1"><legend class="sr">О компании</legend>
+        <div class="ga-f" data-req><label class="lb" for="a1">Чем занимается ваша компания? <span class="rq">*</span></label><p class="hint">Расскажите кратко: ниша, продукт или услуга, кто ваши основные клиенты.</p><textarea id="a1" name="Чем занимается компания"></textarea><span class="err">Заполните это поле</span></div>
+        <div class="ga-f" data-req role="radiogroup" aria-labelledby="a2l"><span class="lb" id="a2l">Как давно вы на рынке? <span class="rq">*</span></span><div class="ga-opts" data-opts="radio" data-name="Как давно на рынке">менее 1 года|1-2 года|3-5 лет|более 5 лет</div><span class="err">Выберите вариант</span></div>
+        <div class="ga-f" data-req><label class="lb" for="a7">Ссылка на сайт или основную страницу компании <span class="rq">*</span></label><input id="a7" type="text" name="Сайт" placeholder="https://" inputmode="url" autocomplete="url"><span class="err">Заполните это поле</span></div>
+      </fieldset>
+
+      <fieldset class="ga-fs" data-step="2"><legend class="sr">Запрос</legend>
+        <div class="ga-f" data-req><label class="lb" for="a3">Какой главный запрос вы хотите решить с помощью исследования клиентов? <span class="rq">*</span></label><p class="hint">Например: увеличить продажи, понять причины отказов, улучшить качество заявок, повысить средний чек, проверить новый продукт, улучшить рекламу или продажи.</p><textarea id="a3" name="Главный запрос"></textarea><span class="err">Заполните это поле</span></div>
+        <div class="ga-f" data-req><label class="lb" for="a4">Что вы хотели бы лучше понять о своих клиентах? <span class="rq">*</span></label><p class="hint">Какие вопросы сейчас остаются без ответа? Какие гипотезы хотите проверить?</p><textarea id="a4" name="Что понять о клиентах"></textarea><span class="err">Заполните это поле</span></div>
+        <div class="ga-f" data-req role="group" aria-labelledby="a5l"><span class="lb" id="a5l">Какие показатели или результаты бизнеса вы хотели бы улучшить? <span class="rq">*</span></span><div class="ga-opts" data-opts="checkbox" data-name="Что улучшить">продажи|конверсию из заявки в покупку|качество заявок|стоимость привлечения клиента|средний чек|повторные продажи|маржинальность|эффективность рекламы|работу отдела продаж|запуск нового продукта / направления|другое</div><span class="err">Выберите хотя бы один вариант</span></div>
+      </fieldset>
+
+      <fieldset class="ga-fs" data-step="3"><legend class="sr">Исследование</legend>
+        <div class="ga-f" data-req role="radiogroup" aria-labelledby="a6l"><span class="lb" id="a6l">Проводили ли вы ранее исследование своей ЦА? <span class="rq">*</span></span><div class="ga-opts" data-opts="radio" data-name="Исследование ЦА ранее">Да|Да, но очень давно|Да, но результат не устроил|Нет|Затрудняюсь ответить</div><span class="err">Выберите вариант</span></div>
+        <div class="ga-f" data-req role="group" aria-labelledby="a8l"><span class="lb" id="a8l">Есть ли у вас клиентская база, с которой можно провести интервью? <span class="rq">*</span></span><div class="ga-opts" data-opts="checkbox" data-name="Клиентская база">Да, есть действующие клиенты|Есть действующие клиенты и те, кто отказался|Есть только заявки / лиды|Нет, потребуется поиск респондентов|Пока не знаю</div><span class="err">Выберите хотя бы один вариант</span></div>
+        <div class="ga-f" data-req role="radiogroup" aria-labelledby="a9l"><span class="lb" id="a9l">Кто принимает решение о запуске исследования в вашей компании? <span class="rq">*</span></span><div class="ga-opts" data-opts="radio" data-name="Кто принимает решение">Я принимаю решение сам(а)|Решение принимаем совместно с партнёром / руководителем|Нужно согласование внутри компании</div><span class="err">Выберите вариант</span></div>
+      </fieldset>
+
+      <fieldset class="ga-fs" data-step="4"><legend class="sr">Контакты</legend>
+        <div class="ga-f" data-req><label class="lb" for="a10">Как вас зовут? <span class="rq">*</span></label><input id="a10" type="text" name="Имя" autocomplete="name"><span class="err">Заполните это поле</span></div>
+        <div class="ga-f" data-req data-phone><label class="lb" for="a11">Номер телефона для связи <span class="rq">*</span></label><input id="a11" type="tel" name="Телефон" autocomplete="tel" inputmode="tel" placeholder="+7 900 000-00-00"><span class="err">Укажите номер полностью</span></div>
+        <div class="ga-f" data-req role="group" aria-labelledby="a12l"><span class="lb" id="a12l">Где с вами лучше связаться? <span class="rq">*</span></span><div class="ga-opts" data-opts="checkbox" data-name="Где связаться">Телефон|WhatsApp|Telegram|MAX|VK</div><span class="err">Выберите хотя бы один вариант</span></div>
+        <div class="ga-f" data-req data-agree><label class="ga-agree"><input type="checkbox" name="Согласие">Я согласен(на) на обработку персональных данных в соответствии с <a href="#privacy" target="_blank" rel="noopener">политикой конфиденциальности</a></label><span class="err">Нужно ваше согласие</span></div>
+      </fieldset>
+
+      <div class="ga-done" data-done><div class="ic"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><h3>Заявка отправлена</h3><p>Спасибо! Мы изучим информацию и свяжемся с вами, чтобы договориться о времени разбора.</p></div>
+      <p class="ga-msg" role="alert" data-msg></p>
+    </form>
+    <div class="df" data-hide-done><button class="ga-back" type="button" data-back hidden>← Назад</button><span></span><button class="ga-btn pri" type="button" data-next>Далее<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+  </aside>
+
+  <aside class="ga-dr" id="dr-talk" role="dialog" aria-modal="true" aria-labelledby="dr-talk-t" data-steps="1">
+    <div class="dh"><div><span class="kick">Заявка на исследование</span><h2 id="dr-talk-t">Обсудить исследование</h2></div><button class="ga-x" type="button" data-close aria-label="Закрыть"><svg viewBox="0 0 20 20"><path d="M4 4l12 12M16 4L4 16"/></svg></button></div>
+    <form class="db" novalidate data-form="Обсудить исследование">
+      <p class="intro" data-hide-done>Расскажите немного о&nbsp;вашей компании и&nbsp;задаче. Мы изучим информацию и&nbsp;свяжемся с&nbsp;вами, чтобы обсудить формат исследования и&nbsp;понять, чем можем быть полезны.</p>
+      <fieldset class="ga-fs" data-step="1"><legend class="sr">Заявка</legend>
+        <div class="ga-f" data-req><label class="lb" for="b1">Ваше имя <span class="rq">*</span></label><input id="b1" type="text" name="Имя" autocomplete="name"><span class="err">Заполните это поле</span></div>
+        <div class="ga-f" data-req><label class="lb" for="b2">Ваша компания / проект <span class="rq">*</span></label><input id="b2" type="text" name="Компания" autocomplete="organization"><span class="err">Заполните это поле</span></div>
+        <div class="ga-f"><label class="lb" for="b3">Сайт компании (если есть)</label><input id="b3" type="text" name="Сайт" placeholder="https://" inputmode="url" autocomplete="url"></div>
+        <div class="ga-f" data-req role="group" aria-labelledby="b4l"><span class="lb" id="b4l">Что вы хотите понять с помощью исследования? <span class="rq">*</span></span><div class="ga-opts" data-opts="checkbox" data-name="Что понять">Почему клиенты не покупают / отказываются|Как увеличить продажи и конверсию|Как повысить эффективность рекламы|Как улучшить продукт или услугу|Запуск нового продукта / направления / рынка|Понять целевую аудиторию глубже|Другое</div><span class="err">Выберите хотя бы один вариант</span></div>
+        <div class="ga-f" data-req role="radiogroup" aria-labelledby="b5l"><span class="lb" id="b5l">Есть ли у вас база клиентов, с которыми можно провести интервью? <span class="rq">*</span></span><div class="ga-opts" data-opts="radio" data-name="База клиентов">Да|Частично|Нет, потребуется поиск респондентов</div><span class="err">Выберите вариант</span></div>
+        <div class="ga-f" data-req role="radiogroup" aria-labelledby="b6l"><span class="lb" id="b6l">Как с вами лучше связаться? <span class="rq">*</span></span><div class="ga-opts" data-opts="radio" data-name="Как связаться">Телефон|Telegram|WhatsApp|MAX</div><span class="err">Выберите вариант</span></div>
+        <div class="ga-f" data-req data-phone><label class="lb" for="b7">Ваш номер телефона <span class="rq">*</span></label><input id="b7" type="tel" name="Телефон" autocomplete="tel" inputmode="tel" placeholder="+7 900 000-00-00"><span class="err">Укажите номер полностью</span></div>
+        <div class="ga-f" data-req data-agree><label class="ga-agree"><input type="checkbox" name="Согласие">Я согласен(на) на обработку персональных данных в соответствии с <a href="#privacy" target="_blank" rel="noopener">политикой конфиденциальности</a></label><span class="err">Нужно ваше согласие</span></div>
+      </fieldset>
+      <div class="ga-done" data-done><div class="ic"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><h3>Заявка отправлена</h3><p>Спасибо! Мы изучим информацию и свяжемся с вами, чтобы обсудить формат исследования.</p></div>
+      <p class="ga-msg" role="alert" data-msg></p>
+    </form>
+    <div class="df" data-hide-done><span></span><button class="ga-btn pri" type="button" data-next>Отправить заявку<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+  </aside>
+</div>
+
+<script>
+(function(){
+/* Куда уходят заявки. Сейчас — воркер, который пересылает текст в Telegram (принимает запросы только с разрешённых доменов).
+   В Tilda можно заменить на свой адрес или подключить штатные формы Tilda. */
+var FORM_ENDPOINT='https://texspeckps-form.texspeckps.workers.dev';
+
+var root=document.getElementById('ga'),$=function(s,r){return (r||root).querySelector(s)},$$=function(s,r){return [].slice.call((r||root).querySelectorAll(s))};
+var RM=matchMedia('(prefers-reduced-motion: reduce)').matches,FINE=matchMedia('(pointer:fine)').matches;
+
+/* разбиение на буквы (T4) */
+$$('[data-split]').forEach(function(el){var off=+(el.dataset.off||0);el.innerHTML=[].map.call(el.textContent,function(ch,i){return '<b style="--i:'+(i+off)+'">'+(ch===' '?'&nbsp;':ch)+'</b>'}).join('')});
+
+/* бегущие ленты */
+var TAPE=['6+ лет опыта в маркетинге, PR и продвижении','Россия, Европа, Латинская Америка','1000+ глубинных интервью'];
+$$('[data-tape]').forEach(function(el){var one=TAPE.map(function(t){return '<span>'+t+'</span>'}).join('');el.innerHTML=one+one+one+one});
+
+/* заставка (O21) — один раз за сессию */
+var pre=$('#gaPre'),seen=false;try{seen=sessionStorage.getItem('ga-pre')==='1'}catch(e){}
+function start(){root.classList.add('go')}
+if(RM||seen){pre.remove();start()}
+else{try{sessionStorage.setItem('ga-pre','1')}catch(e){}
+  setTimeout(function(){pre.classList.add('out');setTimeout(start,250)},1500);
+  pre.addEventListener('animationend',function(e){if(e.animationName==='ga-lift')pre.remove()})}
+
+/* шапка (O16) */
+var hd=$('#gaHd'),bar=$('#gaBar');
+function onScroll(){var y=scrollY,h=document.documentElement.scrollHeight-innerHeight;hd.classList.toggle('sm',y>40);bar.style.width=(h>0?y/h*100:0)+'%'}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+/* появление при прокрутке (O1) */
+if('IntersectionObserver' in window&&!RM){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.18,rootMargin:'0px 0px -6% 0px'});$$('.ga-rv').forEach(function(el){io.observe(el)})}
+else $$('.ga-rv').forEach(function(el){el.classList.add('in')});
+
+/* частицы, которые расступаются от курсора (O6) + параллакс слоёв (O7) */
+var hero=$('#gaHero'),cv=$('#gaDust'),g=cv.getContext('2d'),P=[],mouse=null,vis=true,W=0,H=0,dpr=Math.min(devicePixelRatio||1,2);
+function size(){W=hero.clientWidth;H=hero.clientHeight;cv.width=W*dpr;cv.height=H*dpr;g.setTransform(dpr,0,0,dpr,0,0);var n=Math.min(110,Math.round(W*H/13000));while(P.length<n)P.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,r:.8+Math.random()*2.2,a:.18+Math.random()*.4});P.length=n}
+size();addEventListener('resize',size);
+hero.addEventListener('pointermove',function(e){var r=hero.getBoundingClientRect();mouse={x:e.clientX-r.left,y:e.clientY-r.top,nx:(e.clientX-r.left)/r.width-.5,ny:(e.clientY-r.top)/r.height-.5}});
+hero.addEventListener('pointerleave',function(){mouse=null});
+if('IntersectionObserver' in window)new IntersectionObserver(function(es){vis=es[0].isIntersecting}).observe(hero);
+var layers=$$('#gaFloat [data-k]'),px=0,py=0;
+function tick(t){
+  if(vis){
+    g.clearRect(0,0,W,H);
+    for(var i=0;i<P.length;i++){var p=P[i];
+      if(mouse){var dx=p.x-mouse.x,dy=p.y-mouse.y,d=dx*dx+dy*dy;if(d<16000){var f=(1-d/16000)*2.2,l=Math.sqrt(d)||1;p.x+=dx/l*f;p.y+=dy/l*f}}
+      p.x+=p.vx;p.y+=p.vy;if(p.x<-5)p.x=W+5;if(p.x>W+5)p.x=-5;if(p.y<-5)p.y=H+5;if(p.y>H+5)p.y=-5;
+      g.globalAlpha=p.a;g.fillStyle='#E8590C';g.beginPath();g.arc(p.x,p.y,p.r,0,6.283);g.fill()}
+    var tx=mouse?mouse.nx:Math.cos(t/2600)*.25,ty=mouse?mouse.ny:Math.sin(t/2100)*.25;px+=(tx-px)*.06;py+=(ty-py)*.06;
+    var sy=scrollY;
+    for(var k=0;k<layers.length;k++){var L=layers[k],m=+L.dataset.k;L.style.transform='translate3d('+(px*m*1.2).toFixed(1)+'px,'+(py*m*1.2-sy*m*.012).toFixed(1)+'px,0)'}
+  }
+  requestAnimationFrame(tick)}
+if(!RM)requestAnimationFrame(tick);else{P.forEach(function(p){g.globalAlpha=p.a;g.fillStyle='#E8590C';g.beginPath();g.arc(p.x,p.y,p.r,0,6.283);g.fill()})}
+
+/* ---------- формы ---------- */
+$$('[data-opts]').forEach(function(box){var type=box.dataset.opts,name=box.dataset.name;box.innerHTML=box.textContent.split('|').map(function(o){return '<label class="ga-opt"><input type="'+type+'" name="'+name+'" value="'+o+'"><span>'+o+'</span></label>'}).join('')});
+
+var veil=$('#gaVeil'),open=null,lastFocus=null;
+function show(dr){lastFocus=document.activeElement;open=dr;dr.classList.add('on');veil.classList.add('on');document.documentElement.style.overflow='hidden';setStep(dr,dr._step||1);setTimeout(function(){var f=$('.ga-fs.on input,.ga-fs.on textarea',dr);f&&f.focus({preventScroll:true})},450)}
+function hide(){if(!open)return;open.classList.remove('on');veil.classList.remove('on');document.documentElement.style.overflow='';open=null;lastFocus&&lastFocus.focus&&lastFocus.focus()}
+$$('[data-open]').forEach(function(b){b.addEventListener('click',function(){show($('#dr-'+b.dataset.open))})});
+$$('[data-close]').forEach(function(b){b.addEventListener('click',hide)});
+veil.addEventListener('click',hide);
+document.addEventListener('keydown',function(e){if(!open)return;if(e.key==='Escape')hide();
+  if(e.key==='Tab'){var f=$$('a[href],button:not([hidden]),input,textarea',open).filter(function(x){return x.offsetParent!==null});if(!f.length)return;var a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}});
+
+function setStep(dr,n){var max=+dr.dataset.steps;dr._step=n;$$('.ga-fs',dr).forEach(function(fs){fs.classList.toggle('on',+fs.dataset.step===n)});
+  $$('.ga-steps i',dr).forEach(function(i,k){i.classList.toggle('on',k<n)});var sn=$('[data-stepn]',dr);if(sn)sn.textContent='Шаг '+n+' из '+max;
+  var back=$('[data-back]',dr);if(back)back.hidden=n===1;
+  var nx=$('[data-next]',dr);nx.firstChild.nodeValue=n<max?'Далее':'Отправить заявку';$('.db',dr).scrollTop=0}
+
+function valid(fs){var ok=true,first=null;$$('.ga-f[data-req]',fs).forEach(function(f){var good;
+  if($('.ga-opts',f))good=!!$('input:checked',f);
+  else if(f.hasAttribute('data-agree'))good=$('input',f).checked;
+  else{var v=($('input,textarea',f).value||'').trim();good=!!v;if(good&&f.hasAttribute('data-phone'))good=v.replace(/\D/g,'').length>=10}
+  f.classList.toggle('bad',!good);if(!good){ok=false;first=first||f}});
+  if(first){first.scrollIntoView({block:'center',behavior:RM?'auto':'smooth'});var inp=$('input,textarea',first);inp&&inp.focus({preventScroll:true})}return ok}
+root.addEventListener('input',function(e){var f=e.target.closest('.ga-f.bad');if(f)f.classList.remove('bad')});
+root.addEventListener('change',function(e){var f=e.target.closest('.ga-f.bad');if(f)f.classList.remove('bad')});
+
+function collect(form){var lines=['Gold Analytics — '+form.dataset.form,''];
+  $$('.ga-f',form).forEach(function(f){if(f.hasAttribute('data-agree'))return;var lb=$('.lb',f).textContent.replace('*','').trim(),v;
+    if($('.ga-opts',f))v=$$('input:checked',f).map(function(i){return i.value}).join(', ');else v=($('input,textarea',f).value||'').trim();
+    lines.push('▪ '+lb,v||'—','')});
+  lines.push('Согласие на обработку данных: да');return lines.join('\n')}
+
+function send(text){var parts=[];for(var i=0;i<text.length;i+=3300)parts.push(text.slice(i,i+3300)+(text.length>3300?'\n[часть '+(parts.length+1)+']':''));
+  return parts.reduce(function(p,t){return p.then(function(){return fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:t})}).then(function(r){return r.json()}).then(function(j){if(!j.ok)throw new Error(j.error||'send')})})},Promise.resolve())}
+
+$$('.ga-dr').forEach(function(dr){var form=$('form',dr),nx=$('[data-next]',dr),back=$('[data-back]',dr),msg=$('[data-msg]',dr),busy=false;
+  if(back)back.addEventListener('click',function(){setStep(dr,dr._step-1)});
+  form.addEventListener('submit',function(e){e.preventDefault();nx.click()});
+  nx.addEventListener('click',function(){if(busy)return;var n=dr._step||1,max=+dr.dataset.steps;if(!valid($('.ga-fs[data-step="'+n+'"]',dr)))return;
+    if(n<max){setStep(dr,n+1);return}
+    busy=true;msg.textContent='';nx.firstChild.nodeValue='Отправляем…';
+    send(collect(form)).then(function(){$$('[data-hide-done],.ga-fs',dr).forEach(function(x){x.style.display='none'});$('[data-done]',dr).classList.add('on');$('.df',dr).style.display='none'})
+      .catch(function(){msg.textContent='Не получилось отправить заявку. Проверьте интернет и попробуйте ещё раз.';nx.firstChild.nodeValue='Отправить заявку'})
+      .then(function(){busy=false})})});
+})();
+</script>
+</body>
+</html>
