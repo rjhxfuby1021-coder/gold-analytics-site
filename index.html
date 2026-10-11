@@ -68,8 +68,9 @@ body{margin:0;background:#FFFFFF}
 .ga-hero canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
 .ga-hero::before{content:"";position:absolute;z-index:-2;width:70vmax;height:70vmax;right:-22vmax;top:-26vmax;border-radius:50%;background:radial-gradient(closest-side,rgba(232,89,12,.13),rgba(232,89,12,0))}
 .ga-hero .w{flex:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.92fr);gap:clamp(40px,6vw,104px);align-items:center;padding-top:clamp(140px,18vh,200px);padding-bottom:clamp(64px,9vh,112px);width:100%}
+.ga-hero .w>div:first-child{container-type:inline-size;min-width:0}
 .ga-h1{display:flex;flex-direction:column;gap:clamp(20px,2.2vw,28px)}
-.ga-word{font:700 clamp(40px,6.4vw,104px)/.94 var(--f-mark);letter-spacing:-.035em;text-transform:uppercase;color:var(--ink)}
+.ga-word{font:700 clamp(34px,6.4vw,104px)/.94 var(--f-mark);font-size:min(13.6cqw,104px);letter-spacing:-.035em;text-transform:uppercase;color:var(--ink)}
 .ga-word span{display:block;white-space:nowrap}
 .ga-word b{display:inline-block;font-weight:inherit;opacity:0;transform:translateY(.45em) rotate(8deg)}
 .ga.go .ga-word b{animation:ga-let .7s var(--e) forwards;animation-delay:calc(var(--i)*40ms)}
@@ -199,7 +200,6 @@ body{margin:0;background:#FFFFFF}
   .ga-hd .ga-btn.sm .lg{display:none}
   .ga-logo{font-size:13px}
   .ga-hero .w{padding-top:120px;gap:48px;padding-bottom:56px}
-  .ga-word{font-size:clamp(34px,11.4vw,64px)}
   .ga-cta{flex-direction:column;align-items:stretch}
   .ga-btn.pri{padding:22px 24px}
   .ga-pic .fr{aspect-ratio:4/5;border-radius:28px}
