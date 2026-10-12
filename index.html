@@ -48,6 +48,7 @@ body{margin:0;background:#FAF7F2}
 .ga-hd .w{display:flex;align-items:center;justify-content:space-between;gap:20px;height:92px;transition:height .35s var(--e)}
 .ga-hd.sm{background:rgba(250,247,242,.88);-webkit-backdrop-filter:saturate(1.3) blur(14px);backdrop-filter:saturate(1.3) blur(14px);box-shadow:0 1px 0 var(--line)}
 .ga-hd.sm .w{height:70px}
+.ga-hd .ga-logo{transition:opacity .3s}.ga-hd:not(.sm) .ga-logo{opacity:0;pointer-events:none}
 .ga-logo{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;color:var(--ink);font:600 24px/1 var(--f-head);letter-spacing:-.01em;white-space:nowrap}
 .ga-hd nav{display:flex;align-items:center;gap:6px}
 .ga-link{background:none;border:0;cursor:pointer;color:var(--ink);font:500 16px/1 var(--f-body);padding:0 22px;height:56px;border-radius:999px;transition:background .25s}
@@ -75,22 +76,22 @@ body{margin:0;background:#FAF7F2}
 .ga-hero>.w{flex:1;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;width:100%;padding-top:clamp(120px,15vh,170px);padding-bottom:clamp(48px,8vh,96px)}
 /* видео за текстом: тёплая вуаль держит контраст текста */
 .ga-bg{position:absolute;inset:0;z-index:-1;background:#EFE6DA url(video/hero-poster.jpg) center/cover no-repeat}
-.ga-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:65% 50%;filter:saturate(.95) brightness(1.06)}
+.ga-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 50%;filter:saturate(.72) contrast(.86) brightness(1.08) sepia(.14)}
 .ga-hero .ga-h1{text-shadow:0 0 40px rgba(250,247,242,.55)}
 .ga-hero .ga-lead{color:var(--ink)}
-.ga-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(250,247,242,.94) 0%,rgba(250,247,242,.86) 30%,rgba(250,247,242,.45) 52%,rgba(250,247,242,0) 72%),linear-gradient(0deg,rgba(250,247,242,.9) 0%,rgba(250,247,242,0) 26%),linear-gradient(180deg,rgba(250,247,242,.5) 0%,rgba(250,247,242,0) 16%)}
+.ga-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(250,247,242,.96) 0%,rgba(250,247,242,.9) 34%,rgba(250,247,242,.62) 54%,rgba(250,247,242,.22) 78%,rgba(250,247,242,.1) 100%),linear-gradient(0deg,rgba(250,247,242,.9) 0%,rgba(250,247,242,0) 24%),linear-gradient(180deg,rgba(250,247,242,.55) 0%,rgba(250,247,242,0) 16%)}
 .ga-brand{display:flex;flex-direction:column;gap:14px;max-width:38ch}
 .ga-brand b{display:flex;align-items:center;gap:12px;font:600 clamp(22px,1.8vw,26px)/1 var(--f-head);letter-spacing:-.01em}
 .ga-brand b::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--acc);flex:none}
 .ga-brand span{display:flex;align-items:center;gap:14px;font:500 16px/1.45 var(--f-body);color:var(--sub)}
 .ga-brand span::before{content:"";width:40px;height:1px;background:var(--ink);opacity:.4;flex:none}
-.ga-h1{margin:clamp(20px,2.4vw,32px) 0 0!important;max-width:13.5ch;font:500 clamp(40px,min(5.3vw,10.5vh),86px)/1.04 var(--f-head);letter-spacing:-.028em;text-wrap:balance}
+.ga-h1{margin:clamp(20px,2.4vw,32px) 0 0!important;max-width:17ch;font:500 clamp(36px,min(4.5vw,8.8vh),74px)/1.06 var(--f-head);letter-spacing:-.025em;text-wrap:balance}
 .ga-h1 .wd{display:inline-block;white-space:nowrap}
 .ga-h1 b{display:inline-block;font-weight:inherit;opacity:0;transform:translateY(.32em);filter:blur(6px)}
 .ga.go .ga-h1 b{animation:ga-let .55s var(--e) forwards;animation-delay:calc(var(--i)*16ms + .05s)}
 .ga-h1 .dot{width:.15em;height:.15em;opacity:0;transform:scale(0)}
 .ga.go .ga-h1 .dot{animation:ga-pop .4s var(--e) 1.25s forwards}
-.ga-lead{margin:clamp(28px,3vw,40px) 0 0!important;max-width:44ch;color:var(--sub);font-size:clamp(17px,1.25vw,19px);line-height:1.7}
+.ga-lead{margin:clamp(24px,2.6vw,32px) 0 0!important;max-width:46ch;color:var(--sub);font-size:clamp(17px,1.2vw,18px);line-height:1.7}
 .ga-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(32px,3.6vw,44px)}
 .ga-up{opacity:0;transform:translateY(16px)}
 .ga.go .ga-up{animation:ga-fup .55s var(--e) forwards;animation-delay:var(--d,0s)}
