@@ -75,8 +75,10 @@ body{margin:0;background:#FAF7F2}
 .ga-hero>.w{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;padding-top:clamp(120px,15vh,170px);padding-bottom:clamp(40px,6vh,72px)}
 /* видео за текстом: тёплая вуаль держит контраст текста */
 .ga-bg{position:absolute;inset:0;z-index:-1;background:#EFE6DA url(video/hero-poster.jpg) center/cover no-repeat}
-.ga-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.9) brightness(1.06)}
-.ga-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(70% 60% at 50% 46%,rgba(250,247,242,.9) 0%,rgba(250,247,242,.78) 55%,rgba(250,247,242,.62) 100%),linear-gradient(180deg,rgba(250,247,242,.55) 0%,rgba(250,247,242,0) 22%,rgba(250,247,242,0) 70%,rgba(250,247,242,.85) 100%)}
+.ga-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.95) brightness(1.1)}
+.ga-hero .ga-h1{text-shadow:0 0 28px rgba(250,247,242,.9),0 0 60px rgba(250,247,242,.7)}
+.ga-hero .ga-lead{color:var(--ink);text-shadow:0 0 18px rgba(250,247,242,.95),0 0 36px rgba(250,247,242,.8)}
+.ga-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(52% 46% at 50% 46%,rgba(250,247,242,.62) 0%,rgba(250,247,242,.38) 60%,rgba(250,247,242,.12) 100%),linear-gradient(180deg,rgba(250,247,242,.4) 0%,rgba(250,247,242,0) 18%,rgba(250,247,242,0) 78%,rgba(250,247,242,.55) 100%)}
 .ga-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;width:100%;max-width:var(--max);margin:0 auto;padding:0 var(--gut) clamp(20px,3vh,32px);text-align:left}
 .ga-foot .cap{display:inline-flex;align-items:center;gap:12px;padding:12px 20px 12px 14px;border-radius:999px;background:rgba(255,255,255,.85);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font:500 clamp(15px,1.2vw,17px)/1.3 var(--f-body)}
 .ga-foot .cap i{width:10px;height:10px;border-radius:50%;background:var(--acc)}
