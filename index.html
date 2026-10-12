@@ -645,6 +645,29 @@ img { max-width: 100%; }
 .books .peek.l { left: 1%; } .books .peek.r { right: 1%; }
 @media (max-width: 920px) { .books { grid-column: 1 / -1; } }
 
+/* ===== Экран 2: стикеры (1А) ===== */
+.board { list-style: none; padding: 10px; margin-top: clamp(48px, 6vw, 88px); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(22px, 2.6vw, 36px) clamp(18px, 2.2vw, 30px); }
+.note { position: relative; background: var(--c); min-height: 190px; padding: 34px 26px 26px; border-radius: 4px; transform: rotate(var(--r));
+  box-shadow: 0 2px 0 rgba(0, 0, 0, .04), 0 22px 30px -20px rgba(59, 38, 24, .45); transition: transform .45s var(--ease), box-shadow .45s var(--ease); }
+.note:hover { transform: rotate(0) translateY(-6px) scale(1.03); box-shadow: 0 34px 44px -24px rgba(59, 38, 24, .5); z-index: 2; }
+.note p { font-family: var(--f-display); font-size: clamp(23px, 2vw, 28px); line-height: 1.22; color: var(--ink); text-wrap: pretty; }
+.pin { position: absolute; top: -8px; left: 50%; width: 16px; height: 16px; margin-left: -8px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #F7AE70, var(--orange) 60%, #B85A1C); box-shadow: 0 3px 4px rgba(0, 0, 0, .25); }
+.board.rv { transform: translateY(18px); } .board.rv.in { transform: none; }
+@media (max-width: 920px) { .board { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .board { grid-template-columns: 1fr; padding-inline: 6px; } .note { min-height: 0; } }
+/* ===== Экран 10: три колонки (5Б) ===== */
+.cols { display: grid; grid-template-columns: 1fr 1.25fr 1fr; gap: 18px; align-items: start; }
+.col { background: var(--card); border: 1px solid #ECE3D5; border-radius: 22px; padding: clamp(24px, 2.4vw, 34px); }
+.col h3 { display: flex; gap: 12px; align-items: center; font: 400 clamp(26px, 2.3vw, 32px)/1.1 var(--f-display); margin-bottom: 18px; }
+.col h3 i { font-style: normal; flex: none; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--orange); color: #fff; font: 600 15px/1 var(--f-body); }
+.col ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.col li { padding-left: 20px; position: relative; font-size: clamp(16px, 1.25vw, 17.5px); line-height: 1.5; }
+.col li::before { content: ""; position: absolute; left: 0; top: .66em; width: 8px; height: 8px; border-radius: 50%; background: var(--orange); }
+.col abbr { text-decoration: none; font-weight: 600; color: var(--accent-text); }
+.col:nth-child(2) { background: var(--deep); color: var(--on-ink); border-color: transparent; }
+.col:nth-child(2) li::before { background: #F7AE70; } .col:nth-child(2) abbr { color: #F7AE70; }
+@media (max-width: 920px) { .cols { grid-template-columns: 1fr; } }
+
 /* ===== Иконки в стиле презентации: тёмная иконка в персиковом круге ===== */
 .ib { width: 66px; height: 66px; border-radius: 50%; display: grid; place-items: center; flex: none;
   background: radial-gradient(circle at 32% 28%, #FFF5EA 0%, var(--peach) 62%, #F2D2B2 100%);
@@ -830,13 +853,13 @@ body.lb-lock { overflow: hidden; }
           <p>Многие компании столкнулись с тем, что:</p>
         </div>
       </div>
-      <ul class="issues">
-        <li class="issue"><span class="num" aria-hidden="true">1</span><p>конкуренция за клиента растет;</p></li>
-        <li class="issue"><span class="num" aria-hidden="true">2</span><p>клиенты дольше принимают решения;</p></li>
-        <li class="issue"><span class="num" aria-hidden="true">3</span><p>качество заявок ухудшается;</p></li>
-        <li class="issue"><span class="num" aria-hidden="true">4</span><p>реклама дорожает;</p></li>
-        <li class="issue"><span class="num" aria-hidden="true">5</span><p>привычные каналы и подходы работают хуже;</p></li>
-        <li class="issue"><span class="num" aria-hidden="true">6</span><p>маркетинг и продажи перекладывают ответственность друг на друга.</p></li>
+      <ul class="board">
+        <li class="note" style="--c:#FFE7A8;--r:-3deg"><span class="pin" aria-hidden="true"></span><p>конкуренция за клиента растет;</p></li>
+        <li class="note" style="--c:#FFD3BE;--r:2deg"><span class="pin" aria-hidden="true"></span><p>клиенты дольше принимают решения;</p></li>
+        <li class="note" style="--c:#DDEBC9;--r:-1.5deg"><span class="pin" aria-hidden="true"></span><p>качество заявок ухудшается;</p></li>
+        <li class="note" style="--c:#FFE0E6;--r:2.5deg"><span class="pin" aria-hidden="true"></span><p>реклама дорожает;</p></li>
+        <li class="note" style="--c:#D9E7F4;--r:-2deg"><span class="pin" aria-hidden="true"></span><p>привычные каналы и подходы работают хуже;</p></li>
+        <li class="note" style="--c:#EADCF5;--r:1.5deg"><span class="pin" aria-hidden="true"></span><p>маркетинг и продажи перекладывают ответственность друг на друга.</p></li>
       </ul>
       <div class="verdict">
         <svg aria-hidden="true"><use href="#ga-mark"/></svg>
@@ -1004,22 +1027,11 @@ body.lb-lock { overflow: hidden; }
       <div class="head12">
         <h2 class="h2" id="h10">Что входит в исследование?</h2>
       </div>
-      <ul class="incl">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.6 12.4l3 3 5.8-6.2"/></svg><span>глубинные интервью с клиентами;</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.6 12.4l3 3 5.8-6.2"/></svg><span>количественный анализ;</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.6 12.4l3 3 5.8-6.2"/></svg><span>анализ отзывов компании;</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.6 12.4l3 3 5.8-6.2"/></svg><span>анализ основных конкурентов;</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.6 12.4l3 3 5.8-6.2"/></svg><span>сегментация целевой аудитории;</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.6 12.4l3 3 5.8-6.2"/></svg><span>боли, потребности, страхи и возражения;</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.6 12.4l3 3 5.8-6.2"/></svg><span>карта пути клиента <abbr title="Customer Journey Map">CJM</abbr>;</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.6 12.4l3 3 5.8-6.2"/></svg><span>задача и желаемый результат клиента <abbr title="Jobs To Be Done">JTBD</abbr>;</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.6 12.4l3 3 5.8-6.2"/></svg><span>факторы покупки и отказа;</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.6 12.4l3 3 5.8-6.2"/></svg><span>триггеры, мотивы и барьеры;</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.6 12.4l3 3 5.8-6.2"/></svg><span>банк цитат и формулировок клиентов;</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.6 12.4l3 3 5.8-6.2"/></svg><span>рекомендации по маркетингу, продажам и продукту;</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.6 12.4l3 3 5.8-6.2"/></svg><span>карта приоритетов внедрения;</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.6 12.4l3 3 5.8-6.2"/></svg><span>итоговая презентация исследования.</span></li>
-      </ul>
+      <div class="cols">
+        <div class="col"><h3><i>1</i>Сбор данных</h3><ul><li>глубинные интервью с клиентами;</li><li>количественный анализ;</li><li>анализ отзывов компании;</li><li>анализ основных конкурентов;</li></ul></div>
+        <div class="col"><h3><i>2</i>Анализ</h3><ul><li>сегментация целевой аудитории;</li><li>боли, потребности, страхи и возражения;</li><li>карта пути клиента <abbr title="Customer Journey Map">CJM</abbr>;</li><li>задача и желаемый результат клиента <abbr title="Jobs To Be Done">JTBD</abbr>;</li><li>факторы покупки и отказа;</li><li>триггеры, мотивы и барьеры;</li><li>банк цитат и формулировок клиентов;</li></ul></div>
+        <div class="col"><h3><i>3</i>Результат</h3><ul><li>рекомендации по маркетингу, продажам и продукту;</li><li>карта приоритетов внедрения;</li><li>итоговая презентация исследования.</li></ul></div>
+      </div>
     </div>
   </section>
 
@@ -1395,7 +1407,7 @@ body.lb-lock { overflow: hidden; }
         setTimeout(function () { el.classList.remove('rv', 'in'); el.style.transitionDelay = ''; }, 1600);
       });
     }, { rootMargin: '0px 0px -10% 0px' });
-    document.querySelectorAll('.s2 h2, .s2-intro, .issue, .verdict, .s3 h2, .q, .s3-text, .s3-motto, .sec .h2, .conds li, .ai, .bento .tile, .inds .tile, .who li, .areas .tile, .statement, .incl li, .doc, .res-list li, .logos li, .quote-band, .price, .why .tile, .about-l > *, .stats > div, .founder > *, .faq details, .msgs > *').forEach(function (el) {
+    document.querySelectorAll('.s2 h2, .s2-intro, .board, .verdict, .s3 h2, .q, .s3-text, .s3-motto, .sec .h2, .conds li, .ai, .bento .tile, .inds .tile, .who li, .areas .tile, .statement, .col, .doc, .res-list li, .logos li, .quote-band, .price, .why .tile, .about-l > *, .stats > div, .founder > *, .faq details, .msgs > *').forEach(function (el) {
       if (el.getBoundingClientRect().top < innerHeight) return;
       el.classList.add('rv'); io.observe(el);
     });
