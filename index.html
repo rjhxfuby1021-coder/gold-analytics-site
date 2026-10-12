@@ -97,11 +97,16 @@ body{margin:0;background:#FAF7F2}
 @keyframes ga-fup{to{opacity:1;transform:none}}
 
 /* бегущая строка (T8) */
-.ga-mq{flex:none;overflow:hidden;white-space:nowrap;user-select:none;border-top:1px solid rgba(31,31,35,.12);padding:min(22px,2.6vh) 0;background:rgba(250,247,242,.82);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
-.ga-mq div{display:inline-flex;align-items:center;animation:ga-mq 48s linear infinite}
-.ga-mq:hover div{animation-play-state:paused}
-.ga-mq span{display:inline-flex;align-items:center;gap:36px;padding-right:36px;font:500 clamp(18px,1.6vw,24px)/1 var(--f-head)}
-.ga-mq span::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--acc)}
+.ga-mq{position:relative;flex:none;height:clamp(92px,14vh,132px);user-select:none}
+.ga-tape{position:absolute;left:-4%;right:-4%;top:50%;overflow:hidden;white-space:nowrap;padding:min(16px,2vh) 0;box-shadow:0 10px 30px -18px rgba(31,31,35,.35)}
+.ga-tape.a{background:var(--card);color:var(--ink);transform:translateY(-50%) rotate(-2.4deg);z-index:1}
+.ga-tape.b{background:var(--acc);color:var(--on-acc);transform:translateY(-50%) rotate(2.4deg);z-index:2}
+.ga-tape div{display:inline-flex;align-items:center;animation:ga-mq 48s linear infinite}
+.ga-tape.b div{animation-direction:reverse;animation-duration:54s}
+.ga-mq:hover .ga-tape div{animation-play-state:paused}
+.ga-tape span{display:inline-flex;align-items:center;gap:32px;padding-right:32px;font:500 clamp(17px,1.45vw,22px)/1.1 var(--f-head)}
+.ga-tape span::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--acc)}
+.ga-tape.b span::after{background:var(--ink)}
 @keyframes ga-mq{to{transform:translateX(-50%)}}
 
 /* ---------- ЭКРАН 2: редакционная подача ---------- */
@@ -215,6 +220,15 @@ body{margin:0;background:#FAF7F2}
 .ga-x{background:var(--card)}
 
 /* адаптив */
+@media (max-height:720px) and (min-width:641px){
+  .ga-hd .w{height:72px}
+  .ga-hero>.w{padding-top:calc(72px + 1.5vh);padding-bottom:1.5vh}
+  .ga-brand b{font-size:21px}.ga-brand span{font-size:15px}
+  .ga-h1{font-size:clamp(32px,min(4.4vw,6.6vh),60px);margin-top:2vh!important}
+  .ga-lead{margin-top:2vh!important;font-size:16px;line-height:1.55}
+  .ga-cta{margin-top:3vh}
+  .ga-mq{height:clamp(80px,13vh,100px)}
+}
 @media (max-width:1024px){
   .ga-label,.ga-h2,.ga-note,.ga-list{grid-column:1 / -1}
   .ga-label{padding-top:0;margin-bottom:20px}
@@ -242,7 +256,7 @@ body{margin:0;background:#FAF7F2}
 @media (prefers-reduced-motion:reduce){
   .ga-pre{display:none}
   .ga-h1 b,.ga-h2 b,.ga-h1 .dot,.ga-up,.ga-rv{opacity:1!important;transform:none!important;filter:none!important;animation:none!important}
-  .ga-mq div,.ga-lane div{animation-duration:220s}
+  .ga-tape div,.ga-lane div{animation-duration:220s}
 }
 </style>
 </head>
@@ -278,7 +292,8 @@ body{margin:0;background:#FAF7F2}
 
       <div class="ga-mq">
         <p class="sr">6+ лет опыта в маркетинге, PR и продвижении · Россия, Европа, Латинская Америка · 1000+ глубинных интервью</p>
-        <div aria-hidden="true" data-tape></div>
+        <div class="ga-tape a" aria-hidden="true"><div data-tape></div></div>
+        <div class="ga-tape b" aria-hidden="true"><div data-tape></div></div>
       </div>
     </section>
 
@@ -397,7 +412,7 @@ $$('[data-split]').forEach(function(el){var i=0;
 
 /* бегущая строка (T8) — текст из ТЗ */
 var TAPE=['6+ лет опыта в маркетинге, PR и продвижении','Россия, Европа, Латинская Америка','1000+ глубинных интервью'];
-var t1=TAPE.map(function(t){return '<span>'+t+'</span>'}).join('');$('[data-tape]').innerHTML=t1+t1+t1+t1;
+var t1=TAPE.map(function(t){return '<span>'+t+'</span>'}).join('');$$('[data-tape]').forEach(function(el){el.innerHTML=t1+t1+t1+t1});
 
 
 /* заставка (O21) */
