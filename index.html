@@ -51,25 +51,31 @@ body{margin:0;background:#FAF7F2}
 .ga-hd .ga-logo{transition:opacity .3s}.ga-hd:not(.sm) .ga-logo{opacity:0;pointer-events:none}
 .ga-logo{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;color:var(--ink);font:600 24px/1 var(--f-head);letter-spacing:-.01em;white-space:nowrap}
 .ga-hd nav{display:flex;align-items:center;gap:6px}
-.ga-link{background:none;border:0;cursor:pointer;color:var(--ink);font:500 16px/1 var(--f-body);padding:0 22px;height:56px;border-radius:999px;transition:background .25s}
+.ga-link{background:none;border:0;cursor:pointer;color:var(--ink);font:500 16px/1 var(--f-body);padding:0 22px;height:56px;border-radius:0;transition:background .25s}
 .ga-link:hover{background:rgba(255,255,255,.8)}
 .ga-hd .bar{position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--acc)}
 
-/* кнопки (O17 + лёгкий «магнит») */
-.ga-btn{position:relative;z-index:0;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:12px;border:0;cursor:pointer;text-decoration:none;white-space:nowrap;min-height:44px;transition:color .3s,box-shadow .3s,transform .25s var(--e)}
+/* кнопки: острые углы, графитовая рамка, жёсткая тень; заливка поднимается снизу (O17) */
+.ga-btn{position:relative;z-index:0;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:12px;cursor:pointer;text-decoration:none;white-space:nowrap;height:56px;border:2px solid var(--ink);border-radius:0;font:600 16px/1 var(--f-body);letter-spacing:.005em;transition:color .3s,transform .22s var(--e),box-shadow .22s var(--e)}
 .ga-btn::before{content:"";position:absolute;inset:0;z-index:-1;transform:translateY(101%);transition:transform .4s var(--e)}
 .ga-btn:hover::before,.ga-btn:focus-visible::before{transform:none}
-.ga-btn svg{width:20px;height:20px;flex:none;transition:transform .3s var(--e)}
-.ga-btn:hover svg{transform:translateX(4px)}
-.ga-btn.pri{background:var(--acc);color:var(--on-acc);font:600 16px/1 var(--f-body);padding:0 32px;height:56px;border-radius:999px}
+.ga-btn:focus-visible{outline-offset:4px}
+.ga-btn svg{flex:none;transition:transform .35s var(--e)}
+/* главная: оранжевая, тень-«плита», стрелка в отдельной ячейке */
+.ga-btn.pri{background:var(--acc);color:var(--on-acc);padding:0 0 0 28px;gap:24px;box-shadow:5px 5px 0 var(--ink)}
 .ga-btn.pri::before{background:var(--ink)}
-.ga-btn.pri:hover,.ga-btn.pri:focus-visible{color:#fff}
-.ga-btn.sec{background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:var(--ink);font:500 16px/1 var(--f-body);padding:0 30px;height:56px;border-radius:999px;box-shadow:inset 0 0 0 1.5px rgba(31,31,35,.28)}
+.ga-btn.pri svg{width:56px;height:52px;padding:16px 18px;border-left:2px solid currentColor;box-sizing:border-box}
+.ga-btn.pri:hover,.ga-btn.pri:focus-visible{color:#fff;transform:translate(5px,5px);box-shadow:0 0 0 var(--ink)}
+.ga-btn.pri:hover svg{transform:rotate(-45deg)}
+.ga-btn.pri:active{transform:translate(5px,5px) scale(.99)}
+/* второстепенная: светлая, тень появляется при наведении */
+.ga-btn.sec{background:rgba(255,255,255,.78);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:var(--ink);padding:0 28px;font-weight:500}
 .ga-btn.sec::before{background:var(--ink)}
-.ga-btn.sec:hover,.ga-btn.sec:focus-visible{color:#fff;box-shadow:inset 0 0 0 1.5px var(--ink)}
-.ga-btn.dark{background:var(--ink);color:#fff;font:500 16px/1 var(--f-body);height:56px;padding:0 28px;border-radius:999px}
+.ga-btn.sec:hover,.ga-btn.sec:focus-visible{color:#fff;transform:translate(-4px,-4px);box-shadow:4px 4px 0 var(--acc)}
+/* в шапке: графитовая */
+.ga-btn.dark{background:var(--ink);color:#fff;padding:0 24px;font-weight:500}
 .ga-btn.dark::before{background:var(--acc)}
-.ga-btn.dark:hover{color:var(--on-acc)}
+.ga-btn.dark:hover,.ga-btn.dark:focus-visible{color:var(--on-acc)}
 
 /* ---------- ЭКРАН 1: одна мысль ---------- */
 .ga-hero{position:relative;isolation:isolate;height:100vh;height:100svh;min-height:560px;display:flex;flex-direction:column;text-align:left;overflow:hidden}
@@ -97,10 +103,10 @@ body{margin:0;background:#FAF7F2}
 @keyframes ga-fup{to{opacity:1;transform:none}}
 
 /* бегущая строка (T8) */
-.ga-mq{position:relative;flex:none;height:clamp(92px,14vh,132px);user-select:none}
+.ga-mq{position:relative;flex:none;height:clamp(110px,16vh,150px);user-select:none}
 .ga-tape{position:absolute;left:-4%;right:-4%;top:50%;overflow:hidden;white-space:nowrap;padding:min(16px,2vh) 0;box-shadow:0 10px 30px -18px rgba(31,31,35,.35)}
-.ga-tape.a{background:var(--card);color:var(--ink);transform:translateY(-50%) rotate(-2.4deg);z-index:1}
-.ga-tape.b{background:var(--acc);color:var(--on-acc);transform:translateY(-50%) rotate(2.4deg);z-index:2}
+.ga-tape.a{background:var(--card);color:var(--ink);transform-origin:18% 50%;transform:translateY(-50%) rotate(-2deg);z-index:1}
+.ga-tape.b{background:var(--acc);color:var(--on-acc);transform-origin:18% 50%;transform:translateY(-50%) rotate(2deg);z-index:2}
 .ga-tape div{display:inline-flex;align-items:center;animation:ga-mq 48s linear infinite}
 .ga-tape.b div{animation-direction:reverse;animation-duration:54s}
 .ga-mq:hover .ga-tape div{animation-play-state:paused}
@@ -199,7 +205,6 @@ body{margin:0;background:#FAF7F2}
 .ga-agree input{width:20px;height:20px;margin:1px 0 0;accent-color:var(--acc);flex:none}
 .ga-agree a{color:var(--ink)}
 .ga-dr .df{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:18px clamp(20px,4vw,44px) 24px;border-top:1px solid var(--line);background:#fff}
-.ga-dr .df .ga-btn.pri{padding:20px 28px;font-size:17px}
 .ga-back{background:none;border:0;cursor:pointer;color:var(--sub);font-size:16px;padding:12px 4px}
 .ga-back:hover{color:var(--ink)}
 .ga-back[hidden]{display:none}
@@ -211,7 +216,7 @@ body{margin:0;background:#FAF7F2}
 .ga-done h3{font:400 30px/1.2 var(--f-head)}
 .ga-done p{color:var(--sub)}
 .ga.lock{overflow:hidden}
-.ga-dr .df .ga-btn.pri{height:56px;padding:0 28px;font-size:16px}
+.ga-dr .df .ga-btn.pri{font-size:16px}
 .ga-dr .kick{font:600 13px/1 var(--f-body);letter-spacing:.04em;text-transform:none;color:var(--acc-tx)}
 .ga-dr,.ga-dr .df{background:var(--bg)}
 .ga-f input[type=text],.ga-f input[type=tel],.ga-f textarea{background:var(--card);border-color:var(--line)}
@@ -250,11 +255,10 @@ body{margin:0;background:#FAF7F2}
   .ga-lead{font-size:15px!important;line-height:1.5!important;margin-top:1.6vh!important}
   .ga-cta{margin-top:2.4vh!important;gap:10px!important}
   .ga-mq{height:76px}.ga-tape{padding:10px 0}.ga-tape span{font-size:15px;gap:22px;padding-right:22px}
-  .ga-tape.a{transform:translateY(-50%) rotate(-3deg)}.ga-tape.b{transform:translateY(-50%) rotate(3deg)}
+  .ga-tape.a{transform:translateY(-50%) rotate(-3.4deg)}.ga-tape.b{transform:translateY(-50%) rotate(3.4deg)}
   .ga-h1{font-size:clamp(38px,10.6vw,52px)}
   .ga-bg video{object-position:70% 30%}
   .ga-cta{flex-direction:column;align-items:stretch;gap:12px}
-  .ga-btn.pri,.ga-btn.sec{height:56px}
   .ga-hero>.w{padding-top:96px;padding-bottom:28px;justify-content:flex-end}
   .ga-row{grid-template-columns:44px minmax(0,1fr) 20px;padding:22px 0}
   .ga-win p{text-align:left}
@@ -293,7 +297,7 @@ body{margin:0;background:#FAF7F2}
         <h1 class="ga-h1" id="gaH1" data-split>Узнаем, что <em>на самом деле</em> думают ваши клиенты и что влияет на их выбор!</h1>
         <p class="ga-lead ga-up" style="--d:.7s">Находим ценную информацию о&nbsp;ваших клиентах, анализируем её и&nbsp;превращаем в&nbsp;решения, которые помогут увеличить продажи и&nbsp;прибыль.</p>
         <div class="ga-cta ga-up" style="--d:.8s">
-          <button class="ga-btn pri" type="button" data-open="audit" data-mag>Получить разбор проекта<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <button class="ga-btn pri" type="button" data-open="audit">Получить разбор проекта<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
           <button class="ga-btn sec" type="button" data-open="talk">Обсудить исследование</button>
         </div>
       </div>
@@ -449,8 +453,6 @@ onScroll();
   if('IntersectionObserver' in window)new IntersectionObserver(function(es){es[0].isIntersecting?play():v.pause()}).observe(v);else play();
   document.addEventListener('visibilitychange',function(){if(!document.hidden&&v.getBoundingClientRect().bottom>0)play()})})();
 
-/* «магнитная» главная кнопка */
-if(FINE&&!RM)$$('[data-mag]').forEach(function(b){b.addEventListener('pointermove',function(e){var r=b.getBoundingClientRect();b.style.transform='translate('+((e.clientX-r.left)/r.width-.5)*10+'px,'+((e.clientY-r.top)/r.height-.5)*8+'px)'});b.addEventListener('pointerleave',function(){b.style.transform=''})});
 
 /* ---------- формы ---------- */
 $$('[data-opts]').forEach(function(box){var type=box.dataset.opts,name=box.dataset.name;box.innerHTML=box.textContent.split('|').map(function(o){return '<label class="ga-opt"><input type="'+type+'" name="'+name+'" value="'+o+'"><span>'+o+'</span></label>'}).join('')});
