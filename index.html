@@ -72,33 +72,32 @@ body{margin:0;background:#FAF7F2}
 .ga-btn.dark:hover{color:var(--on-acc)}
 
 /* ---------- ЭКРАН 1: одна мысль ---------- */
-.ga-hero{position:relative;isolation:isolate;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;text-align:left;overflow:hidden}
-.ga-hero>.w{flex:1;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;width:100%;padding-top:clamp(120px,15vh,170px);padding-bottom:clamp(48px,8vh,96px)}
+.ga-hero{position:relative;isolation:isolate;height:100vh;height:100svh;min-height:560px;display:flex;flex-direction:column;text-align:left;overflow:hidden}
+.ga-hero>.w{flex:1;min-height:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;width:100%;padding-top:calc(92px + 2vh);padding-bottom:3vh}
 /* видео за текстом: тёплая вуаль держит контраст текста */
 .ga-bg{position:absolute;inset:0;z-index:-1;background:#EFE6DA url(video/hero-poster.jpg) center/cover no-repeat}
 .ga-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 50%;filter:saturate(.72) contrast(.86) brightness(1.08) sepia(.14)}
 .ga-hero .ga-h1{text-shadow:0 0 40px rgba(250,247,242,.55)}
 .ga-hero .ga-lead{color:var(--ink)}
 .ga-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(250,247,242,.96) 0%,rgba(250,247,242,.9) 34%,rgba(250,247,242,.62) 54%,rgba(250,247,242,.22) 78%,rgba(250,247,242,.1) 100%),linear-gradient(0deg,rgba(250,247,242,.9) 0%,rgba(250,247,242,0) 24%),linear-gradient(180deg,rgba(250,247,242,.55) 0%,rgba(250,247,242,0) 16%)}
-.ga-brand{display:flex;flex-direction:column;gap:14px;max-width:38ch}
+.ga-brand{display:flex;flex-direction:column;gap:min(10px,1.2vh);max-width:40ch}
 .ga-brand b{display:flex;align-items:center;gap:12px;font:600 clamp(22px,1.8vw,26px)/1 var(--f-head);letter-spacing:-.01em}
 .ga-brand b::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--acc);flex:none}
-.ga-brand span{display:flex;align-items:center;gap:14px;font:500 16px/1.45 var(--f-body);color:var(--sub)}
-.ga-brand span::before{content:"";width:40px;height:1px;background:var(--ink);opacity:.4;flex:none}
-.ga-h1{margin:clamp(20px,2.4vw,32px) 0 0!important;max-width:17ch;font:500 clamp(36px,min(4.5vw,8.8vh),74px)/1.06 var(--f-head);letter-spacing:-.025em;text-wrap:balance}
+.ga-brand span{display:block;padding-left:22px;font:500 clamp(15px,1.1vw,17px)/1.45 var(--f-body);color:var(--sub)}
+.ga-h1{margin:min(28px,3.2vh) 0 0!important;max-width:17ch;font:500 clamp(34px,min(4.6vw,7.4vh),76px)/1.05 var(--f-head);letter-spacing:-.025em;text-wrap:balance}
 .ga-h1 .wd{display:inline-block;white-space:nowrap}
 .ga-h1 b{display:inline-block;font-weight:inherit;opacity:0;transform:translateY(.32em);filter:blur(6px)}
 .ga.go .ga-h1 b{animation:ga-let .55s var(--e) forwards;animation-delay:calc(var(--i)*16ms + .05s)}
 .ga-h1 .dot{width:.15em;height:.15em;opacity:0;transform:scale(0)}
 .ga.go .ga-h1 .dot{animation:ga-pop .4s var(--e) 1.25s forwards}
-.ga-lead{margin:clamp(24px,2.6vw,32px) 0 0!important;max-width:46ch;color:var(--sub);font-size:clamp(17px,1.2vw,18px);line-height:1.7}
-.ga-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(32px,3.6vw,44px)}
+.ga-lead{margin:min(28px,3.4vh) 0 0!important;max-width:46ch;color:var(--sub);font-size:clamp(16px,min(1.2vw,2.3vh),18px);line-height:1.65}
+.ga-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:min(40px,4.6vh)}
 .ga-up{opacity:0;transform:translateY(16px)}
 .ga.go .ga-up{animation:ga-fup .55s var(--e) forwards;animation-delay:var(--d,0s)}
 @keyframes ga-fup{to{opacity:1;transform:none}}
 
 /* бегущая строка (T8) */
-.ga-mq{overflow:hidden;white-space:nowrap;user-select:none;border-top:1px solid rgba(31,31,35,.12);padding:22px 0;background:rgba(250,247,242,.82);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.ga-mq{flex:none;overflow:hidden;white-space:nowrap;user-select:none;border-top:1px solid rgba(31,31,35,.12);padding:min(22px,2.6vh) 0;background:rgba(250,247,242,.82);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 .ga-mq div{display:inline-flex;align-items:center;animation:ga-mq 48s linear infinite}
 .ga-mq:hover div{animation-play-state:paused}
 .ga-mq span{display:inline-flex;align-items:center;gap:36px;padding-right:36px;font:500 clamp(18px,1.6vw,24px)/1 var(--f-head)}
@@ -229,11 +228,12 @@ body{margin:0;background:#FAF7F2}
   .ga-btn.dark{padding:0 20px;font-size:15px}
   .ga-bg::after{background:linear-gradient(0deg,rgba(250,247,242,.96) 0%,rgba(250,247,242,.88) 45%,rgba(250,247,242,.35) 75%,rgba(250,247,242,.55) 100%)}
   .ga-brand span{font-size:15px}
+  .ga-hero{height:auto;min-height:100svh}
   .ga-h1{font-size:clamp(38px,10.6vw,52px)}
   .ga-bg video{object-position:70% 30%}
   .ga-cta{flex-direction:column;align-items:stretch;gap:12px}
   .ga-btn.pri,.ga-btn.sec{height:56px}
-  .ga-hero>.w{padding-top:112px;padding-bottom:40px}
+  .ga-hero>.w{padding-top:96px;padding-bottom:28px;justify-content:flex-end}
   .ga-row{grid-template-columns:44px minmax(0,1fr) 20px;padding:22px 0}
   .ga-win p{text-align:left}
   .ga-win{text-align:left}
