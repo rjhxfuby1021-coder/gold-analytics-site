@@ -17,7 +17,7 @@ html{background:#FAF7F2;color-scheme:light}
 body{margin:0;background:#FAF7F2}
 .ga{
   --bg:#FAF7F2;--tint:#F4EDE3;--card:#FFFFFF;--ink:#1F1F23;--sub:#5F5C55;--line:#E4DCD1;--line2:#D6CCBF;
-  --acc:#F26A1B;--acc-tx:#C4500C;--on-acc:#1F1F23;--soft:#F4EDE3;--acc-dk:#C4500C;
+  --acc:#F26A1B;--acc-btn:#DC5A16;--acc-tx:#C4500C;--on-acc:#1F1F23;--soft:#F4EDE3;--acc-dk:#C4500C;
   --f-head:"Playfair Display",Georgia,"Times New Roman",serif;--f-body:"Golos Text","Segoe UI",Arial,sans-serif;--f-mark:var(--f-body);
   --e:cubic-bezier(.2,.8,.2,1);--gut:clamp(20px,4.4vw,64px);--max:1360px;--sec:clamp(80px,11vw,160px);
   position:relative;color:var(--ink);background:var(--bg);font:400 18px/1.6 var(--f-body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip
@@ -63,7 +63,7 @@ body{margin:0;background:#FAF7F2}
 .ga-btn:focus-visible{outline-offset:4px}
 .ga-btn svg{flex:none;transition:transform .35s var(--e)}
 /* главная: оранжевая, тень-«плита», стрелка в отдельной ячейке */
-.ga-btn.pri{background:var(--acc);color:var(--on-acc);padding:0 0 0 28px;gap:24px;box-shadow:5px 5px 0 var(--ink)}
+.ga-btn.pri{background:var(--acc-btn);color:var(--on-acc);padding:0 0 0 28px;gap:24px;box-shadow:5px 5px 0 var(--ink)}
 .ga-btn.pri::before{background:var(--ink)}
 .ga-btn.pri svg{width:56px;height:52px;padding:16px 18px;border-left:2px solid currentColor;box-sizing:border-box}
 .ga-btn.pri:hover,.ga-btn.pri:focus-visible{color:#fff;transform:translate(5px,5px);box-shadow:0 0 0 var(--ink)}
