@@ -329,8 +329,8 @@ img { max-width: 100%; }
 @media (max-width: 620px) { .bento { grid-template-columns: 1fr; } .bento .b1, .bento .b7 { grid-column: auto; } }
 
 /* ===== Экран 7: отрасли ===== */
-.inds { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 1.4vw, 18px); }
-.inds .tile { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 18px; align-items: center; padding: 26px; min-height: 112px; }
+.inds { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: clamp(12px, 1.4vw, 18px); }
+.inds .tile { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 18px; align-items: center; padding: 26px; min-height: 120px; height: 100%; }
 .inds .tico { margin: 0; }
 .inds span { font-family: var(--f-display); font-weight: 500; font-size: clamp(21px, 1.8vw, 25px); line-height: 1.2; }
 @media (max-width: 980px) { .inds { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
