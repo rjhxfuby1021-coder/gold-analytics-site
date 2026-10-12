@@ -71,7 +71,17 @@ body{margin:0;background:#FAF7F2}
 .ga-btn.dark:hover{color:var(--on-acc)}
 
 /* ---------- ЭКРАН 1: одна мысль ---------- */
-.ga-hero{position:relative;padding-top:clamp(124px,16vh,180px);text-align:center}
+.ga-hero{position:relative;isolation:isolate;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;text-align:center;overflow:hidden}
+.ga-hero>.w{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;padding-top:clamp(120px,15vh,170px);padding-bottom:clamp(40px,6vh,72px)}
+/* видео за текстом: тёплая вуаль держит контраст текста */
+.ga-bg{position:absolute;inset:0;z-index:-1;background:#EFE6DA url(video/hero-poster.jpg) center/cover no-repeat}
+.ga-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.9) brightness(1.06)}
+.ga-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(70% 60% at 50% 46%,rgba(250,247,242,.9) 0%,rgba(250,247,242,.78) 55%,rgba(250,247,242,.62) 100%),linear-gradient(180deg,rgba(250,247,242,.55) 0%,rgba(250,247,242,0) 22%,rgba(250,247,242,0) 70%,rgba(250,247,242,.85) 100%)}
+.ga-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;width:100%;max-width:var(--max);margin:0 auto;padding:0 var(--gut) clamp(20px,3vh,32px);text-align:left}
+.ga-foot .cap{display:inline-flex;align-items:center;gap:12px;padding:12px 20px 12px 14px;border-radius:999px;background:rgba(255,255,255,.85);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font:500 clamp(15px,1.2vw,17px)/1.3 var(--f-body)}
+.ga-foot .cap i{width:10px;height:10px;border-radius:50%;background:var(--acc)}
+.ga-foot .num{text-align:right;font:500 15px/1.3 var(--f-body)}
+.ga-foot .num b{display:block;font:500 clamp(44px,5vw,80px)/.9 var(--f-head);letter-spacing:-.03em}
 .ga-chip{display:inline-flex;align-items:center;gap:12px;padding:10px 18px 10px 12px;border-radius:999px;background:var(--card);box-shadow:0 1px 0 var(--line),0 10px 30px -18px rgba(31,31,35,.25);font:500 15px/1.35 var(--f-body);color:var(--sub);text-align:left}
 .ga-chip b{font:600 16px/1 var(--f-head);color:var(--ink);white-space:nowrap}
 .ga-chip i{width:8px;height:8px;border-radius:50%;background:var(--acc);flex:none;box-shadow:0 0 0 5px rgba(242,106,27,.16)}
@@ -87,17 +97,8 @@ body{margin:0;background:#FAF7F2}
 .ga.go .ga-up{animation:ga-fup .55s var(--e) forwards;animation-delay:var(--d,0s)}
 @keyframes ga-fup{to{opacity:1;transform:none}}
 
-/* «шоурил»: живая сцена намывания золота, раскрывается при прокрутке */
-.ga-reel{margin-top:clamp(56px,6vw,88px);padding-inline:var(--gut)}
-.ga-reel .box{position:relative;max-width:calc(var(--max) - 2 * var(--gut) + 200px);margin:0 auto;aspect-ratio:16/8.2;min-height:420px;border-radius:32px;overflow:hidden;background:radial-gradient(120% 120% at 70% 40%,#FFF4EA 0%,#F9E5D2 42%,#F1D2B8 100%);transform-origin:50% 0;will-change:transform}
-.ga-reel canvas{position:absolute;inset:0;width:100%;height:100%}
-.ga-reel .cap{position:absolute;left:clamp(20px,3vw,40px);bottom:clamp(20px,3vw,36px);display:inline-flex;align-items:center;gap:12px;padding:12px 20px 12px 14px;border-radius:999px;background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font:500 clamp(15px,1.2vw,17px)/1.3 var(--f-body)}
-.ga-reel .cap i{width:10px;height:10px;border-radius:50%;background:var(--acc)}
-.ga-reel .num{position:absolute;right:clamp(20px,3vw,40px);bottom:clamp(16px,2.6vw,30px);text-align:right;font:500 15px/1.3 var(--f-body);color:var(--ink)}
-.ga-reel .num b{display:block;font:500 clamp(48px,6vw,96px)/.9 var(--f-head);letter-spacing:-.03em;color:var(--ink)}
-
 /* бегущая строка (T8) */
-.ga-mq{overflow:hidden;white-space:nowrap;user-select:none;margin-top:clamp(40px,5vw,64px);border-block:1px solid var(--line);padding:24px 0}
+.ga-mq{overflow:hidden;white-space:nowrap;user-select:none;border-top:1px solid rgba(31,31,35,.12);padding:22px 0;background:rgba(250,247,242,.82);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 .ga-mq div{display:inline-flex;align-items:center;animation:ga-mq 48s linear infinite}
 .ga-mq:hover div{animation-play-state:paused}
 .ga-mq span{display:inline-flex;align-items:center;gap:36px;padding-right:36px;font:500 clamp(18px,1.6vw,24px)/1 var(--f-head)}
@@ -219,7 +220,6 @@ body{margin:0;background:#FAF7F2}
   .ga-label,.ga-h2,.ga-note,.ga-list{grid-column:1 / -1}
   .ga-label{padding-top:0;margin-bottom:20px}
   .ga-note{position:static;margin-bottom:24px}
-  .ga-reel .box{aspect-ratio:4/3}
 }
 @media (max-width:768px){.ga-hd .ga-link{display:none}}
 @media (max-width:640px){
@@ -233,11 +233,10 @@ body{margin:0;background:#FAF7F2}
   .ga-lead{margin-left:0!important}
   .ga-cta{flex-direction:column;align-items:stretch;gap:12px}
   .ga-btn.pri,.ga-btn.sec{height:60px}
-  .ga-reel{margin-top:56px;padding-inline:12px}
-  .ga-reel .box{aspect-ratio:4/5;min-height:0;border-radius:24px}
-  .ga-reel .cap{right:16px;left:16px;bottom:16px;font-size:14px}
-  .ga-reel .num{top:18px;right:20px;bottom:auto}
-  .ga-reel .num b{font-size:52px}
+  .ga-foot{flex-direction:column;align-items:flex-start;gap:16px}
+  .ga-foot .num{text-align:left}
+  .ga-foot .num b{font-size:48px}
+  .ga-hero>.w{align-items:flex-start;padding-top:112px}
   .ga-row{grid-template-columns:44px minmax(0,1fr) 20px;padding:22px 0}
   .ga-win p{text-align:left}
   .ga-win{text-align:left}
@@ -269,6 +268,7 @@ body{margin:0;background:#FAF7F2}
   <main id="top">
     <!-- ЭКРАН 1 -->
     <section class="ga-hero" aria-labelledby="gaH1">
+      <div class="ga-bg" aria-hidden="true"><video id="gaVid" muted loop playsinline preload="metadata" poster="video/hero-poster.jpg"><source src="video/hero.mp4" type="video/mp4"></video></div>
       <div class="w">
         <p class="ga-chip ga-up" style="--d:.05s"><i aria-hidden="true"></i><span><b>Gold Analytics</b> · агентство исследования и&nbsp;анализа целевой аудитории для бизнеса</span></p>
         <h1 class="ga-h1" id="gaH1" data-split>Узнаем, что <em>на самом деле</em> думают ваши клиенты и что влияет на их выбор!</h1>
@@ -279,12 +279,9 @@ body{margin:0;background:#FAF7F2}
         </div>
       </div>
 
-      <div class="ga-reel ga-up" style="--d:.9s">
-        <div class="box" id="gaReel">
-          <canvas id="gaFlow" aria-hidden="true"></canvas>
-          <p class="cap"><i aria-hidden="true"></i>Ответы клиентов — настоящее золото</p>
-          <p class="num"><b>1000+</b>глубинных интервью</p>
-        </div>
+      <div class="ga-foot ga-up" style="--d:.9s">
+        <p class="cap"><i aria-hidden="true"></i>Ответы клиентов — настоящее золото</p>
+        <p class="num"><b>1000+</b>глубинных интервью</p>
       </div>
 
       <div class="ga-mq">
@@ -431,50 +428,20 @@ else{try{sessionStorage.setItem('ga-pre','1')}catch(e){}
 
 /* шапка (O16) */
 var hd=$('#gaHd'),bar=$('#gaBar');
-function onScroll(){var y=scrollY,h=document.documentElement.scrollHeight-innerHeight;hd.classList.toggle('sm',y>40);bar.style.width=(h>0?y/h*100:0)+'%';reelScale()}
+function onScroll(){var y=scrollY,h=document.documentElement.scrollHeight-innerHeight;hd.classList.toggle('sm',y>40);bar.style.width=(h>0?y/h*100:0)+'%'}
 addEventListener('scroll',onScroll,{passive:true});
 
 /* появление при прокрутке (O1) */
 if('IntersectionObserver' in window&&!RM){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.2,rootMargin:'0px 0px -8% 0px'});$$('.ga-rv,[data-io]').forEach(function(el){io.observe(el)})}
 else $$('.ga-rv,[data-io]').forEach(function(el){el.classList.add('in')});
 
-/* «шоурил» раскрывается при прокрутке */
-var reel=$('#gaReel');
-function reelScale(){if(RM||!FINE){reel.style.transform='';return}var r=reel.parentNode.getBoundingClientRect(),vh=innerHeight;var p=Math.min(1,Math.max(0,(vh-r.top)/(vh*.85)));reel.style.transform='scale('+(.9+.1*p).toFixed(4)+')'}
 onScroll();
 
-/* живая сцена: тысячи крупиц текут и закручиваются в «золотое» ядро, ядро тянется за курсором (O6) */
-(function(){
-  var cv=$('#gaFlow'),g=cv.getContext('2d'),W=0,H=0,dpr=Math.min(devicePixelRatio||1,2),P=[],vis=true,cx=0,cy=0,tx=0,ty=0,mouse=null;
-  var BG='rgba(250,232,214,';
-  function size(){var r=reel.getBoundingClientRect();W=reel.clientWidth;H=reel.clientHeight;cv.width=W*dpr;cv.height=H*dpr;g.setTransform(dpr,0,0,dpr,0,0);
-    var n=Math.round(Math.min(FINE?1500:520,W*H/(FINE?520:900)));P.length=0;for(var i=0;i<n;i++)P.push(spawn(true));cx=tx=W*.62;cy=ty=H*.42;
-    g.fillStyle='#F6E3CF';g.fillRect(0,0,W,H)}
-  function spawn(any){var e=Math.random()*4|0,x,y;if(any){x=Math.random()*W;y=Math.random()*H}else if(e===0){x=-5;y=Math.random()*H}else if(e===1){x=W+5;y=Math.random()*H}else if(e===2){x=Math.random()*W;y=-5}else{x=Math.random()*W;y=H+5}
-    return {x:x,y:y,s:.6+Math.random()*1.2,a:.35+Math.random()*.55,r:Math.random()<.1?2.4:1.4}}
-  reel.addEventListener('pointermove',function(e){var r=reel.getBoundingClientRect();mouse={x:(e.clientX-r.left)*W/r.width,y:(e.clientY-r.top)*H/r.height}});
-  reel.addEventListener('pointerleave',function(){mouse=null});
-  if('IntersectionObserver' in window)new IntersectionObserver(function(es){vis=es[0].isIntersecting}).observe(reel);
-  function frame(t){
-    if(vis){
-      if(mouse){tx=mouse.x;ty=mouse.y}else{tx=W*(.62+Math.cos(t/5200)*.08);ty=H*(.42+Math.sin(t/4100)*.08)}
-      cx+=(tx-cx)*.04;cy+=(ty-cy)*.04;
-      g.fillStyle=BG+'0.14)';g.fillRect(0,0,W,H);
-      var gr=g.createRadialGradient(cx,cy,0,cx,cy,Math.max(W,H)*.22);gr.addColorStop(0,'rgba(255,170,90,.28)');gr.addColorStop(1,'rgba(255,170,90,0)');g.fillStyle=gr;g.fillRect(0,0,W,H);
-      g.fillStyle='#E8560A';
-      for(var i=0;i<P.length;i++){var p=P[i],dx=cx-p.x,dy=cy-p.y,d=Math.sqrt(dx*dx+dy*dy)||1;
-        var n=Math.sin(p.x*.0042+t*.00021)*Math.cos(p.y*.0047-t*.00017);
-        var sw=.9+n*.6;var vx=dx/d*.55*p.s+(-dy/d)*sw*p.s*1.9,vy=dy/d*.55*p.s+(dx/d)*sw*p.s*1.9;
-        var k=Math.min(2.6,90/d+.6);p.x+=vx*k;p.y+=vy*k;
-        if(d<10){P[i]=spawn(false);continue}
-        g.globalAlpha=p.a*Math.min(1,d/60);g.fillRect(p.x,p.y,p.r,p.r)}
-      g.globalAlpha=1;
-      var core=g.createRadialGradient(cx,cy,0,cx,cy,26);core.addColorStop(0,'rgba(242,106,27,1)');core.addColorStop(.45,'rgba(242,106,27,.85)');core.addColorStop(1,'rgba(242,106,27,0)');g.fillStyle=core;g.beginPath();g.arc(cx,cy,26,0,6.283);g.fill();
-    }
-    if(!RM)requestAnimationFrame(frame)}
-  size();addEventListener('resize',function(){clearTimeout(size._t);size._t=setTimeout(size,150)});
-  if(RM){for(var s=0;s<240;s++)frame(s*16)}else requestAnimationFrame(frame);
-})();
+/* видео за текстом: играет, пока экран виден; при «уменьшить движение» и экономии трафика — статичный кадр */
+(function(){var v=$('#gaVid');if(!v)return;var save=navigator.connection&&navigator.connection.saveData;
+  if(RM||save){v.removeAttribute('autoplay');return}
+  v.preload='auto';var play=function(){var p=v.play();if(p&&p.catch)p.catch(function(){})};
+  if('IntersectionObserver' in window)new IntersectionObserver(function(es){es[0].isIntersecting?play():v.pause()}).observe(v);else play()})();
 
 /* «магнитная» главная кнопка */
 if(FINE&&!RM)$$('[data-mag]').forEach(function(b){b.addEventListener('pointermove',function(e){var r=b.getBoundingClientRect();b.style.transform='translate('+((e.clientX-r.left)/r.width-.5)*10+'px,'+((e.clientY-r.top)/r.height-.5)*8+'px)'});b.addEventListener('pointerleave',function(){b.style.transform=''})});
