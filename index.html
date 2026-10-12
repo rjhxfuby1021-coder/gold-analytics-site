@@ -53,6 +53,7 @@ body{margin:0;background:#FAF7F2}
 .ga-hd nav{display:flex;align-items:center;gap:6px}
 .ga-link{background:none;border:0;cursor:pointer;color:var(--ink);font:500 16px/1 var(--f-body);padding:0 22px;height:56px;border-radius:0;transition:background .25s}
 .ga-link:hover{background:rgba(255,255,255,.8)}
+.ga-hd .xs{display:none}
 .ga-hd .bar{position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--acc)}
 
 /* кнопки: острые углы, графитовая рамка, жёсткая тень; заливка поднимается снизу (O17) */
@@ -240,7 +241,7 @@ body{margin:0;background:#FAF7F2}
   .ga-label{padding-top:0;margin-bottom:20px}
   .ga-note{position:static;margin-bottom:24px}
 }
-@media (max-width:768px){.ga-hd .ga-link{display:none}.ga-hd .lg{display:none}}
+@media (max-width:768px){.ga-hd .ga-link{display:none}.ga-hd .lg{display:none}.ga-hd .xs{display:inline}}
 @media (max-width:640px){
   .ga{font-size:16px;--sec:72px}
   .ga-hd .w{height:72px}.ga-hd.sm .w{height:62px}
@@ -282,7 +283,7 @@ body{margin:0;background:#FAF7F2}
       <a class="ga-logo" href="#top" aria-label="Gold Analytics — в начало">Gold Analytics<i class="dot" aria-hidden="true"></i></a>
       <nav aria-label="Заявки">
         <button class="ga-link" type="button" data-open="talk">Обсудить исследование</button>
-        <button class="ga-btn dark" type="button" data-open="audit"><span><span class="lg">Получить </span>разбор проекта</span></button>
+        <button class="ga-btn dark" type="button" data-open="audit"><span class="lg">Получить разбор проекта</span><span class="xs">Разбор проекта</span></button>
       </nav>
     </div>
     <span class="bar" id="gaBar"></span>
