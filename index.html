@@ -80,7 +80,7 @@ body{margin:0;background:#FAF7F2}
 
 /* ---------- ЭКРАН 1: одна мысль ---------- */
 .ga-hero{position:relative;isolation:isolate;height:100vh;height:100svh;min-height:560px;display:flex;flex-direction:column;text-align:left;overflow:hidden}
-.ga-hero>.w{flex:1;min-height:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;width:100%;padding-top:calc(92px + 2vh);padding-bottom:3vh}
+.ga-hero>.w{flex:1;min-height:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;width:100%;padding-top:calc(92px + 2vh);padding-bottom:calc(clamp(56px,8vh,76px) + 64px)}
 /* видео за текстом: тёплая вуаль держит контраст текста */
 .ga-bg{position:absolute;inset:0;z-index:-1;background:#EFE6DA url(video/hero-poster.jpg) center/cover no-repeat}
 .ga-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 50%;filter:saturate(.72) contrast(.86) brightness(1.08) sepia(.14)}
@@ -104,10 +104,10 @@ body{margin:0;background:#FAF7F2}
 @keyframes ga-fup{to{opacity:1;transform:none}}
 
 /* бегущая строка (T8) */
-.ga-mq{position:relative;flex:none;height:clamp(84px,12vh,110px);user-select:none}
-.ga-tape{position:absolute;left:-4%;right:-4%;bottom:clamp(18px,3vh,30px);overflow:hidden;white-space:nowrap;padding:min(16px,2vh) 0;transform-origin:16% 50%;box-shadow:0 10px 30px -18px rgba(31,31,35,.35)}
-.ga-tape.a{background:var(--card);color:var(--ink);transform:rotate(-5deg);z-index:1}
-.ga-tape.b{background:var(--acc);color:var(--on-acc);transform:rotate(-1.4deg);z-index:2}
+.ga-mq{position:relative;z-index:5;height:0;user-select:none}
+.ga-tape{position:absolute;left:-4%;right:-4%;top:calc(-1 * clamp(56px,8vh,76px));overflow:hidden;white-space:nowrap;padding:min(16px,2vh) 0;transform-origin:16% 50%;box-shadow:0 10px 30px -18px rgba(31,31,35,.35)}
+.ga-tape.a{background:var(--card);color:var(--ink);transform:translateY(-50%) rotate(-3deg);z-index:1}
+.ga-tape.b{background:var(--acc);color:var(--on-acc);transform:translateY(-50%) rotate(3deg);z-index:2}
 .ga-tape div{display:inline-flex;align-items:center;animation:ga-mq 48s linear infinite}
 .ga-tape.b div{animation-direction:reverse;animation-duration:54s}
 .ga-mq:hover .ga-tape div{animation-play-state:paused}
@@ -228,13 +228,12 @@ body{margin:0;background:#FAF7F2}
 /* адаптив */
 @media (max-height:800px) and (min-width:641px){
   .ga-hd .w{height:72px}
-  .ga-hero>.w{padding-top:calc(72px + 1.5vh);padding-bottom:1.5vh}
+  .ga-hero>.w{padding-top:calc(72px + 1.5vh);padding-bottom:calc(clamp(56px,8vh,76px) + 52px)}
   .ga-brand b{font-size:21px}.ga-brand span{font-size:15px}
   .ga-h1{font-size:clamp(30px,min(4.3vw,6.4vh),60px);margin-top:2vh!important}
   .ga-hero>.w{padding-bottom:3.5vh}
   .ga-lead{margin-top:2vh!important;font-size:16px;line-height:1.55}
   .ga-cta{margin-top:3vh}
-  .ga-mq{height:clamp(80px,13vh,100px)}
 }
 @media (max-width:1024px){
   .ga-label,.ga-h2,.ga-note,.ga-list{grid-column:1 / -1}
@@ -250,13 +249,13 @@ body{margin:0;background:#FAF7F2}
   .ga-bg::after{background:linear-gradient(0deg,rgba(250,247,242,.96) 0%,rgba(250,247,242,.88) 45%,rgba(250,247,242,.35) 75%,rgba(250,247,242,.55) 100%)}
   .ga-brand span{font-size:15px}
   .ga-hero{height:100svh;min-height:600px}
-  .ga-hero>.w{padding-top:84px!important;padding-bottom:2vh!important}
+  .ga-hero>.w{padding-top:84px!important;padding-bottom:104px!important}
   .ga-brand{gap:6px}.ga-brand b{font-size:20px}.ga-brand span{font-size:14px;padding-left:22px}
   .ga-h1{font-size:clamp(28px,min(8.8vw,5.1vh),44px)!important;margin-top:1.8vh!important}
   .ga-lead{font-size:15px!important;line-height:1.5!important;margin-top:1.6vh!important}
   .ga-cta{margin-top:2.4vh!important;gap:10px!important}
-  .ga-mq{height:76px}.ga-tape{padding:10px 0}.ga-tape span{font-size:15px;gap:22px;padding-right:22px}
-  .ga-tape.a{transform:rotate(-7deg)}.ga-tape.b{transform:rotate(-2deg)}
+  .ga-tape{padding:10px 0;top:-52px}.ga-tape span{font-size:15px;gap:22px;padding-right:22px}
+  .ga-tape.a{transform:translateY(-50%) rotate(-4deg)}.ga-tape.b{transform:translateY(-50%) rotate(4deg)}
   .ga-h1{font-size:clamp(38px,10.6vw,52px)}
   .ga-bg video{object-position:70% 30%}
   .ga-cta{flex-direction:column;align-items:stretch;gap:12px}
@@ -303,12 +302,13 @@ body{margin:0;background:#FAF7F2}
         </div>
       </div>
 
-      <div class="ga-mq">
-        <p class="sr">6+ лет опыта в маркетинге, PR и продвижении · Россия, Европа, Латинская Америка · 1000+ глубинных интервью</p>
-        <div class="ga-tape a" aria-hidden="true"><div data-tape></div></div>
-        <div class="ga-tape b" aria-hidden="true"><div data-tape></div></div>
-      </div>
     </section>
+
+    <div class="ga-mq">
+      <p class="sr">6+ лет опыта в маркетинге, PR и продвижении · Россия, Европа, Латинская Америка · 1000+ глубинных интервью</p>
+      <div class="ga-tape a" aria-hidden="true"><div data-tape></div></div>
+      <div class="ga-tape b" aria-hidden="true"><div data-tape></div></div>
+    </div>
 
     <!-- ЭКРАН 2 -->
     <section class="ga-pain" aria-labelledby="gaH2">
