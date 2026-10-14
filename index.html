@@ -744,19 +744,20 @@ img { max-width: 100%; }
 }
 @media (prefers-reduced-motion: reduce) { .guide .ln::after { transform: scaleX(1); transition: none; } .caret { animation: none; } }
 
-/* ===== Новый логотип (эмблема + надпись) ===== */
+/* ===== Новый логотип (эмблема + надпись): блок текста по высоте круга ===== */
 .lg2 { display: inline-flex; align-items: center; gap: 10px; }
 .lg2-e { display: block; height: 46px; width: auto; transition: height .5s var(--ease); }
-.lg2-w { display: block; height: 24px; width: auto; transition: height .5s var(--ease); }
-.top.scrolled .lg2-e { height: 38px; } .top.scrolled .lg2-w { height: 20px; }
-.foot .lg2-e { height: 54px; } .foot .lg2-w { height: 28px; }
+.lg2-t { display: flex; flex-direction: column; align-items: center; justify-content: space-between; height: 46px; padding-block: 1px; box-sizing: border-box; transition: height .5s var(--ease); }
+.lg2-w { display: block; height: 21px; width: auto; transition: height .5s var(--ease); }
+.lg2-s { font-family: var(--f-body); font-size: 9px; line-height: 1.15; letter-spacing: .03em; color: var(--ink-2); text-align: center; white-space: nowrap; transition: font-size .5s var(--ease); }
+.top.scrolled .lg2-e, .top.scrolled .lg2-t { height: 40px; } .top.scrolled .lg2-w { height: 18px; } .top.scrolled .lg2-s { font-size: 8px; }
+.foot .lg2-e, .foot .lg2-t { height: 56px; } .foot .lg2-w { height: 26px; } .foot .lg2-s { font-size: 11px; color: var(--on-deep-2); }
 .pl-full { display: block; width: min(320px, 62vw); height: auto; }
-@media (max-width: 560px) { .lg2 { gap: 7px; } .lg2-e { height: 36px; } .lg2-w { height: 18px; } .top.scrolled .lg2-e { height: 32px; } .top.scrolled .lg2-w { height: 16px; } }
-
-.lg2-t { display: grid; gap: 4px; justify-items: center; }
-.lg2-s { font-family: var(--f-body); font-size: 10.5px; line-height: 1.2; letter-spacing: .03em; color: var(--ink-2); text-align: center; white-space: nowrap; }
-.foot .lg2-s { color: var(--on-deep-2); font-size: 12px; }
-@media (max-width: 560px) { .lg2-t { gap: 3px; } .lg2-s { font-size: 8.5px; line-height: 1.18; letter-spacing: .01em; } .lg2-e { height: 32px; } .lg2-w { height: 16px; } .top.scrolled .lg2-e { height: 28px; } .top.scrolled .lg2-w { height: 15px; } }
+@media (max-width: 560px) {
+  .lg2 { gap: 7px; }
+  .lg2-e, .lg2-t { height: 38px; } .lg2-w { height: 17px; } .lg2-s { font-size: 7.5px; letter-spacing: .01em; }
+  .top.scrolled .lg2-e, .top.scrolled .lg2-t { height: 34px; } .top.scrolled .lg2-w { height: 15px; } .top.scrolled .lg2-s { font-size: 6.8px; }
+}
 
 /* ===== Иконки в стиле презентации: тёмная иконка в персиковом круге ===== */
 .ib { width: 66px; height: 66px; border-radius: 50%; display: grid; place-items: center; flex: none;
