@@ -1314,6 +1314,29 @@ html, body { overflow-x: clip; max-width: 100%; }
 
 .top .top-cta { color: #fff !important; font-weight: 600; padding: 12px 22px; box-shadow: 0 10px 22px -10px rgba(156, 122, 53, .8), inset 0 1px 0 rgba(255, 255, 255, .3) !important; }
 
+/* ===== Главный экран на телефоне: текст прямо на фото, на всю высоту ===== */
+@media (max-width: 920px) {
+  .hero { position: relative; display: flex !important; flex-direction: column; min-height: 100svh !important; height: auto !important; max-height: none !important;
+    margin-top: -74px; padding: calc(74px + 22px) 0 34px !important; background: #0F0C0A !important; overflow: hidden; }
+  .hero-media { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; -webkit-mask-image: none !important; mask-image: none !important; }
+  .hero-media img { height: 100% !important; width: 100% !important; object-fit: cover; object-position: 58% 0% !important; scale: 1 !important; }
+  .hero-media::after { background: linear-gradient(180deg, rgba(240, 234, 226, .55) 0%, rgba(240, 234, 226, .25) 22%, rgba(240, 234, 226, 0) 36%, rgba(15, 12, 10, 0) 48%, rgba(15, 12, 10, .78) 66%, rgba(15, 12, 10, .96) 100%) !important; }
+  .hero-grid { margin-top: 0 !important; flex: 1; display: flex; }
+  .hero-text { display: flex; flex-direction: column; flex: 1; max-width: none !important; }
+  .hero .brand { font-family: var(--f-display); font-weight: 600; font-size: clamp(38px, 11vw, 56px) !important; line-height: .95; letter-spacing: .03em;
+    color: #2B231E; text-shadow: 0 1px 0 #6B5F55, 0 2px 0 #5A4F46, -1px 3px 0 #4A4039, -6px 9px 5px rgba(70, 55, 42, .3), -14px 18px 16px rgba(70, 55, 42, .16); }
+  .hero .brand .l1 { color: #B48C3E; text-shadow: 0 -1px 0 #E6C987, 0 1px 0 #9B7631, 0 2px 0 #876527, -1px 3px 0 #73551F, -6px 9px 5px rgba(70, 55, 42, .3), -14px 18px 16px rgba(70, 55, 42, .16); }
+  .hero .h1-sub { margin-top: 12px !important; font-size: 17px !important; font-weight: 600; color: #2B231E; max-width: 22ch; text-shadow: 0 1px 0 rgba(255, 255, 255, .6); }
+  .hero .rule { display: none; }
+  .hero .lead { margin-top: auto !important; color: #EFE6D8 !important; font-size: 15.5px !important; text-shadow: 0 1px 6px rgba(0, 0, 0, .5) !important; }
+  .hero .punch { color: #E2C27F !important; font-size: 21px !important; text-shadow: 0 1px 6px rgba(0, 0, 0, .5) !important; }
+  .hero .punch::before { background: linear-gradient(180deg, #F1D79A, #B48C3E) !important; }
+  .hero .btns { margin-top: 20px !important; flex-direction: column; align-items: stretch !important; gap: 10px; }
+  .hero .btns .btn { justify-content: center; width: 100%; }
+  .hero .btn-line { background: rgba(255, 255, 255, .12) !important; color: #fff !important; border-color: rgba(255, 255, 255, .4) !important; }
+  .dust { display: none; }
+}
+
 /* ===== Иконки в стиле презентации: тёмная иконка в персиковом круге ===== */
 .ib { width: 66px; height: 66px; border-radius: 50%; display: grid; place-items: center; flex: none;
   background: radial-gradient(circle at 32% 28%, #FFF5EA 0%, var(--peach) 62%, #F2D2B2 100%);
