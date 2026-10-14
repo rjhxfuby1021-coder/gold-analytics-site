@@ -999,7 +999,9 @@ img { max-width: 100%; }
 @media (max-width: 920px) { .faq-l { position: static; grid-column: 1 / -1; } .faq-pic { display: none; } }
 @media (prefers-reduced-motion: reduce) { .faq-pic { animation: none; } }
 
-.founder .ph img { object-fit: cover; object-position: 50% 0%; aspect-ratio: 3 / 4; }
+.founder .ph img { object-fit: contain; aspect-ratio: auto !important; height: auto !important; }
+.founder .ph { max-width: 400px !important; }
+@media (max-width: 860px) { .founder .ph { max-width: 340px !important; } }
 
 /* ===== Экран 1 v5: иллюстрация с 1-го слайда на всю ширину, текст на стене ===== */
 @media (min-width: 921px) {
@@ -1206,6 +1208,22 @@ img { max-width: 100%; }
 .app-i.ph { display: flex !important; align-items: center !important; justify-content: center !important; padding: 0 !important; }
 .app-i.ph svg { width: 34px !important; height: 34px !important; margin: 0 !important; position: relative; z-index: 1; flex: none; }
 .app-i:not(.ph) { display: flex !important; align-items: center; justify-content: center; }
+
+/* Стоимость: без карточки — секция в два цвета на всю ширину */
+.price-sec { padding-block: 0 !important; background: linear-gradient(90deg, #FAF6EF calc(50% + 86px), #15110E calc(50% + 86px)); }
+@media (max-width: 1240px) { .price-sec { background: linear-gradient(90deg, #FAF6EF calc(57.5% + 7px), #15110E calc(57.5% + 7px)); } }
+.price { border: 0 !important; border-radius: 0 !important; overflow: visible !important; }
+.price > * { padding: clamp(64px, 8vw, 120px) 0 !important; }
+.p-main { background: none !important; padding-right: clamp(28px, 4vw, 64px) !important; }
+.p-cta { background: none !important; padding-left: clamp(28px, 4vw, 64px) !important; align-content: center !important; position: relative; }
+.p-cta::before { content: ""; position: absolute; z-index: 0; width: 520px; aspect-ratio: 1; right: -200px; top: 10%; border-radius: 50%; background: rgba(176, 138, 62, .4); filter: blur(90px); pointer-events: none; }
+.p-cta > * { position: relative; z-index: 1; }
+@media (max-width: 920px) {
+  .price-sec { background: #FAF6EF !important; }
+  .price { grid-template-columns: 1fr !important; }
+  .price > .p-main { padding: 64px 0 40px !important; }
+  .price > .p-cta { padding: 48px var(--gutter) 64px !important; margin-inline: calc(-1 * var(--gutter)); background: #15110E !important; }
+}
 
 /* ===== Иконки в стиле презентации: тёмная иконка в персиковом круге ===== */
 .ib { width: 66px; height: 66px; border-radius: 50%; display: grid; place-items: center; flex: none;
@@ -1547,13 +1565,11 @@ body.lb-lock { overflow: hidden; }
   </section>
 
   <!-- Экран 13 -->
-  <section class="sec" style="padding-top:0" id="price" aria-labelledby="h13">
+  <section class="sec price-sec" id="price" aria-labelledby="h13">
     <div class="wrap">
-      <div class="head12">
-        <h2 class="h2" id="h13">Формат работы и стоимость</h2>
-      </div>
       <div class="price">
         <div class="p-main">
+          <h2 class="h2" id="h13">Формат работы и стоимость</h2>
           <p class="lead-t">Исследование формируем индивидуально под задачи вашего бизнеса.</p>
           <div class="facts">
             <div class="fact"><span class="p-label">Срок выполнения</span><strong>3–6 недель</strong></div>
