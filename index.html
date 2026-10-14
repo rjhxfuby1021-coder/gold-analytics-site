@@ -1225,6 +1225,22 @@ img { max-width: 100%; }
   .price > .p-cta { padding: 48px var(--gutter) 64px !important; margin-inline: calc(-1 * var(--gutter)); background: #15110E !important; }
 }
 
+/* Объёмный телефон: корпус из слоёв (толщина), сильнее наклон, блик на стекле, тень на поверхности */
+.ct-r { perspective: 1400px !important; position: relative; }
+.ct-r::after { content: ""; position: absolute; left: 50%; bottom: -26px; width: min(300px, 70vw); height: 40px; transform: translateX(-40%); border-radius: 50%; background: radial-gradient(closest-side, rgba(0, 0, 0, .65), rgba(0, 0, 0, 0)); filter: blur(6px); z-index: 0; }
+.iphone { transform-style: preserve-3d !important; transform: rotateY(-32deg) rotateX(10deg) rotateZ(2deg) !important; z-index: 1; }
+.iphone:hover { transform: rotateY(-10deg) rotateX(4deg) rotateZ(0deg) !important; }
+.ip-body { position: absolute; inset: 0; transform-style: preserve-3d; pointer-events: none; }
+.ip-l { position: absolute; inset: 0; border-radius: 54px; transform: translateZ(calc(var(--z) * -1.5px));
+  background: linear-gradient(90deg, #3E3A35 0%, #CFC8BD 14%, #77706A 46%, #E2DBD0 78%, #4A453F 100%); box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .25); }
+.ip-l:last-child { box-shadow: 0 50px 80px -30px rgba(0, 0, 0, .85); }
+.ip-screen { transform: translateZ(1px); }
+.ip-screen::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 5;
+  background: linear-gradient(115deg, rgba(255, 255, 255, .16) 0%, rgba(255, 255, 255, .05) 28%, rgba(255, 255, 255, 0) 42%, rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, .06) 100%); }
+.iphone::before, .iphone::after { transform: translateZ(-18px); }
+@media (max-width: 920px) { .iphone { transform: rotateY(-14deg) rotateX(5deg) !important; } }
+@media (prefers-reduced-motion: reduce) { .iphone { transition: none !important; } }
+
 /* ===== Иконки в стиле презентации: тёмная иконка в персиковом круге ===== */
 .ib { width: 66px; height: 66px; border-radius: 50%; display: grid; place-items: center; flex: none;
   background: radial-gradient(circle at 32% 28%, #FFF5EA 0%, var(--peach) 62%, #F2D2B2 100%);
@@ -1737,7 +1753,7 @@ body.lb-lock { overflow: hidden; }
         <button class="copy" type="button" id="copyPhone">Скопировать номер</button>
       </div>
       <div class="ct-r">
-        <div class="iphone" aria-label="Мессенджеры Gold Analytics">
+        <div class="iphone" aria-label="Мессенджеры Gold Analytics"><span class="ip-body" aria-hidden="true"><i class="ip-l" style="--z:1"></i><i class="ip-l" style="--z:2"></i><i class="ip-l" style="--z:3"></i><i class="ip-l" style="--z:4"></i><i class="ip-l" style="--z:5"></i><i class="ip-l" style="--z:6"></i><i class="ip-l" style="--z:7"></i><i class="ip-l" style="--z:8"></i><i class="ip-l" style="--z:9"></i><i class="ip-l" style="--z:10"></i><i class="ip-l" style="--z:11"></i><i class="ip-l" style="--z:12"></i><i class="ip-l" style="--z:13"></i><i class="ip-l" style="--z:14"></i><i class="ip-l" style="--z:15"></i><i class="ip-l" style="--z:16"></i><i class="ip-l" style="--z:17"></i><i class="ip-l" style="--z:18"></i><i class="ip-l" style="--z:19"></i><i class="ip-l" style="--z:20"></i><i class="ip-l" style="--z:21"></i><i class="ip-l" style="--z:22"></i><i class="ip-l" style="--z:23"></i><i class="ip-l" style="--z:24"></i></span>
           <div class="ip-screen">
             <div class="ip-island"></div>
             <div class="ip-status"><span>9:41</span><span class="ip-ic"><i></i><i></i><i></i><i></i><b></b></span></div>
