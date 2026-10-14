@@ -178,7 +178,7 @@ img { max-width: 100%; }
   .hero .rule { margin-block: 2.6vh; }
   .hero .lead { font-size: min(clamp(17px, 1.4vw, 20px), 2.2vh); }
   .hero .punch { margin-top: 1.6vh; font-size: min(clamp(23px, 2.1vw, 30px), 3.2vh); }
-  .hero .btns { margin-top: 3vh; flex-direction: column; align-items: flex-start; gap: 1.2vh; }
+  .hero .btns { margin-top: 3vh; flex-direction: row; flex-wrap: nowrap; align-items: center; gap: 14px; }
   .hero .btn-main { padding: min(18px, 1.9vh) 34px; }
   .hero .btn-line { padding: min(13px, 1.4vh) 22px; }
 }
@@ -914,7 +914,7 @@ img { max-width: 100%; }
 /* Экран 1: акцентная фраза — оранжевая черта слева и тёплый цвет */
 .hero .punch { position: relative; padding: .2em 0 .2em 22px; color: var(--accent-text); font-weight: 500; }
 .hero .punch::before { content: ""; position: absolute; left: 0; top: .15em; bottom: .15em; width: 3px; border-radius: 3px; background: linear-gradient(180deg, #D6B26A, #9C7A35); }
-@media (max-width: 920px) { .hero .btns { flex-direction: column; align-items: flex-start; } }
+
 
 /* ===== Мини-картинки вместо значков (объёмные, по смыслу) ===== */
 .ib.pic, .inds li .ib.pic { background: none !important; box-shadow: none !important; width: 64px; height: 64px; border-radius: 0; }
@@ -999,7 +999,7 @@ img { max-width: 100%; }
 @media (max-width: 920px) { .faq-l { position: static; grid-column: 1 / -1; } .faq-pic { display: none; } }
 @media (prefers-reduced-motion: reduce) { .faq-pic { animation: none; } }
 
-.founder .ph img { object-fit: cover; object-position: 50% 12%; }
+.founder .ph img { object-fit: cover; object-position: 50% 0%; aspect-ratio: 3 / 4; }
 
 /* ===== Экран 1 v5: иллюстрация с 1-го слайда на всю ширину, текст на стене ===== */
 @media (min-width: 921px) {
@@ -1023,14 +1023,19 @@ img { max-width: 100%; }
   .hero-media img { object-position: 50% 0% !important; }
   .hero-text { max-width: min(660px, 50vw) !important; }
   .hero .brand { font-family: var(--f-display); font-weight: 600; font-size: min(clamp(40px, 4.7vw, 92px), 8.6vh) !important; letter-spacing: .03em !important; line-height: 1;
-    color: #2B231E; text-shadow: 0 1px 0 #6B5F55, 1px 2px 0 #5A4F46, 2px 3px 0 #4A4039, 3px 4px 0 #3B322C, 5px 9px 10px rgba(0, 0, 0, .26), 14px 20px 26px rgba(0, 0, 0, .14); }
-  .hero .brand .l1 { color: #B48C3E; text-shadow: 0 1px 0 #D8B871, 1px 2px 0 #9B7631, 2px 3px 0 #876527, 3px 4px 0 #73551F, 5px 9px 10px rgba(0, 0, 0, .26), 14px 20px 26px rgba(0, 0, 0, .14); }
-  .hero .h1-sub { color: #2B231E; font-weight: 600; text-shadow: 0 1px 0 rgba(255, 255, 255, .7), 1px 2px 0 rgba(43, 35, 30, .25), 3px 5px 6px rgba(0, 0, 0, .16); }
-  .hero .lead { color: #3A322D !important; text-shadow: 0 1px 0 rgba(255, 255, 255, .6); }
-  .hero .punch { text-shadow: 0 1px 0 rgba(255, 255, 255, .6); }
+    color: #2B231E; text-shadow: 0 1px 0 #6B5F55, 0 2px 0 #5A4F46, -1px 3px 0 #4A4039, -9px 12px 5px rgba(70, 55, 42, .34), -20px 26px 18px rgba(70, 55, 42, .20), -34px 40px 36px rgba(70, 55, 42, .10); }
+  .hero .brand .l1 { color: #B48C3E; text-shadow: 0 -1px 0 #E6C987, 0 1px 0 #9B7631, 0 2px 0 #876527, -1px 3px 0 #73551F, -9px 12px 5px rgba(70, 55, 42, .34), -20px 26px 18px rgba(70, 55, 42, .20), -34px 40px 36px rgba(70, 55, 42, .10); }
+  .hero .h1-sub { color: #2B231E; font-weight: 600; text-shadow: 0 1px 0 rgba(43, 35, 30, .35), -4px 6px 3px rgba(70, 55, 42, .26), -9px 13px 10px rgba(70, 55, 42, .14); }
+  .hero .lead { color: #3A322D !important; text-shadow: -2px 3px 2px rgba(70, 55, 42, .22), -5px 7px 7px rgba(70, 55, 42, .10); }
+  .hero .punch { text-shadow: -2px 3px 2px rgba(70, 55, 42, .22), -5px 7px 7px rgba(70, 55, 42, .10); }
+  .hero .rule { box-shadow: -4px 6px 4px rgba(70, 55, 42, .25); }
   .hero .rule { background: linear-gradient(90deg, #B48C3E, #D8B871); height: 2px; }
   .top:not(.scrolled) .nav a, .top:not(.scrolled) .lg2-s { color: #2B231E; }
 }
+
+/* Экран 1: вторая кнопка справа от первой, хорошо видна на фото */
+.hero .btn-line { background: rgba(255, 255, 255, .92) !important; border-color: rgba(43, 35, 30, .35) !important; color: #2B231E !important; box-shadow: 0 10px 24px -14px rgba(0, 0, 0, .45); font-weight: 500; }
+.hero .btn-line:hover { color: #fff !important; }
 
 /* ===== Иконки в стиле презентации: тёмная иконка в персиковом круге ===== */
 .ib { width: 66px; height: 66px; border-radius: 50%; display: grid; place-items: center; flex: none;
