@@ -1266,6 +1266,30 @@ html, body { overflow-x: clip; max-width: 100%; }
   .pn-c3 p { font-size: 14px !important; line-height: 1.45 !important; }
 }
 
+/* Лёгкое появление цифр */
+.js-num .pn-num { opacity: 0; transform: translateY(18px) scale(.92); filter: blur(6px); transition: opacity .8s var(--ease), transform .8s var(--ease), filter .8s var(--ease); transition-delay: var(--nd, 0s); }
+.js-num .num-in .pn-num { opacity: 1; transform: none; filter: none; }
+@media (prefers-reduced-motion: reduce) { .js-num .pn-num { opacity: 1 !important; transform: none !important; filter: none !important; transition: none !important; } }
+
+/* Лёгкие фоновые анимации: 3D-иллюстрации парят, свечение «дышит», телефон покачивается */
+@keyframes float3d { 0%, 100% { translate: 0 0; rotate: 0deg; } 50% { translate: 0 -8px; rotate: -2deg; } }
+@keyframes glowBreath { from { opacity: .75; scale: 1; } to { opacity: 1; scale: 1.12; } }
+@keyframes phoneFloat { 0%, 100% { translate: 0 0; } 50% { translate: 0 -10px; } }
+.pn-img { animation: float3d 6.5s ease-in-out infinite; }
+.pn-c3 li:nth-child(3n+2) .pn-img { animation-delay: -2.2s; } .pn-c3 li:nth-child(3n) .pn-img { animation-delay: -4.4s; }
+.pnl-deco { animation: float3d 8s ease-in-out infinite; }
+.psec::before, .psec::after, .ct-sec .ctw::before { animation: glowBreath 9s ease-in-out infinite alternate; }
+.psec::after { animation-delay: -4.5s; }
+.ct-r { animation: phoneFloat 7s ease-in-out infinite; }
+.pn-c3 li:hover .pn-img { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .pn-img, .pnl-deco, .psec::before, .psec::after, .ct-r { animation: none !important; } }
+
+/* «Дорого» «Подумаю» «Не сейчас» — лёгкий золотой перелив */
+@keyframes goldShimmer { 0% { background-position: 120% 50%; } 100% { background-position: -120% 50%; } }
+.objx2 .pn-big { background-image: linear-gradient(110deg, #8E6B2B 0%, #C9A04F 28%, #FFF1C9 46%, #E2C27F 54%, #C9A04F 70%, #8E6B2B 100%) !important; background-size: 260% 100% !important; animation: goldShimmer 5s ease-in-out infinite; }
+.objx2 .pn-big:nth-child(2) { animation-delay: .6s; } .objx2 .pn-big:nth-child(3) { animation-delay: 1.2s; }
+@media (prefers-reduced-motion: reduce) { .objx2 .pn-big { animation: none; } }
+
 /* ===== Иконки в стиле презентации: тёмная иконка в персиковом круге ===== */
 .ib { width: 66px; height: 66px; border-radius: 50%; display: grid; place-items: center; flex: none;
   background: radial-gradient(circle at 32% 28%, #FFF5EA 0%, var(--peach) 62%, #F2D2B2 100%);
@@ -1940,7 +1964,7 @@ body.lb-lock { overflow: hidden; }
         setTimeout(function () { el.classList.remove('rv', 'in'); el.style.transitionDelay = ''; }, 1600);
       });
     }, { rootMargin: '0px 0px -10% 0px' });
-    document.querySelectorAll('.pnl-title, .pnl-sub, .pn-grid li, .pn-cols li, .pn-c3 li, .pnl-quote, .crm-q li, .objx2, .ab-r li, .s2 h2, .s2-lead, .pain, .verdict, .s3 h2, .q, .s3-text, .s3-motto, .sec .h2, .when-ph, .when-list li, .toc, .guide-l > *, .ai, .inds .tile, .areas .tile, .statement, .col, .doc, .res-list li, .logos li, .quote-band, .price, .why .tile, .about-l > *, .stats > div, .founder > *, .faq details, .msgs > *').forEach(function (el) {
+    document.querySelectorAll('.crm-ph, .crm-out > *, .roles, .pn-stats > div, .ab-l > *, .car-head > *, .car, .p-main > *, .p-cta > *, .ct-l > *, .faq-l, .quote-band p, .hero-text > *, .pnl-title, .pnl-sub, .pn-grid li, .pn-cols li, .pn-c3 li, .pnl-quote, .crm-q li, .objx2, .ab-r li, .s2 h2, .s2-lead, .pain, .verdict, .s3 h2, .q, .s3-text, .s3-motto, .sec .h2, .when-ph, .when-list li, .toc, .guide-l > *, .ai, .inds .tile, .areas .tile, .statement, .col, .doc, .res-list li, .logos li, .quote-band, .why .tile, .about-l > *, .stats > div, .founder > *, .faq details, .msgs > *').forEach(function (el) {
       if (el.getBoundingClientRect().top < innerHeight) return;
       el.classList.add('rv'); io.observe(el);
     });
@@ -2244,6 +2268,26 @@ body.lb-lock { overflow: hidden; }
       el.textContent = t;
     }
     tick(); setTimeout(function () { tick(); setInterval(tick, 60000); }, (60 - new Date().getSeconds()) * 1000);
+  })();
+
+  /* Цифры: номера всплывают по очереди, крупные значения досчитывают от нуля */
+  (function () {
+    var reduceM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceM || !('IntersectionObserver' in window)) return;
+    document.documentElement.classList.add('js-num');
+    document.querySelectorAll('.pn-grid').forEach(function (g) {
+      g.querySelectorAll('li').forEach(function (li, i) { li.style.setProperty('--nd', (i * 0.12) + 's'); });
+      new IntersectionObserver(function (es, o) { es.forEach(function (e) { if (e.isIntersecting) { g.querySelectorAll('li').forEach(function (li) { li.classList.add('num-in'); }); o.disconnect(); } }); }, { threshold: .2 }).observe(g);
+    });
+    document.querySelectorAll('.pn-stats .pn-big, .ab-r .pn-big').forEach(function (el) {
+      var m = el.textContent.trim().match(/^(\d+)(.*)$/); if (!m) return;
+      var to = +m[1], suf = m[2], done = false; el.textContent = '0' + suf;
+      new IntersectionObserver(function (es, o) { if (!es[0].isIntersecting || done) return; done = true; o.disconnect();
+        var t0 = performance.now(), dur = 1600;
+        (function step(t) { var k = Math.min(1, (t - t0) / dur), v = Math.round(to * (1 - Math.pow(1 - k, 3)));
+          el.textContent = v + suf; if (k < 1) requestAnimationFrame(step); })(t0);
+      }, { threshold: .4 }).observe(el);
+    });
   })();
 
   /* Примеры результата на весь экран */
