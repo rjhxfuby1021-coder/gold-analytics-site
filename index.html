@@ -461,7 +461,7 @@ img { max-width: 100%; }
 .lang svg { width: 28px; height: 19px; border-radius: 3px; box-shadow: 0 0 0 1px var(--line); }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .chips span { font-size: 14.5px; padding: 7px 14px; border-radius: 999px; background: #fff; border: 1px solid #ECE3D5; color: var(--ink-2); }
-.nda { display: grid; grid-template-columns: 26px 1fr; gap: 14px; padding-top: 22px; border-top: 1px solid #E6DBCB; font-size: 16.5px; color: var(--ink-2); }
+.nda { display: block; max-width: 60ch; gap: 14px; padding-top: 22px; border-top: 1px solid #E6DBCB; font-size: 16.5px; color: var(--ink-2); }
 .nda svg { width: 22px; height: 22px; color: var(--accent); }
 .p-cta { background: var(--deep); color: var(--on-ink); display: grid; gap: 20px; align-content: start; }
 .p-cta h3 { margin: 0; font-family: var(--f-display); font-weight: 400; font-size: clamp(30px, 3vw, 42px); line-height: 1.12; }
@@ -1550,7 +1550,7 @@ body.lb-lock { overflow: hidden; }
         <p class="p-label" style="margin:0 0 4px">Написать нам в:</p>
         <a class="tile msg" href="https://t.me/aleksey_BS" target="_blank" rel="noopener"><span class="mi bi tg"><svg viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="tgG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2AABEE"/><stop offset="1" stop-color="#229ED9"/></linearGradient></defs><circle cx="24" cy="24" r="24" fill="url(#tgG)"/><path fill="#fff" d="M10.9 23.6c7-3 11.6-5 13.9-6 6.6-2.7 8-3.2 8.9-3.2.2 0 .6 0 .9.3.2.2.3.4.3.6v.9c-.4 4-2 13.6-2.9 18.1-.4 1.9-1.1 2.5-1.8 2.6-1.5.1-2.7-1-4.2-2-2.3-1.5-3.6-2.5-5.9-4-2.6-1.7-.9-2.7.6-4.2.4-.4 7.1-6.5 7.2-7 0-.1 0-.3-.1-.4s-.4-.1-.5 0c-.2.1-3.9 2.5-11 7.3-1 .7-2 1.1-2.9 1.1-.9 0-2.8-.5-4.1-1-1.7-.5-3-.8-2.9-1.7.1-.5.7-.9 2-1.4Z"/></svg></span><span><b>Телеграм</b><small>@aleksey_BS</small></span><span class="arr" aria-hidden="true">↗</span></a>
         <a class="tile msg" href="https://wa.me/79089089385" target="_blank" rel="noopener"><span class="mi bi wa"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#25D366" d="M24 2.5A21.5 21.5 0 0 0 5.4 34.8L2.5 45.5l11-2.9A21.5 21.5 0 1 0 24 2.5Z"/><path fill="#fff" d="M24 6.2a17.8 17.8 0 0 0-15.1 27.2l.4.7-1.8 6.5 6.7-1.8.7.4A17.8 17.8 0 1 0 24 6.2Z" opacity="0"/><path fill="#fff" d="M34.6 29.6c-.6-.3-3.4-1.7-3.9-1.9-.5-.2-.9-.3-1.3.3-.4.6-1.5 1.9-1.8 2.2-.3.4-.7.4-1.2.1-.6-.3-2.4-.9-4.6-2.8-1.7-1.5-2.8-3.4-3.2-4-.3-.6 0-.9.3-1.2l.9-1c.3-.4.4-.6.6-1 .2-.4.1-.8 0-1.1l-1.8-4.2c-.4-1.1-.9-.9-1.3-.9h-1.1c-.4 0-1 .1-1.5.7-.5.6-2 1.9-2 4.7s2 5.5 2.3 5.9c.3.4 4 6.1 9.6 8.5 1.3.6 2.4.9 3.2 1.2 1.3.4 2.6.4 3.5.2 1.1-.2 3.4-1.4 3.8-2.7.5-1.3.5-2.5.3-2.7-.1-.2-.5-.4-1.1-.6Z"/></svg></span><span><b>Вотсап</b><small>89089089385</small></span><span class="arr" aria-hidden="true">↗</span></a>
-        <div class="tile msg"><span class="mi bi mx"><svg viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="mxG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2D9CFF"/><stop offset=".55" stop-color="#5B5BFF"/><stop offset="1" stop-color="#A53DFF"/></linearGradient></defs><rect width="48" height="48" rx="13" fill="url(#mxG)"/><path fill="#fff" d="M24 11c-7.7 0-13.5 5.4-13.5 12.6 0 4 1.8 7.1 4.6 9.3l-.9 4.6 4.6-2.4c1.6.5 3.3.8 5.2.8 7.7 0 13.5-5.4 13.5-12.3S31.7 11 24 11Z"/><text x="24" y="27.6" text-anchor="middle" font-family="Onest, Arial, sans-serif" font-weight="700" font-size="9.5" fill="#5B5BFF">max</text></svg></span><span><b>MAX</b><small>89089089385</small></span><span></span></div>
+        <div class="tile msg"><span class="mi bi mx"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" aria-hidden="true"><defs><linearGradient id="mxb"><stop offset="0" stop-color="#00f"/><stop offset="1" stop-opacity="0"/><stop offset="1" stop-opacity="0"/></linearGradient><linearGradient id="mxa"><stop offset="0" stop-color="#4cf"/><stop offset=".662" stop-color="#53e"/><stop offset="1" stop-color="#93d"/></linearGradient><linearGradient id="mxc" x1="117.847" x2="1000" y1="760.536" y2="500" gradientUnits="userSpaceOnUse" href="#mxa"/><radialGradient id="mxd" cx="-87.392" cy="1166.116" r="500" fx="-87.392" fy="1166.116" gradientTransform="rotate(51.356 1551.478 559.3)scale(2.42703433 1)" gradientUnits="userSpaceOnUse" href="#mxb"/></defs><rect width="1000" height="1000" fill="url(#mxc)" ry="249.681"/><rect width="1000" height="1000" fill="url(#mxd)" ry="249.681"/><path fill="#fff" fill-rule="evenodd" d="M508.211 878.328c-75.007 0-109.864-10.95-170.453-54.75-38.325 49.275-159.686 87.783-164.979 21.9 0-49.456-10.95-91.248-23.36-136.873-14.782-56.21-31.572-118.807-31.572-209.508 0-216.626 177.754-379.597 388.357-379.597 210.785 0 375.947 171.001 375.947 381.604.707 207.346-166.595 376.118-373.94 377.224m3.103-571.585c-102.564-5.292-182.499 65.7-200.201 177.024-14.6 92.162 11.315 204.398 33.397 210.238 10.585 2.555 37.23-18.98 53.837-35.587a189.8 189.8 0 0 0 92.71 33.032c106.273 5.112 197.08-75.794 204.215-181.95 4.154-106.382-77.67-196.486-183.958-202.574Z" clip-rule="evenodd"/></svg></span><span><b>MAX</b><small>89089089385</small></span><span></span></div>
         <div class="tile msg"><span class="mi bi ml"><svg viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="mlG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F7A15A"/><stop offset="1" stop-color="#D96E2E"/></linearGradient></defs><rect x="3" y="9" width="42" height="30" rx="6" fill="url(#mlG)"/><path d="M7 14l17 13 17-13" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><b>Эл.почта</b><small class="todo">адрес не указан в ТЗ</small></span><span></span></div>
       </div>
     </div>
@@ -1807,13 +1807,14 @@ body.lb-lock { overflow: hidden; }
       gb: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" preserveAspectRatio="none"><clipPath id="c"><path d="M30,15h30v15zv15h-30zh-30v-15zv-15h30z"/></clipPath><path d="M0,0v30h60v-30z" fill="#012169"/><path d="M0,0 60,30M60,0 0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 60,30M60,0 0,30" clip-path="url(#c)" stroke="#C8102E" stroke-width="4"/><path d="M30,0v30M0,15h60" stroke="#fff" stroke-width="10"/><path d="M30,0v30M0,15h60" stroke="#C8102E" stroke-width="6"/></svg>',
       es: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 8" preserveAspectRatio="none"><rect width="12" height="8" fill="#AA151B"/><rect y="2" width="12" height="4" fill="#F1BF00"/></svg>'
     };
-    var dpr = Math.min(window.devicePixelRatio || 1, 2), flags = [], running = false, visible = false;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2) * 2, flags = [], running = false, visible = false;
     cvs.forEach(function (c, n) {
       var w = c.clientWidth || 104, h = c.clientHeight || 82;
       c.width = w * dpr; c.height = h * dpr;
       var ctx = c.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       var FW = Math.round(w - 10), FH = Math.round(FW * 2 / 3), off = document.createElement('canvas');
       off.width = FW * dpr; off.height = FH * dpr;
+      ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
       var img = new Image(), f = { c: c, ctx: ctx, w: w, h: h, FW: FW, FH: FH, off: off, ready: false, ph: n * 1.7 };
       var tx = document.createElement('canvas'); tx.width = tx.height = 4; var tc = tx.getContext('2d'); tc.fillStyle = '#000'; tc.fillRect(0, 0, 4, 1); tc.fillRect(0, 2, 1, 2); f.tex = ctx.createPattern(tx, 'repeat');
       img.onload = function () { var o = off.getContext('2d'); o.drawImage(img, 0, 0, off.width, off.height); f.ready = true; draw(f, 0); };
@@ -1827,13 +1828,13 @@ body.lb-lock { overflow: hidden; }
       var A = FH * .07, ts = t * .0021 + f.ph;
       function wave(x) { var r = x / FW, e = Math.pow(r, .85); return (Math.sin(x * .085 - ts) * .75 + Math.sin(x * .19 - ts * 1.6 + 1.3) * .25) * A * e; }
       function sag(x) { var r = x / FW; return r * r * FH * .05; }
-      for (var x = 0; x < FW; x++) {
+      for (var x = 0; x < FW; x += .5) {
         var dy = wave(x) + sag(x), dy2 = wave(x + 1) + sag(x + 1), slope = dy2 - dy;
         var hgt = FH * (1 - .045 * Math.abs(Math.sin(x * .085 - ts)) * (x / FW));
-        ctx.drawImage(f.off, x * dpr, 0, dpr, f.off.height, x0 + x, top + dy + (FH - hgt) / 2, 1.6, hgt);
+        ctx.drawImage(f.off, x * dpr, 0, dpr * .5, f.off.height, x0 + x, top + dy + (FH - hgt) / 2, .9, hgt);
         var l = Math.max(-1, Math.min(1, slope * 1.35));
         ctx.fillStyle = l > 0 ? 'rgba(20,10,4,' + (l * .32).toFixed(3) + ')' : 'rgba(255,255,255,' + (-l * .22).toFixed(3) + ')';
-        ctx.fillRect(x0 + x, top + dy + (FH - hgt) / 2, 1.6, hgt);
+        ctx.fillRect(x0 + x, top + dy + (FH - hgt) / 2, .9, hgt);
       }
       /* мягкий объём ткани сверху вниз и у древка */
       var g = ctx.createLinearGradient(0, top - A, 0, top + FH + A);
