@@ -2142,11 +2142,29 @@ body.lb-lock { overflow: hidden; }
       e.preventDefault();
       if (a.classList.contains('playing')) return;
       var f = document.createElement('iframe');
-      f.src = a.dataset.embed; f.title = 'Видеоотзыв CakePro';
+      f.src = a.dataset.embed + (a.dataset.embed.indexOf('autoplay') < 0 ? '&autoplay=1' : ''); f.title = 'Видеоотзыв CakePro';
       f.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media'; f.setAttribute('allowfullscreen', '');
       var o = document.createElement('span'); o.className = 'vid-open'; o.textContent = 'Открыть на Rutube ↗';
       o.addEventListener('click', function (ev) { ev.preventDefault(); ev.stopPropagation(); window.open(a.href, '_blank', 'noopener'); });
       a.classList.add('playing'); a.appendChild(f); a.appendChild(o);
+      /* Rutube: командой через API плеера запускаем видео сразу, без повторного «play» */
+      var play = function () { try { f.contentWindow.postMessage(JSON.stringify({ type: 'player:play', data: {} }), '*'); } catch (err) {} };
+      var started = false, mutedFallback = false;
+      var send = function (t) { try { f.contentWindow.postMessage(JSON.stringify({ type: t, data: {} }), '*'); } catch (err) {} };
+      var tries = 0, timer = setInterval(function () {
+        play(); tries++;
+        /* если браузер не дал запустить со звуком — запускаем без звука и сразу возвращаем звук */
+        if (tries === 5 && !started) { mutedFallback = true; send('player:mute'); play(); }
+        if (tries > 16) clearInterval(timer);
+      }, 500);
+      window.addEventListener('message', function (ev) {
+        if (ev.source !== f.contentWindow) return;
+        var d = ev.data; try { d = typeof d === 'string' ? JSON.parse(d) : d; } catch (err) { return; }
+        if (!d || !d.type) return;
+        if (d.type === 'player:ready') play();
+        if (d.type === 'player:changeState' && d.data && d.data.state === 'playing') { started = true; clearInterval(timer); if (mutedFallback) send('player:unMute'); }
+      });
+      f.addEventListener('load', function () { setTimeout(play, 300); });
     });
   });
 
