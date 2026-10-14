@@ -178,7 +178,7 @@ img { max-width: 100%; }
   .hero .rule { margin-block: 2.6vh; }
   .hero .lead { font-size: min(clamp(17px, 1.4vw, 20px), 2.2vh); }
   .hero .punch { margin-top: 1.6vh; font-size: min(clamp(23px, 2.1vw, 30px), 3.2vh); }
-  .hero .btns { margin-top: 3.4vh; flex-wrap: nowrap; }
+  .hero .btns { margin-top: 3vh; flex-direction: column; align-items: flex-start; gap: 1.2vh; }
   .hero .btn-main { padding: min(18px, 1.9vh) 34px; }
   .hero .btn-line { padding: min(13px, 1.4vh) 22px; }
 }
@@ -792,7 +792,8 @@ img { max-width: 100%; }
 /* ===== Экран 2 v3: тёплый фон, карточки вместо стикеров ===== */
 .s2 { background: linear-gradient(180deg, #F7EEE2 0%, #F3E6D5 100%); }
 .s2-head { display: block; }
-.s2 h2 { max-width: 26ch; }
+.s2 h2 { max-width: none; font-size: clamp(32px, 3.9vw, 58px); }
+@media (min-width: 761px) { .s2 h2 .ln2 { display: block; white-space: nowrap; } }
 .pain-i { width: 40px; height: 40px; fill: var(--accent); flex: none; transition: transform .45s var(--ease); }
 .pain:hover .pain-i { transform: scale(1.1) rotate(-4deg); }
 .s2-lead { margin-top: 26px; font-size: clamp(18px, 1.5vw, 21px); line-height: 1.5; color: var(--ink-2); }
@@ -897,6 +898,24 @@ img { max-width: 100%; }
 .toc-l button.on .tci, .toc-l button:hover .tci { opacity: 1; transform: scale(1.08); }
 .toc-l button.on { padding-left: 0 !important; } .toc-l button::before { display: none; }
 
+/* Цитата «По отзывам наших клиентов…» — полоса на всю ширину страницы сразу под отзывами */
+#clients .quote-band { width: 100vw; margin-left: calc(50% - 50vw); margin-top: clamp(28px, 3.5vw, 48px); border-radius: 0; padding: clamp(40px, 5vw, 72px) var(--gutter, 24px); background: linear-gradient(135deg, #F7ECDD 0%, #F1DFC8 100%); }
+#clients .quote-band p { max-width: 44ch; }
+#clients { overflow-x: clip; }
+
+.p-cta .btn-main { background: linear-gradient(135deg, #F09A55 0%, #E0813F 45%, #C2682C 100%) !important; color: #fff !important; border-color: transparent !important; }
+.p-cta .btn-line, .ai .btn-line, .dark .btn-line { background: transparent !important; }
+
+/* Контакты: сами эмблемы приложений, без кружков-подложек */
+.msg .mi.bi { background: none !important; width: 48px; height: 48px; border-radius: 0; box-shadow: none; transition: transform .35s var(--ease); }
+.msg .mi.bi svg { width: 48px !important; height: 48px !important; display: block; }
+.msg:hover .mi.bi { background: none !important; transform: scale(1.08); filter: none; }
+
+/* Экран 1: акцентная фраза — оранжевая черта слева и тёплый цвет */
+.hero .punch { position: relative; padding: .2em 0 .2em 22px; color: var(--accent-text); font-weight: 500; }
+.hero .punch::before { content: ""; position: absolute; left: 0; top: .15em; bottom: .15em; width: 3px; border-radius: 3px; background: linear-gradient(180deg, #F09A55, #C2682C); }
+@media (max-width: 920px) { .hero .btns { flex-direction: column; align-items: flex-start; } }
+
 /* ===== Иконки в стиле презентации: тёмная иконка в персиковом круге ===== */
 .ib { width: 66px; height: 66px; border-radius: 50%; display: grid; place-items: center; flex: none;
   background: radial-gradient(circle at 32% 28%, #FFF5EA 0%, var(--peach) 62%, #F2D2B2 100%);
@@ -961,7 +980,7 @@ body.lb-lock { overflow: hidden; }
 /* ===== Флаги на флагштоках (развеваются) ===== */
 .flags { display: flex; flex-wrap: wrap; gap: 18px clamp(22px, 3vw, 40px); align-items: flex-end; margin-top: 4px; }
 .flag { margin: 0; display: grid; justify-items: start; gap: 8px; }
-.flag canvas { display: block; width: 104px; height: 82px; }
+.flag canvas { display: block; width: 104px; height: 82px; filter: drop-shadow(0 6px 6px rgba(59, 38, 24, .22)); }
 .flag figcaption { font-size: 15.5px; color: var(--ink); padding-left: 2px; }
 @media (max-width: 420px) { .flag canvas { width: 88px; height: 70px; } }
 
@@ -1076,7 +1095,7 @@ body.lb-lock { overflow: hidden; }
   <section class="s2" aria-labelledby="h2">
     <div class="wrap">
       <div class="s2-head">
-        <h2 id="h2">Современный покупатель стал требовательнее, осторожнее и внимательнее.</h2>
+        <h2 id="h2"><span class="ln2">Современный покупатель стал требовательнее,</span> <span class="ln2">осторожнее и внимательнее.</span></h2>
         <p class="s2-lead">Многие компании столкнулись с тем, что:</p>
       </div>
       <ul class="pains">
@@ -1335,7 +1354,6 @@ body.lb-lock { overflow: hidden; }
             <div class="chips apps"><span><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="6" fill="#FFD02F"/><path d="M15.6 5h-2.4l2 3.6L10.8 5H8.4l2.2 4.2L6 5H3.6l2.4 5.2L3.6 19h2.4l4.6-10.4L8.4 19h2.4l4.4-10.6L13.2 19h2.4l4.8-12.8z" fill="#050038"/></svg>Miro</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="6" fill="#26262B"/><path d="M6 6l12 12" stroke="#F7553C" stroke-width="3.2" stroke-linecap="round"/><path d="M18 6L6 18" stroke="#30C3E8" stroke-width="3.2" stroke-linecap="round"/><circle cx="12" cy="12" r="2.2" fill="#FFD43B"/></svg>XMind</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="5" fill="#107C41"/><path d="M7.2 6.5h2.9l1.9 3.5 1.9-3.5h2.9l-3.3 5.5 3.4 5.5h-2.9L12 13.9l-2 3.6H7.1l3.4-5.5z" fill="#fff"/></svg>Excel</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x=".75" y=".75" width="22.5" height="22.5" rx="5" fill="#fff" stroke="#111" stroke-width="1.5"/><path d="M7.5 6.5h2.4l5 7.6V6.5h2v11h-2.3L9.5 9.9v7.6h-2z" fill="#111"/></svg>Notion</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 12.2c0-.7-.1-1.4-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z" fill="#4285F4"/><path d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z" fill="#34A853"/><path d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1A10 10 0 0 0 2 12c0 1.6.4 3.2 1.1 4.6z" fill="#FBBC05"/><path d="M12 5.9c1.5 0 2.8.5 3.8 1.5l2.9-2.9A10 10 0 0 0 3.1 7.4L6.4 10c.8-2.4 3-4.1 5.6-4.1z" fill="#EA4335"/></svg>Google</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#FC3F1D"/><path d="M13.3 6.2h-1.5c-2.2 0-3.6 1.3-3.6 3.3 0 1.6.8 2.6 2.2 3.4L7.9 18h1.9l2.3-4.6h1.2V18h1.7V6.2zm-1.7 5.8h-.6c-1.3 0-2-.8-2-2.4 0-1.7.8-2.4 2.1-2.4h.5z" fill="#fff"/></svg>Яндекс</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="6" fill="#EFE6DA"/><circle cx="7" cy="12" r="1.7" fill="#9A5428"/><circle cx="12" cy="12" r="1.7" fill="#9A5428"/><circle cx="17" cy="12" r="1.7" fill="#9A5428"/></svg>и другие</span></div>
           </div>
           <div class="nda">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="1.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
             <span>Работаем по NDA. Все данные и результаты исследования остаются конфиденциальными.</span>
           </div>
         </div>
@@ -1489,10 +1507,10 @@ body.lb-lock { overflow: hidden; }
       </div>
       <div class="msgs">
         <p class="p-label" style="margin:0 0 4px">Написать нам в:</p>
-        <a class="tile msg" href="https://t.me/aleksey_BS" target="_blank" rel="noopener"><span class="mi bi tg"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M17.9 6.6 4.9 11.6c-.9.4-.9.9-.2 1.1l3.3 1 1.3 4c.2.5.1.7.6.7.4 0 .6-.2.8-.4l1.6-1.6 3.4 2.5c.6.3 1.1.2 1.2-.6l2.2-10.6c.2-.9-.3-1.3-1.2-.9Zm-2 2.9-6 5.4-.3 2.6-1-3.3 7-4.4c.3-.2.6 0 .3.2Z"/></svg></span><span><b>Телеграм</b><small>@aleksey_BS</small></span><span class="arr" aria-hidden="true">↗</span></a>
-        <a class="tile msg" href="https://wa.me/79089089385" target="_blank" rel="noopener"><span class="mi bi wa"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 3.2a8.7 8.7 0 0 0-7.5 13.2L3.3 20.8l4.5-1.2A8.7 8.7 0 1 0 12 3.2Zm0 15.9a7.2 7.2 0 0 1-3.7-1l-.3-.2-2.7.7.7-2.6-.2-.3A7.2 7.2 0 1 1 12 19.1Zm4-5.4c-.2-.1-1.3-.6-1.5-.7-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a5.9 5.9 0 0 1-2.9-2.6c-.2-.4.2-.4.6-1.2.1-.1 0-.3 0-.4l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.4c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.4c.1.1 1.6 2.5 4 3.5 1.5.6 2.1.7 2.8.6.5-.1 1.3-.6 1.5-1.1.2-.5.2-1 .1-1.1l-.6-.3Z"/></svg></span><span><b>Вотсап</b><small>89089089385</small></span><span class="arr" aria-hidden="true">↗</span></a>
-        <div class="tile msg"><span class="mi bi mx" aria-hidden="true">max</span><span><b>MAX</b><small>89089089385</small></span><span></span></div>
-        <div class="tile msg"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m4 6 8 7 8-7"/></svg></span><span><b>Эл.почта</b><small class="todo">адрес не указан в ТЗ</small></span><span></span></div>
+        <a class="tile msg" href="https://t.me/aleksey_BS" target="_blank" rel="noopener"><span class="mi bi tg"><svg viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="tgG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2AABEE"/><stop offset="1" stop-color="#229ED9"/></linearGradient></defs><circle cx="24" cy="24" r="24" fill="url(#tgG)"/><path fill="#fff" d="M10.9 23.6c7-3 11.6-5 13.9-6 6.6-2.7 8-3.2 8.9-3.2.2 0 .6 0 .9.3.2.2.3.4.3.6v.9c-.4 4-2 13.6-2.9 18.1-.4 1.9-1.1 2.5-1.8 2.6-1.5.1-2.7-1-4.2-2-2.3-1.5-3.6-2.5-5.9-4-2.6-1.7-.9-2.7.6-4.2.4-.4 7.1-6.5 7.2-7 0-.1 0-.3-.1-.4s-.4-.1-.5 0c-.2.1-3.9 2.5-11 7.3-1 .7-2 1.1-2.9 1.1-.9 0-2.8-.5-4.1-1-1.7-.5-3-.8-2.9-1.7.1-.5.7-.9 2-1.4Z"/></svg></span><span><b>Телеграм</b><small>@aleksey_BS</small></span><span class="arr" aria-hidden="true">↗</span></a>
+        <a class="tile msg" href="https://wa.me/79089089385" target="_blank" rel="noopener"><span class="mi bi wa"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#25D366" d="M24 2.5A21.5 21.5 0 0 0 5.4 34.8L2.5 45.5l11-2.9A21.5 21.5 0 1 0 24 2.5Z"/><path fill="#fff" d="M24 6.2a17.8 17.8 0 0 0-15.1 27.2l.4.7-1.8 6.5 6.7-1.8.7.4A17.8 17.8 0 1 0 24 6.2Z" opacity="0"/><path fill="#fff" d="M34.6 29.6c-.6-.3-3.4-1.7-3.9-1.9-.5-.2-.9-.3-1.3.3-.4.6-1.5 1.9-1.8 2.2-.3.4-.7.4-1.2.1-.6-.3-2.4-.9-4.6-2.8-1.7-1.5-2.8-3.4-3.2-4-.3-.6 0-.9.3-1.2l.9-1c.3-.4.4-.6.6-1 .2-.4.1-.8 0-1.1l-1.8-4.2c-.4-1.1-.9-.9-1.3-.9h-1.1c-.4 0-1 .1-1.5.7-.5.6-2 1.9-2 4.7s2 5.5 2.3 5.9c.3.4 4 6.1 9.6 8.5 1.3.6 2.4.9 3.2 1.2 1.3.4 2.6.4 3.5.2 1.1-.2 3.4-1.4 3.8-2.7.5-1.3.5-2.5.3-2.7-.1-.2-.5-.4-1.1-.6Z"/></svg></span><span><b>Вотсап</b><small>89089089385</small></span><span class="arr" aria-hidden="true">↗</span></a>
+        <div class="tile msg"><span class="mi bi mx"><svg viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="mxG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2D9CFF"/><stop offset=".55" stop-color="#5B5BFF"/><stop offset="1" stop-color="#A53DFF"/></linearGradient></defs><rect width="48" height="48" rx="13" fill="url(#mxG)"/><path fill="#fff" d="M24 11c-7.7 0-13.5 5.4-13.5 12.6 0 4 1.8 7.1 4.6 9.3l-.9 4.6 4.6-2.4c1.6.5 3.3.8 5.2.8 7.7 0 13.5-5.4 13.5-12.3S31.7 11 24 11Z"/><text x="24" y="27.6" text-anchor="middle" font-family="Onest, Arial, sans-serif" font-weight="700" font-size="9.5" fill="#5B5BFF">max</text></svg></span><span><b>MAX</b><small>89089089385</small></span><span></span></div>
+        <div class="tile msg"><span class="mi bi ml"><svg viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="mlG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F7A15A"/><stop offset="1" stop-color="#D96E2E"/></linearGradient></defs><rect x="3" y="9" width="42" height="30" rx="6" fill="url(#mlG)"/><path d="M7 14l17 13 17-13" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><b>Эл.почта</b><small class="todo">адрес не указан в ТЗ</small></span><span></span></div>
       </div>
     </div>
   </section>
@@ -1756,23 +1774,34 @@ body.lb-lock { overflow: hidden; }
       var FW = Math.round(w - 10), FH = Math.round(FW * 2 / 3), off = document.createElement('canvas');
       off.width = FW * dpr; off.height = FH * dpr;
       var img = new Image(), f = { c: c, ctx: ctx, w: w, h: h, FW: FW, FH: FH, off: off, ready: false, ph: n * 1.7 };
+      var tx = document.createElement('canvas'); tx.width = tx.height = 4; var tc = tx.getContext('2d'); tc.fillStyle = '#000'; tc.fillRect(0, 0, 4, 1); tc.fillRect(0, 2, 1, 2); f.tex = ctx.createPattern(tx, 'repeat');
       img.onload = function () { var o = off.getContext('2d'); o.drawImage(img, 0, 0, off.width, off.height); f.ready = true; draw(f, 0); };
       img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(SVG[c.dataset.flag]);
       flags.push(f);
     });
     function draw(f, t) {
-      var ctx = f.ctx, top = 9, x0 = 4;
+      var ctx = f.ctx, top = 10, x0 = 3, FW = f.FW, FH = f.FH;
       ctx.clearRect(0, 0, f.w, f.h);
       if (!f.ready) return;
-      var A = f.FH * .085, k = 0.11, sp = 0.0032;
-      for (var x = 0; x < f.FW; x++) {
-        var r = x / f.FW, ang = x * k - t * sp + f.ph;
-        var dy = Math.sin(ang) * A * r, sh = Math.cos(ang) * r;
-        ctx.drawImage(f.off, x * dpr, 0, dpr, f.off.height, x0 + x, top + dy, 1.2, f.FH);
-        if (sh > 0) { ctx.fillStyle = 'rgba(0,0,0,' + (sh * .26).toFixed(3) + ')'; }
-        else { ctx.fillStyle = 'rgba(255,255,255,' + (-sh * .16).toFixed(3) + ')'; }
-        ctx.fillRect(x0 + x, top + dy, 1.2, f.FH);
+      var A = FH * .07, ts = t * .0021 + f.ph;
+      function wave(x) { var r = x / FW, e = Math.pow(r, .85); return (Math.sin(x * .085 - ts) * .75 + Math.sin(x * .19 - ts * 1.6 + 1.3) * .25) * A * e; }
+      function sag(x) { var r = x / FW; return r * r * FH * .05; }
+      for (var x = 0; x < FW; x++) {
+        var dy = wave(x) + sag(x), dy2 = wave(x + 1) + sag(x + 1), slope = dy2 - dy;
+        var hgt = FH * (1 - .045 * Math.abs(Math.sin(x * .085 - ts)) * (x / FW));
+        ctx.drawImage(f.off, x * dpr, 0, dpr, f.off.height, x0 + x, top + dy + (FH - hgt) / 2, 1.6, hgt);
+        var l = Math.max(-1, Math.min(1, slope * 1.35));
+        ctx.fillStyle = l > 0 ? 'rgba(20,10,4,' + (l * .32).toFixed(3) + ')' : 'rgba(255,255,255,' + (-l * .22).toFixed(3) + ')';
+        ctx.fillRect(x0 + x, top + dy + (FH - hgt) / 2, 1.6, hgt);
       }
+      /* мягкий объём ткани сверху вниз и у древка */
+      var g = ctx.createLinearGradient(0, top - A, 0, top + FH + A);
+      g.addColorStop(0, 'rgba(255,255,255,.10)'); g.addColorStop(.5, 'rgba(255,255,255,0)'); g.addColorStop(1, 'rgba(0,0,0,.10)');
+      ctx.globalCompositeOperation = 'source-atop'; ctx.fillStyle = g; ctx.fillRect(0, 0, f.w, f.h);
+      var g2 = ctx.createLinearGradient(x0, 0, x0 + 10, 0); g2.addColorStop(0, 'rgba(0,0,0,.18)'); g2.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = g2; ctx.fillRect(x0, 0, 10, f.h);
+      if (f.tex) { ctx.globalAlpha = .07; ctx.fillStyle = f.tex; ctx.fillRect(0, 0, f.w, f.h); ctx.globalAlpha = 1; }
+      ctx.globalCompositeOperation = 'source-over';
     }
     function loop(t) { if (!visible) { running = false; return; } flags.forEach(function (f) { draw(f, t); }); requestAnimationFrame(loop); }
     if (reduce) return;
