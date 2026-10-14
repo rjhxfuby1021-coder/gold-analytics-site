@@ -836,6 +836,7 @@ img { max-width: 100%; }
 .msg .mi.mx { background: linear-gradient(135deg, #2C8BFF 0%, #6C4BFF 55%, #A43CFF 100%) !important; font: 700 13px/1 var(--f-body); letter-spacing: .02em; text-transform: lowercase; }
 .msg .mi svg { width: 26px; height: 26px; }
 .logos .review.playing { cursor: default; }
+.vid-open { position: absolute; right: 10px; top: 10px; z-index: 6; font-size: 12px; padding: 6px 10px; border-radius: 999px; background: rgba(0, 0, 0, .55); color: #fff; cursor: pointer; }
 .logos .review iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; z-index: 5; background: #000; }
 .msg:hover .mi.bi { filter: brightness(1.08); transform: scale(1.06); }
 
@@ -1826,7 +1827,9 @@ body.lb-lock { overflow: hidden; }
       var f = document.createElement('iframe');
       f.src = a.dataset.embed; f.title = 'Видеоотзыв CakePro';
       f.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media'; f.setAttribute('allowfullscreen', '');
-      a.classList.add('playing'); a.appendChild(f);
+      var o = document.createElement('span'); o.className = 'vid-open'; o.textContent = 'Открыть на Rutube ↗';
+      o.addEventListener('click', function (ev) { ev.preventDefault(); ev.stopPropagation(); window.open(a.href, '_blank', 'noopener'); });
+      a.classList.add('playing'); a.appendChild(f); a.appendChild(o);
     });
   });
 
